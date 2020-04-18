@@ -1,0 +1,240 @@
+[
+  {
+    "abbrev": "FFL 2020",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 1
+    },
+    "display": true,
+    "displayOrder": 0,
+    "endDate": 1646809200000,
+    "gameId": 1,
+    "id": 2020,
+    "name": "Fantasy Football 2020",
+    "startDate": 1583737200000
+  },
+  {
+    "abbrev": "FFL 2019",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 0,
+    "endDate": 1583737200000,
+    "gameId": 1,
+    "id": 2019,
+    "name": "Fantasy Football 2019",
+    "startDate": 1549440000000
+  },
+  {
+    "abbrev": "FFL 2018",
+    "active": false,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 0,
+    "endDate": 1549440000000,
+    "gameId": 1,
+    "id": 2018,
+    "name": "Fantasy Football 2018",
+    "startDate": 1514793600000
+  },
+  {
+    "abbrev": "FFL 2017",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 0,
+    "endDate": 1546329600000,
+    "gameId": 1,
+    "id": 2017,
+    "name": "Fantasy Football 2017",
+    "startDate": 1483257600000
+  },
+  {
+    "abbrev": "FFL 2016",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 1,
+    "endDate": 1514782800000,
+    "gameId": 1,
+    "id": 2016,
+    "name": "Fantasy Football 2016",
+    "startDate": 1451624400000
+  },
+  {
+    "abbrev": "FFL 2015",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 2,
+    "endDate": 1451624399000,
+    "gameId": 1,
+    "id": 2015,
+    "name": "Fantasy Football 2015",
+    "startDate": 1420088400000
+  },
+  {
+    "abbrev": "FFL 2014",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 3,
+    "endDate": 1420088399000,
+    "gameId": 1,
+    "id": 2014,
+    "name": "Fantasy Football 2014",
+    "startDate": 1388552400000
+  },
+  {
+    "abbrev": "FFL 2013",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 4,
+    "endDate": 1388552399000,
+    "gameId": 1,
+    "id": 2013,
+    "name": "Fantasy Football 2013",
+    "startDate": 1357016400000
+  },
+  {
+    "abbrev": "FFL 2012",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 5,
+    "endDate": 1357016399000,
+    "gameId": 1,
+    "id": 2012,
+    "name": "Fantasy Football 2012",
+    "startDate": 1325566800000
+  },
+  {
+    "abbrev": "FFL 2011",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 6,
+    "endDate": 1325566800000,
+    "gameId": 1,
+    "id": 2011,
+    "name": "Fantasy Football 2011",
+    "startDate": 1293858000000
+  },
+  {
+    "abbrev": "FFL 2010",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 7,
+    "endDate": 1293858000000,
+    "gameId": 1,
+    "id": 2010,
+    "name": "Fantasy Football 2010",
+    "startDate": 1262581200000
+  },
+  {
+    "abbrev": "FFL 2009",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 8,
+    "endDate": 1262581200000,
+    "gameId": 1,
+    "id": 2009,
+    "name": "Fantasy Football 2009",
+    "startDate": 1230786000000
+  },
+  {
+    "abbrev": "FFL 2008",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 9,
+    "endDate": 1230786000000,
+    "gameId": 1,
+    "id": 2008,
+    "name": "Fantasy Football 2008",
+    "startDate": 1212724800000
+  },
+  {
+    "abbrev": "FFL 2007",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 10,
+    "endDate": 1212724800000,
+    "gameId": 1,
+    "id": 2007,
+    "name": "Fantasy Football 2007",
+    "startDate": 1167627600000
+  },
+  {
+    "abbrev": "FFL 2006",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 11,
+    "endDate": 1167627600000,
+    "gameId": 1,
+    "id": 2006,
+    "name": "Fantasy Football 2006",
+    "startDate": 1136091600000
+  },
+  {
+    "abbrev": "FFL 2005",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 12,
+    "endDate": 1136091600000,
+    "gameId": 1,
+    "id": 2005,
+    "name": "Fantasy Football 2005",
+    "startDate": 1104555600000
+  },
+  {
+    "abbrev": "FFL 2004",
+    "active": true,
+    "currentScoringPeriod": {
+      "id": 18
+    },
+    "display": true,
+    "displayOrder": 13,
+    "endDate": 1104555600000,
+    "gameId": 1,
+    "id": 2004,
+    "name": "Fantasy Football 2004",
+    "startDate": 1086062400000
+  }
+]
