@@ -39,4 +39,9 @@ public class TestPerson {
 
         return p.getLastName().equalsIgnoreCase(this.getLastName());
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

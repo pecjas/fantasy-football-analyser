@@ -1,10 +1,11 @@
 package ffb.analyzer.core.web.webclient.servlet;
 
-import java.util.Collections;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.Collections;
 
 @SpringBootApplication
 public class TestServletInitializer extends SpringBootServletInitializer {
@@ -15,7 +16,11 @@ public class TestServletInitializer extends SpringBootServletInitializer {
         context.close();
     }
 
-    public static void main (String[] args) {
+    /**
+     * Initializes a Springboot Application instance.
+     * @param args Application runner arguments. Ignored.
+     */
+    public static void main(String[] args) {
         SpringApplication testApplication = new SpringApplication(TestServletInitializer.class);
         testApplication.setDefaultProperties(Collections.singletonMap("server.port", "9000"));
 

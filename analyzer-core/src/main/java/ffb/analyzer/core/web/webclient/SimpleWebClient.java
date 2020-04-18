@@ -1,37 +1,39 @@
 package ffb.analyzer.core.web.webclient;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
-import java.util.List;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.HttpClients;
+
+import java.io.IOException;
+import java.util.List;
 
 public class SimpleWebClient implements BaseWebClient {
 
-    private static final ObjectMapper sharedMapper = new ObjectMapper();
-
     private final ObjectMapper objectMapper;
 
-    private SimpleWebClient(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
+    public SimpleWebClient() {
+        this.objectMapper = new ObjectMapper();
     }
 
     @Override
     public <T> List<T> sendGet(HttpGet request, Class<T> entity) throws IOException {
 
-        return objectMapper.readValue(
-            HttpClients.createDefault().execute(request).getEntity().getContent(),
-            objectMapper.getTypeFactory().constructCollectionType(List.class, entity)
-        );
+        return objectMapper.readValue(doSend(request).getEntity().getContent(),
+            objectMapper.getTypeFactory().constructCollectionType(List.class, entity));
     }
 
     @Override
     public void sendPost(HttpPost request) throws IOException {
-        HttpClients.createDefault().execute(request);
+        try (CloseableHttpResponse response = doSend(request)) {
+            //Close resources
+        }
+
     }
 
-    public static SimpleWebClient createWebClient() {
-        return new SimpleWebClient(sharedMapper);
+    private CloseableHttpResponse doSend(HttpRequestBase request) throws IOException {
+        return HttpClients.createDefault().execute(request);
     }
 }

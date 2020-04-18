@@ -36,10 +36,12 @@
     </dependency>
   </dependencies>
   <build>
+    <finalName>${artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>2.2.6.RELEASE</version>
         <executions>
           <execution>
             <id>test web client</id>
