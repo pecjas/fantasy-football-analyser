@@ -1,4 +1,4 @@
-package ffb.analyzer.core.webclient.servlet;
+package ffb.analyzer.core.web.webclient.servlet;
 
 public class TestPerson {
 

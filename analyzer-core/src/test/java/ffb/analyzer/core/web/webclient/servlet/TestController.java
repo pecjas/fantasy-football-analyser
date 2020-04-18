@@ -1,5 +1,6 @@
-package ffb.analyzer.core.webclient.servlet;
+package ffb.analyzer.core.web.webclient.servlet;
 
+import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +13,11 @@ public class TestController {
 
     @GetMapping("/test-get")
     @Consumes("application/json")
-    public TestPerson getResponse() {
+    public List<TestPerson> getResponse() {
         TestPerson response = new TestPerson();
         response.setFirstName("First");
         response.setLastName("Last");
-        return response;
+        return List.of(response);
     }
 
     @PostMapping("/test-post")

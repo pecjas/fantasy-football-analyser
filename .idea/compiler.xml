@@ -6,11 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="analyzer-tests" />
+        <module name="analyzer-models" />
         <module name="analyzer-core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="analyzer-core" target="11" />
+      <module name="analyzer-models" target="11" />
+      <module name="analyzer-tests" target="11" />
       <module name="fantasy-football-analyzer" target="1.5" />
     </bytecodeTargetLevel>
   </component>

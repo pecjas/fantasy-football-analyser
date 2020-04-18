@@ -8,6 +8,8 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>analyzer-core</module>
+    <module>analyzer-tests</module>
+    <module>analyzer-models</module>
   </modules>
   <name>fantasy-football-analyzer</name>
   <url>https://github.com/pecjas/fantasy-football-analyzer</url>
@@ -16,6 +18,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>11</java.version>
     <checkstyle.location>${project.basedir}/src/resources</checkstyle.location>
+    <skip.checkstyle>false</skip.checkstyle>
   </properties>
   <dependencies>
     <dependency>
@@ -31,6 +34,14 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <profiles>
+    <profile>
+      <id>skip-checkstyle</id>
+      <properties>
+        <skip.checkstyle>true</skip.checkstyle>
+      </properties>
+    </profile>
+  </profiles>
   <reporting>
     <plugins>
       <plugin>
@@ -44,6 +55,9 @@
             </reports>
           </reportSet>
         </reportSets>
+        <configuration>
+          <skip>${skip.checkstyle}</skip>
+        </configuration>
       </plugin>
     </plugins>
   </reporting>
