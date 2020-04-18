@@ -4,6 +4,7 @@ target
 .war
 .ear
 .ejb
+*.iml
 
 #Add some Intellj files that should be ignored
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
