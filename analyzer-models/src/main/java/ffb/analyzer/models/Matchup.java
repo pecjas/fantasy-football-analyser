@@ -1,6 +1,6 @@
-package ffb.analyzer.models.espn;
+package ffb.analyzer.models;
 
-import ffb.analyzer.models.espn.dtos.MatchupDTO;
+import ffb.analyzer.models.espn.SeasonMatchups;
 
 public class Matchup {
 
@@ -21,7 +21,7 @@ public class Matchup {
     private int awayTeamPoints;
     private GameType type;
 
-    public static Matchup fromDTO(MatchupDTO dto) {
+    public static Matchup fromDTO(SeasonMatchups dto) {
         return new Matchup();
     }
 

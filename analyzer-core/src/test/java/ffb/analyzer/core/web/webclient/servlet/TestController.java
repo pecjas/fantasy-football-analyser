@@ -25,6 +25,15 @@ public final class TestController {
         return List.of(response);
     }
 
+    @GetMapping("/test-single-get")
+    @Consumes("application/json")
+    public TestPerson getSingleResponse() {
+        TestPerson response = new TestPerson();
+        response.setFirstName("First");
+        response.setLastName("Last");
+        return response;
+    }
+
     /**
      * Simple POST resource to test {@link ffb.analyzer.core.web.webclient.SimpleWebClient}.
      *

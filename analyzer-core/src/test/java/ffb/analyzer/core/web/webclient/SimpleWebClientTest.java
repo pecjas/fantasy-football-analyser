@@ -21,7 +21,8 @@ import java.util.List;
 public class SimpleWebClientTest {
 
     private static final String BASE_URL = "http://localhost:9000";
-    private static final String GET_URL =  BASE_URL + "/test-get";
+    private static final String GET_SINGLE_URL = BASE_URL + "/test-single-get";
+    private static final String GET_ARRAY_URL =  BASE_URL + "/test-get";
     private static final String POST_URL = BASE_URL + "/test-post";
 
     private static SimpleWebClient client;
@@ -43,12 +44,23 @@ public class SimpleWebClientTest {
      * @throws IOException Thrown if request fails.
      */
     @Test
-    public void testGetRequest() throws IOException {
-        HttpGet request = new HttpGet(GET_URL);
+    public void testGetRequestWithArrayAsResponse() throws IOException {
+        HttpGet request = new HttpGet(GET_ARRAY_URL);
         List<TestPerson> response = client.sendGet(request, TestPerson.class);
 
         Assert.assertNotNull(response);
         Assert.assertFalse(response.isEmpty());
+        Assert.assertNotNull(response.get(0).getFirstName());
+        Assert.assertNotNull(response.get(0).getLastName());
+    }
+
+    @Test
+    public void testGetRequestWithSingleObjectAsResponse() throws IOException {
+        HttpGet request = new HttpGet(GET_SINGLE_URL);
+        List<TestPerson> response = client.sendGet(request, TestPerson.class);
+
+        Assert.assertNotNull(response);
+        Assert.assertEquals(1, response.size());
         Assert.assertNotNull(response.get(0).getFirstName());
         Assert.assertNotNull(response.get(0).getLastName());
     }

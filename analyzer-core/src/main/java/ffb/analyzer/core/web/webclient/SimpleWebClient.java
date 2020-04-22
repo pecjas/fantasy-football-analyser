@@ -1,5 +1,6 @@
 package ffb.analyzer.core.web.webclient;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -12,10 +13,15 @@ import java.util.List;
 
 public class SimpleWebClient implements BaseWebClient {
 
+    private static final List<DeserializationFeature> DEFAULT_DESERIALIZATION_OPTIONS = List.of(
+        DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY
+    );
+
     private final ObjectMapper objectMapper;
 
     public SimpleWebClient() {
         this.objectMapper = new ObjectMapper();
+        DEFAULT_DESERIALIZATION_OPTIONS.forEach(objectMapper::enable);
     }
 
     @Override

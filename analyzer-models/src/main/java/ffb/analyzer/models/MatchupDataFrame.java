@@ -1,7 +1,5 @@
 package ffb.analyzer.models;
 
-import ffb.analyzer.models.espn.Matchup;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

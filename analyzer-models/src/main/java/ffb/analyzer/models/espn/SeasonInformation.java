@@ -1,16 +1,24 @@
 package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import ffb.analyzer.models.espn.serialization.EpochMillisecondDeserializer;
+
+import java.util.Date;
 
 /**
  * Class representing the information about a season.
  */
 public class SeasonInformation {
     private String name;
-    private long endDate;
-    private long startDate;
     private int gameId;
     private int displayOrder;
+
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    private Date endDate;
+
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    private Date startDate;
 
     @JsonProperty("abbrev")
     private String abbreviation;
@@ -35,19 +43,19 @@ public class SeasonInformation {
         this.name = name;
     }
 
-    public long getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(long endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
-    public long getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(long startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 

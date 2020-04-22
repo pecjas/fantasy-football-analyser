@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,8 +19,8 @@ public class SeasonInformationTests {
 
     private static final String SEASON_INFORMATION_FILE = "season-information.json";
     private static final int EXPECTED_SEASON_COUNT = 17;
-    private static final int END_DATE = 20200417;
-    private static final int START_DATE = 20200417;
+    private static final Date END_DATE = new Date();
+    private static final Date START_DATE = new Date();
     private static final int ID = 2020;
 
     private static ObjectMapper mapper;
