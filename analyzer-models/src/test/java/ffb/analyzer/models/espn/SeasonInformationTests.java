@@ -1,4 +1,4 @@
-package ffb.analyzer.models;
+package ffb.analyzer.models.espn;
 
 import ffb.analyzer.models.espn.ScoringPeriod;
 import ffb.analyzer.models.espn.SeasonInformation;

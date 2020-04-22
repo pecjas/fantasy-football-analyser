@@ -1,6 +1,5 @@
 package ffb.analyzer.models.espn.serialization;
 
-import com.fasterxml.jackson.databind.JavaType;
 import ffb.analyzer.models.espn.ScoreByStat;
 
 import com.fasterxml.jackson.core.JsonParser;
@@ -10,33 +9,31 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
 
-public class ScoreByStatSerializer extends StdDeserializer<ScoreByStat> {
+public class ScoreByStatDeserializer extends StdDeserializer<ScoreByStat> {
 
-    protected ScoreByStatSerializer(Class<?> vc) {
+    public ScoreByStatDeserializer() {
+        this(null);
+    }
+
+    public ScoreByStatDeserializer(Class<?> vc) {
         super(vc);
-    }
-
-    protected ScoreByStatSerializer(JavaType valueType) {
-        super(valueType);
-    }
-
-    protected ScoreByStatSerializer(StdDeserializer<?> src) {
-        super(src);
     }
 
     @Override
     public ScoreByStat deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
         throws IOException
     {
-        int id = Integer.parseInt(jsonParser.getCurrentName());
-
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
-        boolean ineligible = node.get("ineligible").booleanValue();
-        float rank = node.get("rank").floatValue();
-        float score = node.get("score").floatValue();
+        String statFieldName = node.fieldNames().next();
+
+        JsonNode fields = node.get(statFieldName);
+
+        boolean ineligible = fields.get("ineligible").booleanValue();
+        float rank = fields.get("rank").floatValue();
+        float score = fields.get("score").floatValue();
 
         ScoreByStat stat = new ScoreByStat();
-        stat.setId(id);
+        stat.setId(Integer.parseInt(statFieldName));
         stat.setIneligible(ineligible);
         stat.setRank(rank);
         stat.setScore(score);

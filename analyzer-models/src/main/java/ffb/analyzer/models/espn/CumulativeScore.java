@@ -1,12 +1,16 @@
 package ffb.analyzer.models.espn;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CumulativeScore {
     private int losses;
     private int ties;
     private int wins;
-    List<ScoreByStat> scoreByStats;
+
+    @JsonProperty("scoreByStat")
+    ScoresByStats scoresByStats;
 
     public int getLosses() {
         return losses;
@@ -32,11 +36,11 @@ public class CumulativeScore {
         this.wins = wins;
     }
 
-    public List<ScoreByStat> getScoreByStats() {
-        return scoreByStats;
+    public ScoresByStats getScoresByStats() {
+        return scoresByStats;
     }
 
-    public void setScoreByStats(List<ScoreByStat> scoreByStats) {
-        this.scoreByStats = scoreByStats;
+    public void setScoresByStats(ScoresByStats scoresByStats) {
+        this.scoresByStats = scoresByStats;
     }
 }
