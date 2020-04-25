@@ -8,17 +8,12 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
-public class CumulativeScoreTests {
+public class CumulativeScoreTests extends DeserializingResourceLoader {
     private static final String CUMULATIVE_SCORE_FILE = "cumulative-score.json";
 
-    @Test
-    public void testCumulativeScoreDeserialization() throws IOException {
-        File file = new File(Objects.requireNonNull(getClass()
-            .getClassLoader()
-            .getResource(CUMULATIVE_SCORE_FILE)
-        ).getFile());
+    public void testDeserialization() throws IOException {
+        File file = getResourceFile(CUMULATIVE_SCORE_FILE);
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);

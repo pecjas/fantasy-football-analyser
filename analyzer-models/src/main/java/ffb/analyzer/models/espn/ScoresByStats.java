@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @JsonDeserialize(using = ScoresByStatDeserializer.class)
-public class ScoresByStats {
+public class ScoresByStats extends EspnEntity<ScoresByStats> {
     List<ScoreByStat> scores;
 
     public ScoresByStats() {

@@ -1,8 +1,6 @@
 package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import ffb.analyzer.models.espn.ScoringPeriod;
-import ffb.analyzer.models.espn.SeasonInformation;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,9 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
-public class SeasonInformationTests {
+public class SeasonInformationTests extends DeserializingResourceLoader {
 
     private static final String SEASON_INFORMATION_FILE = "season-information.json";
     private static final int EXPECTED_SEASON_COUNT = 17;
@@ -61,11 +58,8 @@ public class SeasonInformationTests {
      * @throws IOException Thrown if serialization fails, or resource does not exist.
      */
     @Test
-    public void testSeasonInformationDeserialization() throws IOException {
-        File file = new File(Objects.requireNonNull(getClass()
-            .getClassLoader()
-            .getResource(SEASON_INFORMATION_FILE)
-        ).getFile());
+    public void testDeserialization() throws IOException {
+        File file = getResourceFile(SEASON_INFORMATION_FILE);
 
         List<SeasonInformation> seasons = mapper.readValue(file,
             mapper.getTypeFactory().constructCollectionType(List.class, SeasonInformation.class));

@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Class representing the information about a season.
  */
-public class SeasonInformation {
+public class SeasonInformation extends EspnEntity<SeasonInformation> {
     private String name;
     private int gameId;
     private int displayOrder;

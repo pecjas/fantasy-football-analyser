@@ -8,17 +8,13 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
-public class MatchupDetailsTest {
+public class MatchupDetailsTest extends DeserializingResourceLoader {
     private static final String SCHEDULE_FILE = "schedule.json";
 
     @Test
-    public void testMatchupDetailsDeserialization() throws IOException {
-        File file = new File(Objects.requireNonNull(getClass()
-            .getClassLoader()
-            .getResource(SCHEDULE_FILE)
-        ).getFile());
+    public void testDeserialization() throws IOException {
+        File file = getResourceFile(SCHEDULE_FILE);
 
         ObjectMapper mapper = new ObjectMapper().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
         List<MatchupDetails> matchups = mapper.readValue(

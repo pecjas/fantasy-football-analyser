@@ -1,10 +1,8 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class CumulativeScore {
+public class CumulativeScore extends EspnEntity<CumulativeScore> {
     private int losses;
     private int ties;
     private int wins;

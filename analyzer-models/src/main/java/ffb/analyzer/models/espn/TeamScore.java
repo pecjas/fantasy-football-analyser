@@ -1,8 +1,8 @@
 package ffb.analyzer.models.espn;
 
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Map;
 
 public class TeamScore extends EspnEntity<TeamScore> {
     private CumulativeScore cumulativeScore;

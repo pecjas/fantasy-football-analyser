@@ -1,6 +1,6 @@
 package ffb.analyzer.models.espn;
 
-public class DraftDetail {
+public class DraftDetail extends EspnEntity<DraftDetail> {
 
     private boolean drafted;
     private boolean inProgress;

@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class LeagueInformation {
+public class LeagueInformation extends EspnEntity<LeagueInformation> {
 
     public enum LeagueType {
         PRIVATE(0),
@@ -22,12 +22,13 @@ public class LeagueInformation {
     private boolean isFull;
     private boolean isActive;
     private boolean isExpired;
-    private boolean isPlayoffMatchupEdited;
     private boolean isWillBeDeleted;
     private boolean isViewable;
-    private boolean isWaiverOrderEdited;
     private List<Integer> previousSeasons;
     private Date waiverLastExecutionDate;
+    private Date standingsUpdateDate;
+    private int teamsJoined;
+    private int transactionScoringPeriod;
 
     @JsonProperty("waiverProcessStatus")
     private Map<Date, Integer> transactions;
@@ -63,7 +64,7 @@ public class LeagueInformation {
         return isFull;
     }
 
-    public void setFull(boolean full) {
+    public void setIsFull(boolean full) {
         isFull = full;
     }
 
@@ -71,7 +72,7 @@ public class LeagueInformation {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setIsActive(boolean active) {
         isActive = active;
     }
 
@@ -79,22 +80,15 @@ public class LeagueInformation {
         return isExpired;
     }
 
-    public void setExpired(boolean expired) {
+    public void setIsExpired(boolean expired) {
         isExpired = expired;
     }
 
-    public boolean isPlayoffMatchupEdited() {
-        return isPlayoffMatchupEdited;
-    }
-
-    public void setPlayoffMatchupEdited(boolean playoffMatchupEdited) {
-        isPlayoffMatchupEdited = playoffMatchupEdited;
-    }
-
-    public boolean isWillBeDeleted() {
+    public boolean willBeDeleted() {
         return isWillBeDeleted;
     }
 
+    @JsonProperty("isToBeDeleted")
     public void setWillBeDeleted(boolean willBeDeleted) {
         isWillBeDeleted = willBeDeleted;
     }
@@ -103,16 +97,8 @@ public class LeagueInformation {
         return isViewable;
     }
 
-    public void setViewable(boolean viewable) {
+    public void setIsViewable(boolean viewable) {
         isViewable = viewable;
-    }
-
-    public boolean isWaiverOrderEdited() {
-        return isWaiverOrderEdited;
-    }
-
-    public void setWaiverOrderEdited(boolean waiverOrderEdited) {
-        isWaiverOrderEdited = waiverOrderEdited;
     }
 
     public List<Integer> getPreviousSeasons() {
@@ -185,5 +171,29 @@ public class LeagueInformation {
 
     public void setCurrentType(LeagueType currentType) {
         this.currentType = currentType;
+    }
+
+    public Date getStandingsUpdateDate() {
+        return standingsUpdateDate;
+    }
+
+    public void setStandingsUpdateDate(Date standingsUpdateDate) {
+        this.standingsUpdateDate = standingsUpdateDate;
+    }
+
+    public int getTeamsJoined() {
+        return teamsJoined;
+    }
+
+    public void setTeamsJoined(int teamsJoined) {
+        this.teamsJoined = teamsJoined;
+    }
+
+    public int getTransactionScoringPeriod() {
+        return transactionScoringPeriod;
+    }
+
+    public void setTransactionScoringPeriod(int transactionScoringPeriod) {
+        this.transactionScoringPeriod = transactionScoringPeriod;
     }
 }

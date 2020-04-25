@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import ffb.analyzer.models.espn.serialization.ScoreByStatDeserializer;
 
 @JsonDeserialize(using = ScoreByStatDeserializer.class)
-public class ScoreByStat {
+public class ScoreByStat extends EspnEntity<ScoreByStat> {
     private int id;
     private boolean ineligible;
     private float rank;
