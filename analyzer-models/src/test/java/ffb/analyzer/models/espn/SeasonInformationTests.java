@@ -1,5 +1,6 @@
 package ffb.analyzer.models.espn;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import ffb.analyzer.models.espn.ScoringPeriod;
 import ffb.analyzer.models.espn.SeasonInformation;
 
@@ -27,7 +28,7 @@ public class SeasonInformationTests {
 
     @BeforeClass
     public static void prepareForTests() {
-        mapper = new ObjectMapper();
+        mapper = new ObjectMapper().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
     }
 
     /**
@@ -63,8 +64,8 @@ public class SeasonInformationTests {
     public void testSeasonInformationDeserialization() throws IOException {
         File file = new File(Objects.requireNonNull(getClass()
             .getClassLoader()
-            .getResource(SEASON_INFORMATION_FILE))
-            .getFile());
+            .getResource(SEASON_INFORMATION_FILE)
+        ).getFile());
 
         List<SeasonInformation> seasons = mapper.readValue(file,
             mapper.getTypeFactory().constructCollectionType(List.class, SeasonInformation.class));

@@ -17,8 +17,8 @@ public class CumulativeScoreTests {
     public void testCumulativeScoreDeserialization() throws IOException {
         File file = new File(Objects.requireNonNull(getClass()
             .getClassLoader()
-            .getResource(CUMULATIVE_SCORE_FILE))
-            .getFile());
+            .getResource(CUMULATIVE_SCORE_FILE)
+        ).getFile());
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);

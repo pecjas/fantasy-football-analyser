@@ -20,16 +20,15 @@ public class ScoresByStatTests {
     public void testScoreByStatDeserialization() throws IOException {
         File file = new File(Objects.requireNonNull(getClass()
             .getClassLoader()
-            .getResource(SCORE_BY_STATS_FILE))
-            .getFile());
+            .getResource(SCORE_BY_STATS_FILE)
+        ).getFile());
 
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
+        ObjectMapper mapper = new ObjectMapper().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
 
         List<ScoresByStats> scores = mapper.readValue(file,
             mapper.getTypeFactory().constructCollectionType(List.class, ScoresByStats.class));
 
         Assert.assertEquals(1, scores.size());
-        Assert.assertEquals(11, scores.get(0).getScores().size());
+        Assert.assertEquals(7, scores.get(0).getScores().size());
     }
 }

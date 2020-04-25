@@ -14,4 +14,44 @@ public class TeamScore {
 
     @JsonProperty("pointsByScoringPeriod")
     private Map<Integer, Float> scores;
+
+    public CumulativeScore getCumulativeScore() {
+        return cumulativeScore;
+    }
+
+    public void setCumulativeScore(CumulativeScore cumulativeScore) {
+        this.cumulativeScore = cumulativeScore;
+    }
+
+    public int getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public void setGamesPlayed(int gamesPlayed) {
+        this.gamesPlayed = gamesPlayed;
+    }
+
+    public int getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
+    }
+
+    public float getPoints() {
+        return points;
+    }
+
+    public void setPoints(float points) {
+        this.points = points;
+    }
+
+    public Map<Integer, Float> getScores() {
+        return scores;
+    }
+
+    public void setScores(Map<Integer, Float> scores) {
+        this.scores = scores;
+    }
 }

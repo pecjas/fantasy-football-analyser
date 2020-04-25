@@ -1,7 +1,7 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public abstract class EspnEntity<T extends BaseEspnEntity<?>> implements BaseEspnEntity<T> {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public abstract class EspnEntity<T extends BaseEspnEntity<T>> implements BaseEspnEntity<T> {
 }

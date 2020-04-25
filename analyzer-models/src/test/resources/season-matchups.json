@@ -1,0 +1,98 @@
+{
+  "draftDetail": {
+    "drafted": true,
+    "inProgress": false
+  },
+  "gameId": 1,
+  "id": 368182,
+  "schedule": [
+    {
+      "away": {
+        "cumulativeScore": {
+          "losses": 0,
+          "statBySlot": null,
+          "ties": 0,
+          "wins": 0,
+          "scoreByStat": {
+            "128": {
+              "ineligible": false,
+              "rank": 0.0,
+              "result": null,
+              "score": 0.0
+            },
+            "129": {
+              "ineligible": false,
+              "rank": 0.0,
+              "result": null,
+              "score": 0.0
+            },
+            "130": {
+              "ineligible": false,
+              "rank": 0.0,
+              "result": null,
+              "score": 1.0
+            },
+            "4": {
+              "ineligible": false,
+              "rank": 0.0,
+              "result": null,
+              "score": 2.0
+            },
+            "132": {
+              "ineligible": false,
+              "rank": 0.0,
+              "result": null,
+              "score": 0.0
+            },
+            "5": {
+              "ineligible": false,
+              "rank": 0.0,
+              "result": null,
+              "score": 74.0
+            },
+            "133": {
+              "ineligible": false,
+              "rank": 0.0,
+              "result": null,
+              "score": 0.0
+            }
+          }
+        }
+      }
+    }
+  ],
+  "scoringPeriodId": 18,
+  "seasonId": 2019,
+  "segmentId": 0,
+  "status": {
+    "activatedDate": 1562025809235,
+    "createdAsLeagueType": 0,
+    "currentLeagueType": 0,
+    "currentMatchupPeriod": 16,
+    "finalScoringPeriod": 16,
+    "firstScoringPeriod": 1,
+    "isActive": true,
+    "isExpired": false,
+    "isFull": true,
+    "isPlayoffMatchupEdited": true,
+    "isToBeDeleted": false,
+    "isViewable": true,
+    "isWaiverOrderEdited": false,
+    "latestScoringPeriod": 18,
+    "previousSeasons": [
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019
+    ],
+    "standingsUpdateDate": 1583308906394,
+    "teamsJoined": 12,
+    "transactionScoringPeriod": 18,
+    "waiverLastExecutionDate": 1583308906394,
+    "waiverProcessStatus": [
+      "2019-08-19T07:41:09.149+0000": 3,
+    ]
+  }
+}

@@ -10,6 +10,8 @@ public class SeasonMatchups {
     private int gameId;
     private int id;
     private int segmentId;
+
+    @JsonProperty("status")
     private LeagueInformation leagueInformation;
 
     @JsonProperty("seasonId")
@@ -20,9 +22,6 @@ public class SeasonMatchups {
 
     @JsonProperty("schedule")
     private List<MatchupDetails> matchupDetails;
-
-    @JsonProperty("matchupPeriodId")
-    private int weekId;
 
     public DraftDetail getDraftDetails() {
         return draftDetails;
@@ -48,11 +47,45 @@ public class SeasonMatchups {
         this.id = id;
     }
 
-    public int getWeekId() {
-        return weekId;
+    public int getSegmentId() {
+        return segmentId;
     }
 
-    public void setWeekId(int weekId) {
-        this.weekId = weekId;
+    public void setSegmentId(int segmentId) {
+        this.segmentId = segmentId;
     }
+
+    public LeagueInformation getLeagueInformation() {
+        return leagueInformation;
+    }
+
+    public void setLeagueInformation(LeagueInformation leagueInformation) {
+        this.leagueInformation = leagueInformation;
+    }
+
+    public int getSeason() {
+        return season;
+    }
+
+    public void setSeason(int season) {
+        this.season = season;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public List<MatchupDetails> getMatchupDetails() {
+        return matchupDetails;
+    }
+
+    public void setMatchupDetails(List<MatchupDetails> matchupDetails) {
+        this.matchupDetails = matchupDetails;
+    }
+
+
 }

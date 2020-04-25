@@ -27,8 +27,10 @@ public class SimpleWebClient implements BaseWebClient {
     @Override
     public <T> List<T> sendGet(HttpGet request, Class<T> entity) throws IOException {
 
-        return objectMapper.readValue(doSend(request).getEntity().getContent(),
-            objectMapper.getTypeFactory().constructCollectionType(List.class, entity));
+        return objectMapper.readValue(
+            doSend(request).getEntity().getContent(),
+            objectMapper.getTypeFactory().constructCollectionType(List.class, entity)
+        );
     }
 
     @Override
