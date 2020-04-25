@@ -1,6 +1,8 @@
 package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import ffb.analyzer.models.espn.serialization.EpochMillisecondDeserializer;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +17,7 @@ public class LeagueInformation {
         LeagueType(int type) {}
     }
 
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
     private Date activatedDate;
     private boolean isFull;
     private boolean isActive;
