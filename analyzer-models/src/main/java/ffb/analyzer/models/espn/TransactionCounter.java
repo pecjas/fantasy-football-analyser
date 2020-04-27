@@ -46,6 +46,11 @@ public class TransactionCounter {
         this.droppedPlayerCount = droppedPlayerCount;
     }
 
+    public Map<String, Integer> getAcquisitionsByScoringPeriod() { return acquisitionsByScoringPeriod; }
+    public void setAcquisitionsByScoringPeriod(Map<String, Integer> acquisitionsByScoringPeriod) {
+        this.acquisitionsByScoringPeriod = acquisitionsByScoringPeriod;
+    }
+
     public int getCountPlayerMovesToActiveRoster() { return countPlayerMovesToActiveRoster; }
     public void setCountPlayerMovesToActiveRoster(int countPlayerMovesToActiveRoster) {
         this.countPlayerMovesToActiveRoster = countPlayerMovesToActiveRoster;

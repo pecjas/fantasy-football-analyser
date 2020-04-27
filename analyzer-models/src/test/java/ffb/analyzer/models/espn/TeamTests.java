@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import ffb.analyzer.models.espn.Team;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -20,19 +21,11 @@ public class TeamTests {
     private static final int EXPECTED_TEAM_COUNT = 10;
 
     private static ObjectMapper MAPPER;
-    private static TeamRecordBase BASE_RECORD;
 
     @BeforeClass
     public static void buildPrep() {
         MAPPER  = new ObjectMapper().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
         MAPPER.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
-
-        BASE_RECORD.setGamesBack(4);
-        BASE_RECORD.setLosses(6);
-        BASE_RECORD.setTies(1);
-        BASE_RECORD.setWins(3);
-        BASE_RECORD.setStreakLength(2);
-        BASE_RECORD.setStreakType(TeamRecordBase.StreakType.LOSS);
     }
 
     @Test
@@ -44,15 +37,15 @@ public class TeamTests {
         owners.add("{34710321-F3A4-4E6E-B103-21F3A4BE6E7A}");
         owners.add("{52DA8CA9-8127-44FD-9A8C-A9812764FDE9}");
 
-        TeamRecordOverall overallRecord = (TeamRecordOverall) BASE_RECORD;
-        overallRecord.setPointsAgainst(657.2f);
-        overallRecord.setPointsFor(712);
+//        TeamRecordOverall overallRecord = (TeamRecordOverall) BASE_RECORD;
+//        overallRecord.setPointsAgainst(657.2f);
+//        overallRecord.setPointsFor(712);
 
         TeamRecord record = new TeamRecord();
-        record.setAwayRecord((TeamRecordAway) BASE_RECORD);
-        record.setDivisionRecord((TeamRecordDivision) BASE_RECORD);
-        record.setHomeRecord((TeamRecordHome) BASE_RECORD);
-        record.setOverallRecord(overallRecord);
+//        record.setAwayRecord((TeamRecordAway) BASE_RECORD);
+//        record.setDivisionRecord((TeamRecordDivision) BASE_RECORD);
+//        record.setHomeRecord((TeamRecordHome) BASE_RECORD);
+//        record.setOverallRecord(overallRecord);
 
         TransactionCounter transactionCounter = new TransactionCounter();
         transactionCounter.setAcquisitionBudgetSpent(13);
