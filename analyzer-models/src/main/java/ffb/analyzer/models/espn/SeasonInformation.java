@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import ffb.analyzer.models.espn.serialization.EpochMillisecondDeserializer;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -15,10 +16,10 @@ public class SeasonInformation extends EspnEntity<SeasonInformation> {
     private int displayOrder;
 
     @JsonDeserialize(using = EpochMillisecondDeserializer.class)
-    private Date endDate;
+    private LocalDate endDate;
 
     @JsonDeserialize(using = EpochMillisecondDeserializer.class)
-    private Date startDate;
+    private LocalDate startDate;
 
     @JsonProperty("abbrev")
     private String abbreviation;
@@ -43,19 +44,19 @@ public class SeasonInformation extends EspnEntity<SeasonInformation> {
         this.name = name;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 

@@ -5,9 +5,12 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
-import java.util.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
-public class EpochMillisecondDeserializer extends StdDeserializer<Date> {
+public class EpochMillisecondDeserializer extends StdDeserializer<LocalDate> {
 
     public EpochMillisecondDeserializer() {
         this(null);
@@ -18,8 +21,12 @@ public class EpochMillisecondDeserializer extends StdDeserializer<Date> {
     }
 
     @Override
-    public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+    public LocalDate deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         long timestamp = jsonParser.getLongValue();
-        return new Date(timestamp);
+        return toLocalDate(timestamp);
+    }
+
+    public static LocalDate toLocalDate(long timestamp) {
+        return LocalDate.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault());
     }
 }

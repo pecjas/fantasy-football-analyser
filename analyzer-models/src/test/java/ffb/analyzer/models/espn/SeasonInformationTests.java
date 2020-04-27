@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -17,8 +18,8 @@ public class SeasonInformationTests extends DeserializingResourceLoader {
 
     private static final String SEASON_INFORMATION_FILE = "season-information.json";
     private static final int EXPECTED_SEASON_COUNT = 17;
-    private static final Date END_DATE = new Date();
-    private static final Date START_DATE = new Date();
+    private static final LocalDate END_DATE = LocalDate.now();
+    private static final LocalDate START_DATE = LocalDate.now();
     private static final int ID = 2020;
 
     private static ObjectMapper mapper;

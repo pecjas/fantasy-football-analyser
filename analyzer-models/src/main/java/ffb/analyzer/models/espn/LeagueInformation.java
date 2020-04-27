@@ -3,8 +3,9 @@ package ffb.analyzer.models.espn;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import ffb.analyzer.models.espn.serialization.EpochMillisecondDeserializer;
+import ffb.analyzer.models.espn.serialization.IsoDateWithOffsetDeserializer;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -17,21 +18,27 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
         LeagueType(int type) {}
     }
 
-    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
-    private Date activatedDate;
     private boolean isFull;
     private boolean isActive;
     private boolean isExpired;
     private boolean isWillBeDeleted;
     private boolean isViewable;
     private List<Integer> previousSeasons;
-    private Date waiverLastExecutionDate;
-    private Date standingsUpdateDate;
     private int teamsJoined;
     private int transactionScoringPeriod;
 
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    private LocalDate activatedDate;
+
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    private LocalDate waiverLastExecutionDate;
+
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    private LocalDate standingsUpdateDate;
+
     @JsonProperty("waiverProcessStatus")
-    private Map<Date, Integer> transactions;
+    @JsonDeserialize(using = IsoDateWithOffsetDeserializer.class)
+    private Map<LocalDate, Integer> transactions;
 
     @JsonProperty("latestScoringPeriod")
     private int lastScoringPeriod;
@@ -52,11 +59,11 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
     private LeagueType currentType;
 
 
-    public Date getActivatedDate() {
+    public LocalDate getActivatedDate() {
         return activatedDate;
     }
 
-    public void setActivatedDate(Date activatedDate) {
+    public void setActivatedDate(LocalDate activatedDate) {
         this.activatedDate = activatedDate;
     }
 
@@ -109,19 +116,19 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
         this.previousSeasons = previousSeasons;
     }
 
-    public Date getWaiverLastExecutionDate() {
+    public LocalDate getWaiverLastExecutionDate() {
         return waiverLastExecutionDate;
     }
 
-    public void setWaiverLastExecutionDate(Date waiverLastExecutionDate) {
+    public void setWaiverLastExecutionDate(LocalDate waiverLastExecutionDate) {
         this.waiverLastExecutionDate = waiverLastExecutionDate;
     }
 
-    public Map<Date, Integer> getTransactions() {
+    public Map<LocalDate, Integer> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Map<Date, Integer> transactions) {
+    public void setTransactions(Map<LocalDate, Integer> transactions) {
         this.transactions = transactions;
     }
 
@@ -173,11 +180,11 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
         this.currentType = currentType;
     }
 
-    public Date getStandingsUpdateDate() {
+    public LocalDate getStandingsUpdateDate() {
         return standingsUpdateDate;
     }
 
-    public void setStandingsUpdateDate(Date standingsUpdateDate) {
+    public void setStandingsUpdateDate(LocalDate standingsUpdateDate) {
         this.standingsUpdateDate = standingsUpdateDate;
     }
 
