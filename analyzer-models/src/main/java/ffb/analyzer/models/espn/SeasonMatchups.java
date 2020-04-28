@@ -1,9 +1,11 @@
 package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
+/**
+ * Entity representing all of the matchups in a season.
+ */
 public class SeasonMatchups extends EspnEntity<SeasonMatchups> {
 
     private DraftDetail draftDetails;

@@ -1,10 +1,12 @@
 package ffb.analyzer.models.espn;
 
-import org.junit.Assert;
-
 import java.io.IOException;
 import java.util.List;
+import org.junit.Assert;
 
+/**
+ * Unit tests for {@link Player}.
+ */
 public class PlayerTests extends DeserializingResourceLoader {
 
     private static final List<Integer> EXPECTED_ELIGIBLE_SLOTS = List.of(

@@ -1,17 +1,19 @@
 package ffb.analyzer.core.web.webclient.servlet;
 
+import java.util.Collections;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import java.util.Collections;
 
 @SpringBootApplication
 public class TestServletInitializer extends SpringBootServletInitializer {
 
     private static ConfigurableApplicationContext context;
 
+    /**
+     * Closes the application context once the servlet should be destroyed.
+     */
     public static void closeContext() {
         context.close();
     }

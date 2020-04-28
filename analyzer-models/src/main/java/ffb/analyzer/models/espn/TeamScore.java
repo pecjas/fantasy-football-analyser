@@ -1,9 +1,11 @@
 package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Map;
 
+/**
+ * Entity representing a team's score.
+ */
 public class TeamScore extends EspnEntity<TeamScore> {
     private CumulativeScore cumulativeScore;
     private int gamesPlayed;

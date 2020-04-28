@@ -1,9 +1,11 @@
 package ffb.analyzer.models.espn;
 
+import java.io.IOException;
 import org.junit.Assert;
 
-import java.io.IOException;
-
+/**
+ * Unit tests for a {@link Roster}.
+ */
 public class RosterTests extends DeserializingResourceLoader {
     private static final double EXPECTED_APPLIED_STAT_TOTAL = 28.1;
 

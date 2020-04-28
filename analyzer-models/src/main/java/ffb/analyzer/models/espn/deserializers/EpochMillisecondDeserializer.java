@@ -2,7 +2,6 @@ package ffb.analyzer.models.espn.deserializers;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
-
 import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -18,6 +17,11 @@ public class EpochMillisecondDeserializer extends BaseObjectDeserializer<LocalDa
         return toLocalDate(timestamp);
     }
 
+    /**
+     * Converts a Epoch Millisecond timestamp to a {@link LocalDate}.
+     * @param timestamp Timestamp to convert.
+     * @return {@link LocalDate}.
+     */
     public static LocalDate toLocalDate(long timestamp) {
         return LocalDate.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault());
     }

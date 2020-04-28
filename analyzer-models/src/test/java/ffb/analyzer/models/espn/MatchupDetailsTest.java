@@ -1,10 +1,12 @@
 package ffb.analyzer.models.espn;
 
-import org.junit.Assert;
-
 import java.io.IOException;
 import java.util.List;
+import org.junit.Assert;
 
+/**
+ * Unit tests for {@link MatchupDetails}.
+ */
 public class MatchupDetailsTest extends DeserializingResourceLoader {
 
     @Override

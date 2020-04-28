@@ -1,15 +1,16 @@
 package ffb.analyzer.models.espn;
 
-import ffb.analyzer.models.espn.PlayerRanking.RankType;
-import ffb.analyzer.models.espn.deserializers.PlayerRankingsDeserializer;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.junit.Assert;
-
+import ffb.analyzer.models.espn.PlayerRanking.RankType;
+import ffb.analyzer.models.espn.deserializers.PlayerRankingsDeserializer;
 import java.io.IOException;
 import java.util.List;
+import org.junit.Assert;
 
+/**
+ * Unit tests for a {@link PlayerRanking}.
+ */
 public class PlayerRankingTests extends DeserializingResourceLoader {
 
     @Override

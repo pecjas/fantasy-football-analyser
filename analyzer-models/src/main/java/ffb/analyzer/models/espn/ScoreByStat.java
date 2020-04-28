@@ -1,15 +1,17 @@
 package ffb.analyzer.models.espn;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import ffb.analyzer.models.espn.deserializers.ScoreByStatDeserializer;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
+/**
+ * Entity representing the score by stat id.
+ */
 @JsonDeserialize(using = ScoreByStatDeserializer.class)
 public class ScoreByStat extends EspnEntity<ScoreByStat> {
     private int id;
     private boolean ineligible;
-    private float rank;
-    private float score;
+    private double rank;
+    private double score;
 
     public int getId() {
         return id;
@@ -27,19 +29,19 @@ public class ScoreByStat extends EspnEntity<ScoreByStat> {
         this.ineligible = ineligible;
     }
 
-    public float getRank() {
+    public double getRank() {
         return rank;
     }
 
-    public void setRank(float rank) {
+    public void setRank(double rank) {
         this.rank = rank;
     }
 
-    public float getScore() {
+    public double getScore() {
         return score;
     }
 
-    public void setScore(float score) {
+    public void setScore(double score) {
         this.score = score;
     }
 }

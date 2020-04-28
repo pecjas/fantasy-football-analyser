@@ -1,19 +1,26 @@
 package ffb.analyzer.models.espn;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import ffb.analyzer.models.espn.Player.InjuryStatus;
 import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import java.time.LocalDate;
 
+/**
+ * Entity representing a single roster entity.
+ */
 public class RosterEntry extends EspnEntity<RosterEntry> {
 
+    /**
+     * Enum for how a player was obtained.
+     */
     public enum AcquisitionType {
         DRAFT,
         TRADE
     }
 
+    /**
+     * Enum for the status of a roster.
+     */
     public enum RosterStatus {
         NORMAL
     }

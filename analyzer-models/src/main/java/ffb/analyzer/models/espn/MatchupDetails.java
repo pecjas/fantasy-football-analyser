@@ -1,9 +1,11 @@
 package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
+/**
+ * Entity representing matchup details.
+ */
 public class MatchupDetails extends EspnEntity<MatchupDetails> {
 
     public enum Winner {

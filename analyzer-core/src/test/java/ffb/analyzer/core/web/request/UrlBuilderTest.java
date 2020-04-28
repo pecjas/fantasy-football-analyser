@@ -1,7 +1,6 @@
 package ffb.analyzer.core.web.request;
 
 import ffb.analyzer.core.web.HttpProtocol;
-
 import org.junit.Assert;
 import org.junit.Test;
 

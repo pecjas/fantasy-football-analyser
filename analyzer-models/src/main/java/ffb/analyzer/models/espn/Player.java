@@ -1,17 +1,21 @@
 package ffb.analyzer.models.espn;
 
-import ffb.analyzer.models.espn.deserializers.PlayerRankingsDeserializer;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
+import ffb.analyzer.models.espn.deserializers.PlayerRankingsDeserializer;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Entity representing a player.
+ */
 public class Player extends EspnEntity<Player> {
 
+    /**
+     * Enum for a player's position.
+     */
     public enum Position {
         QB(1),
         RB(2),
@@ -30,6 +34,11 @@ public class Player extends EspnEntity<Player> {
 
         private final int id;
 
+        /**
+         * Converts an integer to a {@link Position}.
+         * @param positionId ID of the position.
+         * @return {@link Position}.
+         */
         public static Position valueOf(int positionId) {
             return POSITION_BY_ID.get(positionId);
         }
@@ -43,6 +52,9 @@ public class Player extends EspnEntity<Player> {
         }
     }
 
+    /**
+     * Enum for a player's injury status.
+     */
     public enum InjuryStatus {
         NORMAL,
         ACTIVE,

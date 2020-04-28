@@ -1,12 +1,14 @@
 package ffb.analyzer.models.espn;
 
-import org.junit.Assert;
-
 import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import org.junit.Assert;
 
+/**
+ * Unit tests for {@link RosterEntry}.
+ */
 public class RosterEntryTests extends DeserializingResourceLoader {
     private static final Long EPOCH_MILLISECONDS = 1566059532616L;
     private static final LocalDate EXPECTED_ACQUISITION_DATE =

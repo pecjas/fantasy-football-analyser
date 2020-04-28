@@ -1,11 +1,10 @@
 package ffb.analyzer.models.espn;
 
+import java.io.IOException;
 import org.junit.Assert;
 
-import java.io.IOException;
-
 /**
- *
+ * Unit tests for a {@link PlayerPoolEntry}.
  */
 public class PlayerPoolEntryTests extends DeserializingResourceLoader {
 

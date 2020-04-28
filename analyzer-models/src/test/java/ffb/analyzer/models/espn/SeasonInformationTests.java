@@ -1,13 +1,15 @@
 package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import org.junit.Assert;
+import org.junit.Test;
 
+/**
+ * Unit tests for {@link SeasonInformation}.
+ */
 public class SeasonInformationTests extends DeserializingResourceLoader {
 
     private static final String SEASON_INFORMATION_FILE = "season-information.json";

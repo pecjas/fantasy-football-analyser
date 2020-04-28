@@ -1,15 +1,16 @@
 package ffb.analyzer.models.espn;
 
-import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
-import ffb.analyzer.models.espn.deserializers.IsoDateWithOffsetDeserializer;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
+import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
+import ffb.analyzer.models.espn.deserializers.IsoDateWithOffsetDeserializer;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Entity representing information about a Fantasy Football league.
+ */
 public class LeagueInformation extends EspnEntity<LeagueInformation> {
 
     public enum LeagueType {
@@ -92,6 +93,10 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
         isExpired = expired;
     }
 
+    /**
+     * Returns if the League is marked to be deleted.
+     * @return True if the league will be deleted. False otherwise.
+     */
     public boolean willBeDeleted() {
         return isWillBeDeleted;
     }

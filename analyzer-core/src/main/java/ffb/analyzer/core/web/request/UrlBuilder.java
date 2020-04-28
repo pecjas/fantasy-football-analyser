@@ -1,7 +1,6 @@
 package ffb.analyzer.core.web.request;
 
 import ffb.analyzer.core.web.HttpProtocol;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,37 +17,71 @@ public final class UrlBuilder {
     private final List<String> requestParameters;
     private final List<HttpQueryParameter> queryParameters;
 
+    /**
+     * Default constructor.
+     */
     private UrlBuilder() {
         this.port = Optional.empty();
         this.requestParameters = new ArrayList<>();
         this.queryParameters = new ArrayList<>();
     }
 
+    /**
+     * Adds a host to the URL.
+     * @param targetHost Host in the URL.
+     * @return Reference to this instance of {@link UrlBuilder}.
+     */
     public UrlBuilder atHost(String targetHost) {
         this.host = targetHost.toLowerCase();
         return this;
     }
 
+    /**
+     * Adds a port to the URL.
+     * @param targetPort Port to send the request to.
+     * @return Reference to this instance of {@link UrlBuilder}.
+     */
     public UrlBuilder atPort(int targetPort) {
         this.port = Optional.of(String.valueOf(targetPort));
         return this;
     }
 
+    /**
+     * Specifies the HTTP Protocol to use.
+     * @param httpProtocol Protocol to use.
+     * @return Reference to this instance of {@link UrlBuilder}.
+     */
     public UrlBuilder using(HttpProtocol httpProtocol) {
         this.protocol = httpProtocol;
         return this;
     }
 
+    /**
+     * Specifies (as a string) the HTTP Protocol to use.
+     * @param httpProtocol Protocol to use.
+     * @return Reference to this instance of {@link UrlBuilder}.
+     */
     public UrlBuilder using(String httpProtocol) {
         this.protocol = ffb.analyzer.core.web.HttpProtocol.valueOf(httpProtocol);
         return this;
     }
 
+    /**
+     * Adds a path parameter to the URL.
+     * @param parameter Parameter to add.
+     * @return Reference to this instance of {@link UrlBuilder}.
+     */
     public UrlBuilder addRequestParameter(String parameter) {
         requestParameters.add(parameter.toLowerCase());
         return this;
     }
 
+    /**
+     * Adds a query parameter to the URL.
+     * @param name Query parameter name.
+     * @param value Query parameter value.
+     * @return Reference to this instance of {@link UrlBuilder}.
+     */
     public UrlBuilder addQueryParameter(String name, String value) {
         queryParameters.add(new HttpQueryParameter(name, value));
         return this;
@@ -103,6 +136,10 @@ public final class UrlBuilder {
         sb.append(joiner.toString());
     }
 
+    /**
+     * Instantiates a instance of {@link UrlBuilder}.
+     * @return A new {@link UrlBuilder}.
+     */
     public static UrlBuilder newInstance() {
         return new UrlBuilder();
     }

@@ -1,11 +1,13 @@
 package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Entity representing an entry in a player pool.
+ */
 public class PlayerPoolEntry extends EspnEntity<PlayerPoolEntry> {
 
     public enum PlayerStatus {
@@ -16,6 +18,11 @@ public class PlayerPoolEntry extends EspnEntity<PlayerPoolEntry> {
             new SimpleImmutableEntry<>("ON_TEAM", ON_TEAM)
         );
 
+        /**
+         * Converts synonyms of a {@link PlayerStatus} to that {@link PlayerStatus}.
+         * @param value String representation of the {@link PlayerStatus}.
+         * @return {@link PlayerStatus}.
+         */
         public static PlayerStatus fromString(String value) {
             return PLAYER_STATUS_BY_NAME.get(value);
         }

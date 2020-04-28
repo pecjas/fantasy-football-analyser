@@ -1,12 +1,13 @@
 package ffb.analyzer.models.espn;
 
-import org.junit.Test;
-
 import java.io.IOException;
 
+/**
+ * Unit tests for {@link SeasonMatchups}.
+ */
 public class SeasonMatchupTests extends DeserializingResourceLoader {
 
-    @Test
+    @Override
     public void testDeserialization() throws IOException {
         SeasonMatchups seasonMatchups = deserializeSingleObject(SeasonMatchups.class);
     }

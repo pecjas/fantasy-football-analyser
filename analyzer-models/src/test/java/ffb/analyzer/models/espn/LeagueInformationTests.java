@@ -1,14 +1,16 @@
 package ffb.analyzer.models.espn;
 
-import org.junit.Assert;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.junit.Assert;
 
+/**
+ * Unit Tests for {@link LeagueInformation}.
+ */
 public class LeagueInformationTests extends DeserializingResourceLoader {
 
     private static final LocalDate EXPECTED_DATE = LocalDate.of(2020, 1, 1);

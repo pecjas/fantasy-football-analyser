@@ -1,13 +1,14 @@
 package ffb.analyzer.models.espn.deserializers;
 
-import ffb.analyzer.models.espn.ScoreByStat;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-
+import ffb.analyzer.models.espn.ScoreByStat;
 import java.io.IOException;
 
+/**
+ * Deserialize JSON into a {@link ScoreByStat} object.
+ */
 public class ScoreByStatDeserializer extends BaseObjectDeserializer<ScoreByStat> {
 
     @Override

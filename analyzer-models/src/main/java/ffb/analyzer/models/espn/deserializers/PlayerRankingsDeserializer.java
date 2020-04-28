@@ -1,17 +1,18 @@
 package ffb.analyzer.models.espn.deserializers;
 
-import ffb.analyzer.models.espn.PlayerRanking;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-
+import ffb.analyzer.models.espn.PlayerRanking;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Deserializes JSON into a list of {@link PlayerRanking}.
+ */
 public class PlayerRankingsDeserializer extends BaseObjectDeserializer<List<PlayerRanking>> {
 
     private static final String AUCTION_FIELD = "auctionValue";
