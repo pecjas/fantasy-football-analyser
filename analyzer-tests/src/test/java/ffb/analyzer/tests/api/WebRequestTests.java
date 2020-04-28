@@ -21,7 +21,6 @@ public class WebRequestTests {
 
     /**
      * Tests retrieving Season Information from the ESPN base API URL.
-     * 
      * @throws IOException Thrown if request fails.
      */
     @Test

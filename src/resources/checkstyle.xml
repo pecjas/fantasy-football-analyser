@@ -101,7 +101,7 @@
             <property name="scope" value="public"/>
         </module>
         <module name="JavadocType">
-            <property name="scope" value="public"/>
+            <property name="excludeScope" value="private"/>
         </module>
         <module name="JavadocStyle"/>
         <module name="MissingJavadocMethod">
@@ -145,7 +145,7 @@
             <property name="sortImportsInGroupAlphabetically" value="true"/>
             <property name="separateLineBetweenGroups" value="true"/>
             <property name="customImportOrderRules"
-                      value="SAME_PACKAGE(3)###SPECIAL_IMPORTS###THIRD_PARTY_PACKAGE###STANDARD_JAVA_PACKAGE##STATIC"/>
+                      value="SAME_PACKAGE(3)###SPECIAL_IMPORTS###THIRD_PARTY_PACKAGE###STANDARD_JAVA_PACKAGE###STATIC"/>
             <property name="tokens" value="IMPORT, STATIC_IMPORT, PACKAGE_DEF"/>
             <property name="thirdPartyPackageRegExp" value="^(com|org)\."/>
             <property name="standardPackageRegExp" value="^(java|javax)\."/>
@@ -202,12 +202,6 @@
         <!-- See https://checkstyle.org/config_coding.html -->
         <module name="EmptyStatement"/>
         <module name="EqualsHashCode"/>
-        <module name="HiddenField">
-            <property name="ignoreConstructorParameter" value="true"/>
-            <property name="ignoreSetter" value="true"/>
-            <property name="setterCanReturnItsClass" value="true"/>
-            <property name="ignoreAbstractMethods" value="true"/>
-        </module>
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
         <module name="MissingSwitchDefault"/>
@@ -221,7 +215,11 @@
         <module name="FinalClass"/>
         <module name="HideUtilityClassConstructor"/>
         <module name="InterfaceIsType"/>
-        <module name="VisibilityModifier"/>
+        <module name="VisibilityModifier">
+            <property name="allowPublicImmutableFields" value="true"/>
+            <property name="allowPublicFinalFields" value="true"/>
+            <property name="protectedAllowed" value="true"/>
+        </module>
 
         <!-- Miscellaneous other checks.                   -->
         <!-- See https://checkstyle.org/config_misc.html -->

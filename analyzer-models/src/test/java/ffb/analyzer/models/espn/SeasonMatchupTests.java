@@ -1,9 +1,7 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 
 public class SeasonMatchupTests extends DeserializingResourceLoader {

@@ -1,9 +1,10 @@
 package ffb.analyzer.models.espn.deserializers;
 
+import ffb.analyzer.models.espn.PlayerRanking;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-import ffb.analyzer.models.espn.PlayerRanking;
 
 import java.io.IOException;
 import java.util.ArrayList;

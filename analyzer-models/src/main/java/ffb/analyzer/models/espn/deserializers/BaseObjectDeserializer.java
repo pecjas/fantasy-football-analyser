@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 abstract class BaseObjectDeserializer<T> extends StdDeserializer<T> {
 
-    public BaseObjectDeserializer() {
+    BaseObjectDeserializer() {
         this(null);
     }
 

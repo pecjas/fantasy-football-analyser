@@ -1,9 +1,10 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
 import ffb.analyzer.models.espn.deserializers.IsoDateWithOffsetDeserializer;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +16,8 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
         PRIVATE(0),
         PUBLIC(1);
 
-        LeagueType(int type) {}
+        LeagueType(int type) {
+        }
     }
 
     private boolean isFull;
@@ -57,7 +59,6 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
 
     @JsonProperty("currentLeagueType")
     private LeagueType currentType;
-
 
     public LocalDate getActivatedDate() {
         return activatedDate;

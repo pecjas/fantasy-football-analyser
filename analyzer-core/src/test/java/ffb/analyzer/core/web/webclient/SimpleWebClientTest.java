@@ -39,7 +39,7 @@ public class SimpleWebClientTest {
     }
 
     /**
-     * Tests a GET request.
+     * Tests a GET request with an array as the response.
      *
      * @throws IOException Thrown if request fails.
      */
@@ -54,6 +54,10 @@ public class SimpleWebClientTest {
         Assert.assertNotNull(response.get(0).getLastName());
     }
 
+    /**
+     * Tests a GET response with a single object as a response.
+     * @throws IOException
+     */
     @Test
     public void testGetRequestWithSingleObjectAsResponse() throws IOException {
         HttpGet request = new HttpGet(GET_SINGLE_URL);

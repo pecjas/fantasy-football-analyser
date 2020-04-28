@@ -78,5 +78,4 @@ public class SeasonMatchups extends EspnEntity<SeasonMatchups> {
         this.matchupDetails = matchupDetails;
     }
 
-
 }

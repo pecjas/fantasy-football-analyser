@@ -14,7 +14,7 @@ public final class TestController {
 
     /**
      * Simple GET resource to test {@link ffb.analyzer.core.web.webclient.SimpleWebClient}.
-     * @return {@link TestPerson}.
+     * @return A list containing a single {@link TestPerson}.
      */
     @GetMapping("/test-get")
     @Consumes("application/json")
@@ -25,6 +25,10 @@ public final class TestController {
         return List.of(response);
     }
 
+    /**
+     * Simple GET resource to test {@link ffb.analyzer.core.web.webclient.SimpleWebClient}.
+     * @return {@link TestPerson}
+     */
     @GetMapping("/test-single-get")
     @Consumes("application/json")
     public TestPerson getSingleResponse() {

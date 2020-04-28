@@ -1,17 +1,11 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class SeasonInformationTests extends DeserializingResourceLoader {

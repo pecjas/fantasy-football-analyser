@@ -1,8 +1,9 @@
 package ffb.analyzer.models.espn;
 
+import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
 
 import java.time.LocalDate;
 

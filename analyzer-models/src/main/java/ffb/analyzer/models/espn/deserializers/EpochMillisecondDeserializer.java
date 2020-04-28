@@ -11,7 +11,9 @@ import java.time.ZoneId;
 public class EpochMillisecondDeserializer extends BaseObjectDeserializer<LocalDate> {
 
     @Override
-    public LocalDate deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+    public LocalDate deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+        throws IOException
+    {
         long timestamp = jsonParser.getLongValue();
         return toLocalDate(timestamp);
     }

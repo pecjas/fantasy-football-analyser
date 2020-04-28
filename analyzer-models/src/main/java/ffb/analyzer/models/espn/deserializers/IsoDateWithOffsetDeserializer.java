@@ -12,12 +12,15 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-//TODO: Rename this since this doesn't deserialize epoch milliseconds
-//This deserializes a date like: 2019-08-19T07:41:09.149+0000
-public class IsoDateWithOffsetDeserializer extends BaseObjectDeserializer<Map<LocalDate, Integer>>
-{
+/**
+ * Deserializes an ISO 8601 date formatted as 2019-08-19T07:41:09.149+0000.
+ */
+public class IsoDateWithOffsetDeserializer extends BaseObjectDeserializer<Map<LocalDate, Integer>> {
     private final DateTimeFormatter formatter;
 
+    /**
+     * Default Constructor.
+     */
     public IsoDateWithOffsetDeserializer() {
         this.formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
     }

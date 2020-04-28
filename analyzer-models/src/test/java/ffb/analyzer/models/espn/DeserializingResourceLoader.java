@@ -13,7 +13,7 @@ abstract class DeserializingResourceLoader {
 
     protected ObjectMapper mapper;
 
-    public DeserializingResourceLoader() {
+    DeserializingResourceLoader() {
         mapper = configureObjectMapper();
     }
 

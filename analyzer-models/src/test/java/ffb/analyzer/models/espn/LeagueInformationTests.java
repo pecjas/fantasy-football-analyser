@@ -1,19 +1,10 @@
 package ffb.analyzer.models.espn;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

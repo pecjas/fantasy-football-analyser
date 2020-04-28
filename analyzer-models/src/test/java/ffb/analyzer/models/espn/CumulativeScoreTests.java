@@ -7,6 +7,7 @@ import java.util.List;
 
 public class CumulativeScoreTests extends DeserializingResourceLoader {
 
+    @Override
     public void testDeserialization() throws IOException {
         List<CumulativeScore> cumulativeScores = deserializeObjects(CumulativeScore.class);
 

@@ -8,7 +8,7 @@ public class CumulativeScore extends EspnEntity<CumulativeScore> {
     private int wins;
 
     @JsonProperty("scoreByStat")
-    ScoresByStats scoresByStats;
+    private ScoresByStats scoresByStats;
 
     public int getLosses() {
         return losses;

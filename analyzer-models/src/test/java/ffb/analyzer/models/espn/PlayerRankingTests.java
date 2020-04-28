@@ -1,10 +1,11 @@
 package ffb.analyzer.models.espn;
 
+import ffb.analyzer.models.espn.PlayerRanking.RankType;
+import ffb.analyzer.models.espn.deserializers.PlayerRankingsDeserializer;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import ffb.analyzer.models.espn.deserializers.PlayerRankingsDeserializer;
 import org.junit.Assert;
-import ffb.analyzer.models.espn.PlayerRanking.RankType;
 
 import java.io.IOException;
 import java.util.List;
