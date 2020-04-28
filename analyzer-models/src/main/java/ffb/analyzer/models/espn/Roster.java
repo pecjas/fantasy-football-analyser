@@ -8,14 +8,14 @@ import java.util.List;
  */
 public class Roster extends EspnEntity<Roster> {
 
-    private float appliedStatTotal;
+    private double appliedStatTotal;
     private List<RosterEntry> players;
 
-    public float getAppliedStatTotal() {
+    public double getAppliedStatTotal() {
         return appliedStatTotal;
     }
 
-    public void setAppliedStatTotal(float appliedStatTotal) {
+    public void setAppliedStatTotal(double appliedStatTotal) {
         this.appliedStatTotal = appliedStatTotal;
     }
 
