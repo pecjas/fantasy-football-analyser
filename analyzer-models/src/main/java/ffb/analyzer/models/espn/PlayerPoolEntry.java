@@ -1,5 +1,7 @@
 package ffb.analyzer.models.espn;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +50,7 @@ public class PlayerPoolEntry extends EspnEntity<PlayerPoolEntry> {
         return teamId;
     }
 
+    @JsonProperty("onTeamId")
     public void setTeamId(int teamId) {
         this.teamId = teamId;
     }
@@ -60,7 +63,7 @@ public class PlayerPoolEntry extends EspnEntity<PlayerPoolEntry> {
         this.players = players;
     }
 
-    private boolean isLineupLocked() {
+    public boolean isLineupLocked() {
         return lineupLocked;
     }
 
