@@ -8,15 +8,13 @@ import java.io.IOException;
 
 public class SeasonMatchupTests extends DeserializingResourceLoader {
 
-    private static final String SEASON_MATCHUP_FILE = "season-matchups.json";
-
     @Test
     public void testDeserialization() throws IOException {
-        File file = getResourceFile(SEASON_MATCHUP_FILE);
+        SeasonMatchups seasonMatchups = deserializeSingleObject(SeasonMatchups.class);
+    }
 
-        SeasonMatchups seasonMatchups = mapper.readValue(
-            file,
-            new TypeReference<>() {}
-        );
+    @Override
+    protected String getResourceFileName() {
+        return "season-matchups.json";
     }
 }

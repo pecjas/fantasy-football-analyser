@@ -1,0 +1,88 @@
+{
+  "appliedStatTotal": 28.1,
+  "entries": [
+    {
+      "acquisitionDate": 1566059532616,
+      "acquisitionType": "DRAFT",
+      "injuryStatus": "NORMAL",
+      "lineupSlotId": 20,
+      "pendingTransactionIds": null,
+      "playerId": 15825,
+      "playerPoolEntry": {
+        "appliedStatTotal": 7.700000000000001,
+        "id": 15825,
+        "keeperValue": 0,
+        "keeperValueFuture": 1,
+        "lineupLocked": true,
+        "onTeamId": 1,
+        "player": {
+          "active": true,
+          "defaultPositionId": 2,
+          "droppable": true,
+          "eligibleSlots": [
+            2,
+            3,
+            23,
+            7,
+            20,
+            21
+          ],
+          "firstName": "Le'Veon",
+          "fullName": "Le'Veon Bell",
+          "id": 15825,
+          "injured": false,
+          "injuryStatus": "ACTIVE",
+          "lastName": "Bell",
+          "lastNewsDate": 1582653672000,
+          "lastVideoDate": 1576863656000,
+          "proTeamId": 20,
+          "rankings": {
+            "0": [
+              {
+                "auctionValue": 0,
+                "rank": 5,
+                "rankSourceId": 7,
+                "rankType": "STANDARD",
+                "slotId": 2
+              },
+              {
+                "auctionValue": 0,
+                "rank": 5,
+                "rankSourceId": 7,
+                "rankType": "PPR",
+                "slotId": 2
+              }
+            ],
+            "1": [
+              {
+                "auctionValue": 0,
+                "rank": 0,
+                "rankSourceId": 0,
+                "rankType": "STANDARD",
+                "slotId": 2
+              },
+              {
+                "auctionValue": 0,
+                "rank": 0,
+                "rankSourceId": 0,
+                "rankType": "PPR",
+                "slotId": 2
+              },
+              {
+                "auctionValue": 0,
+                "rank": 15,
+                "rankSourceId": 2,
+                "rankType": "PPR",
+                "slotId": 2
+              }
+            ]
+          }
+        },
+        "rosterLocked": true,
+        "status": "ONTEAM",
+        "tradeLocked": false
+      },
+      "status": "NORMAL"
+    }
+  ]
+}

@@ -2,10 +2,9 @@ package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import ffb.analyzer.models.espn.serialization.EpochMillisecondDeserializer;
+import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Class representing the information about a season.

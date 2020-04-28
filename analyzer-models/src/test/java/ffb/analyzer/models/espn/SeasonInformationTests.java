@@ -22,17 +22,10 @@ public class SeasonInformationTests extends DeserializingResourceLoader {
     private static final LocalDate START_DATE = LocalDate.now();
     private static final int ID = 2020;
 
-    private static ObjectMapper mapper;
-
-    @BeforeClass
-    public static void prepareForTests() {
-        mapper = new ObjectMapper().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
-    }
-
     /**
      * Verifies that a {@link SeasonInformation} can be serialized to JSON.
      *
-     * @throws JsonProcessingException Thrown if serialization fails.
+     * @throws JsonProcessingException Thrown if deserializers fails.
      */
     @Test
     public void testSeasonInformationSerialization() throws JsonProcessingException {
@@ -56,16 +49,18 @@ public class SeasonInformationTests extends DeserializingResourceLoader {
     /**
      * Verifies that JSON can be deserialied into {@link SeasonInformation}.
      *
-     * @throws IOException Thrown if serialization fails, or resource does not exist.
+     * @throws IOException Thrown if deserializers fails, or resource does not exist.
      */
     @Test
     public void testDeserialization() throws IOException {
-        File file = getResourceFile(SEASON_INFORMATION_FILE);
-
-        List<SeasonInformation> seasons = mapper.readValue(file,
-            mapper.getTypeFactory().constructCollectionType(List.class, SeasonInformation.class));
+        List<SeasonInformation> seasons = deserializeObjects(SeasonInformation.class);
 
         Assert.assertFalse(seasons.isEmpty());
         Assert.assertEquals(EXPECTED_SEASON_COUNT, seasons.size());
+    }
+
+    @Override
+    protected String getResourceFileName() {
+        return "season-information.json";
     }
 }

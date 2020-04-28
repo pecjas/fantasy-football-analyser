@@ -1,9 +1,8 @@
-package ffb.analyzer.models.espn.serialization;
+package ffb.analyzer.models.espn.deserializers;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -15,15 +14,11 @@ import java.util.Map.Entry;
 
 //TODO: Rename this since this doesn't deserialize epoch milliseconds
 //This deserializes a date like: 2019-08-19T07:41:09.149+0000
-public class IsoDateWithOffsetDeserializer extends StdDeserializer<Map<LocalDate, Integer>> {
-    private DateTimeFormatter formatter;
+public class IsoDateWithOffsetDeserializer extends BaseObjectDeserializer<Map<LocalDate, Integer>>
+{
+    private final DateTimeFormatter formatter;
 
     public IsoDateWithOffsetDeserializer() {
-        this(null);
-    }
-
-    public IsoDateWithOffsetDeserializer(Class<?> vc) {
-        super(vc);
         this.formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
     }
 

@@ -1,7 +1,7 @@
 package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import ffb.analyzer.models.espn.serialization.ScoreByStatDeserializer;
+import ffb.analyzer.models.espn.deserializers.ScoreByStatDeserializer;
 
 @JsonDeserialize(using = ScoreByStatDeserializer.class)
 public class ScoreByStat extends EspnEntity<ScoreByStat> {

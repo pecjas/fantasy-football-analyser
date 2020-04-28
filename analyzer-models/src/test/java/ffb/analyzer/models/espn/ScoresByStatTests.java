@@ -11,18 +11,16 @@ import java.util.List;
 
 public class ScoresByStatTests extends DeserializingResourceLoader {
 
-    private static final String SCORE_BY_STATS_FILE = "scores-by-stat.json";
-
-    @Test
+    @Override
     public void testDeserialization() throws IOException {
-        File file = getResourceFile(SCORE_BY_STATS_FILE);
-
-        ObjectMapper mapper = new ObjectMapper().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
-
-        List<ScoresByStats> scores = mapper.readValue(file,
-            mapper.getTypeFactory().constructCollectionType(List.class, ScoresByStats.class));
+        List<ScoresByStats> scores = deserializeObjects(ScoresByStats.class);
 
         Assert.assertEquals(1, scores.size());
         Assert.assertEquals(7, scores.get(0).getScores().size());
+    }
+
+    @Override
+    protected String getResourceFileName() {
+        return "scores-by-stat.json";
     }
 }

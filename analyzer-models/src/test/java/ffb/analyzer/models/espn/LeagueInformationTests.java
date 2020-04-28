@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 public class LeagueInformationTests extends DeserializingResourceLoader {
 
-    private static final String LEAGUE_INFORMATION_FILE = "league-information.json";
     private static final LocalDate EXPECTED_DATE = LocalDate.of(2020, 1, 1);
     private static final List<Integer> PREVIOUS_SEASONS = List.of(
         2014,
@@ -52,8 +51,7 @@ public class LeagueInformationTests extends DeserializingResourceLoader {
 
     @Override
     public void testDeserialization() throws IOException {
-        File file = getResourceFile(LEAGUE_INFORMATION_FILE);
-        LeagueInformation leagueInfo = mapper.readValue(file, LeagueInformation.class);
+        LeagueInformation leagueInfo = deserializeSingleObject(LeagueInformation.class);
 
         checkBasicLeagueInformation(leagueInfo);
         checkScoringInformation(leagueInfo);
@@ -99,5 +97,10 @@ public class LeagueInformationTests extends DeserializingResourceLoader {
         Assert.assertEquals(PREVIOUS_SEASONS.size(), previousSeasons.size());
 
         previousSeasons.forEach(year -> Assert.assertTrue(PREVIOUS_SEASONS.contains(year)));
+    }
+
+    @Override
+    protected String getResourceFileName() {
+        return "league-information.json";
     }
 }

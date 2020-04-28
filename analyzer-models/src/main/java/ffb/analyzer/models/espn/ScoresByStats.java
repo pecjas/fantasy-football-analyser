@@ -1,7 +1,7 @@
 package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import ffb.analyzer.models.espn.serialization.ScoresByStatDeserializer;
+import ffb.analyzer.models.espn.deserializers.ScoresByStatDeserializer;
 
 import java.util.ArrayList;
 import java.util.List;
