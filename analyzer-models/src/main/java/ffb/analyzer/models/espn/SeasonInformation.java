@@ -25,8 +25,7 @@ public class SeasonInformation extends EspnEntity<SeasonInformation> {
     @JsonProperty("display")
     private boolean shouldDisplay;
 
-    @JsonProperty("active")
-    private boolean activeStatus;
+    private boolean active;
 
     @JsonProperty("currentScoringPeriod")
     private ScoringPeriod scoringPeriod;
@@ -82,7 +81,12 @@ public class SeasonInformation extends EspnEntity<SeasonInformation> {
         this.abbreviation = abbreviation;
     }
 
-    public boolean isShouldDisplay() {
+    /**
+     * Returns the display status for the season.
+     * @return True if the season should be displayed. False otherwise.
+     */
+    @JsonProperty("display")
+    public boolean shouldDisplay() {
         return shouldDisplay;
     }
 
@@ -90,12 +94,12 @@ public class SeasonInformation extends EspnEntity<SeasonInformation> {
         this.shouldDisplay = shouldDisplay;
     }
 
-    public boolean isActiveStatus() {
-        return activeStatus;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setActiveStatus(boolean activeStatus) {
-        this.activeStatus = activeStatus;
+    public void setActive(boolean activeStatus) {
+        this.active = activeStatus;
     }
 
     public ScoringPeriod getScoringPeriod() {

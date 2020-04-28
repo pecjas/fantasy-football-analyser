@@ -2,14 +2,12 @@ package ffb.analyzer.tests.api;
 
 import ffb.analyzer.core.web.webclient.SimpleWebClient;
 import ffb.analyzer.models.espn.SeasonInformation;
-
-import org.apache.http.client.methods.HttpGet;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import org.apache.http.client.methods.HttpGet;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Integrated tests to test operations against the ESPN APIs.
