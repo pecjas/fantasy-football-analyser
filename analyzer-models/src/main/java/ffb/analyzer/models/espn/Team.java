@@ -1,13 +1,12 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.lang.String;
 import java.net.URL;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Team {
+public class Team extends EspnEntity<Team> {
     private int id;
 
     @JsonProperty("abbrev")

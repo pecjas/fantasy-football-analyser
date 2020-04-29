@@ -1,12 +1,10 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class TransactionCounter {
+public class TransactionCounter extends EspnEntity<TransactionCounter> {
     private float acquisitionBudgetSpent;
 
     @JsonProperty("acquisitions")

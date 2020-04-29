@@ -1,6 +1,5 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -8,8 +7,7 @@ import java.util.List;
 /**
  * Class representing the overall information for a league's teams for a given season.
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class TeamView {
+public class TeamView extends EspnEntity<TeamView> {
     private DraftDetail draftDetail;
     //TODO: gameId - what's this?
 

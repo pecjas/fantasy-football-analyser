@@ -1,10 +1,8 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class TeamRecord {
+public class TeamRecord extends EspnEntity<TeamRecord> {
     @JsonProperty("away")
     private TeamRecordAway awayRecord;
 

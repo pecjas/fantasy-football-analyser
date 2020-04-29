@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Map;
 
-public class TeamScore {
+public class TeamScore extends EspnEntity<TeamScore> {
     private CumulativeScore cumulativeScore;
     private int gamesPlayed;
     private int teamId;
