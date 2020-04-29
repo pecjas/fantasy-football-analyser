@@ -7,9 +7,13 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ffb.analyzer.models.espn.TransactionCounter;
+import ffb.test.utilities.GenericTests;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,7 +47,7 @@ public class TransactionCounterTests {
     }
 
     @Test
-    public void testTransactionCounterDeserialization() throws IOException {
+    public void testTransactionCounterDeserialization() throws IOException, InvocationTargetException, IllegalAccessException {
 
         File file = new File(Objects.requireNonNull(getClass()
                 .getClassLoader()
@@ -56,5 +60,7 @@ public class TransactionCounterTests {
         Assert.assertEquals(EXPECTED_ACQUISITION_COUNT, transactionCounters.get(0).getWaiverAcquisitions());
         Assert.assertEquals(EXPECTED_DROP_COUNT, transactionCounters.get(0).getDroppedPlayerCount());
         Assert.assertFalse(transactionCounters.get(0).getAcquisitionsByScoringPeriod().isEmpty());
+
+        GenericTests.validateGetMethodsReturnNonNullValue(transactionCounters);
     }
 }

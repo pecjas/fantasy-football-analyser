@@ -15,9 +15,8 @@ import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Objects;
 
-public class TeamRecordTests {
-    private static final String TEAM_RECORDS = "team-records.json";
-    private static final int EXPECTED_TEAM_COUNT = 10;
+public class TeamRecordOverallTests {
+    private static final String TEAM_RECORDS = "team-record.json";
 
     private static ObjectMapper MAPPER;
 
@@ -29,12 +28,17 @@ public class TeamRecordTests {
 
     @Test
     public void testTeamSerialization() throws JsonProcessingException, MalformedURLException {
-        TeamRecord record = new TeamRecord();
+        TeamRecordOverall record = new TeamRecordOverall();
 
-        record.setOverallRecord(new TeamRecordOverall());
-        record.setHomeRecord(new TeamRecordHome());
-        record.setAwayRecord(new TeamRecordAway());
-        record.setDivisionRecord(new TeamRecordDivision());
+        record.setPointsFor(3);
+        record.setPointsAgainst(1000.3f);
+        record.setGamesBack(2);
+        record.setLosses(2);
+        record.setStreakLength(2);
+        record.setStreakType(TeamRecordBase.StreakType.LOSS);
+        record.setWinPercentage(6);
+        record.setTies(2);
+        record.setWinPercentage(0.2f);
 
         String json = MAPPER.writeValueAsString(record);
 
@@ -49,10 +53,8 @@ public class TeamRecordTests {
                 .getResource(TEAM_RECORDS)
         ).getFile());
 
-        List<TeamRecord> teamRecords = MAPPER.readValue(file,
-                MAPPER.getTypeFactory().constructCollectionType(List.class, TeamRecord.class));
-
-        Assert.assertEquals(EXPECTED_TEAM_COUNT, teamRecords.size());
+        List<TeamRecordOverall> teamRecords = MAPPER.readValue(file,
+                MAPPER.getTypeFactory().constructCollectionType(List.class, TeamRecordOverall.class));
 
         GenericTests.validateGetMethodsReturnNonNullValue(teamRecords);
     }

@@ -1,6 +1,5 @@
- [
-   {
-   "transactionCounter": {
+[
+  {
     "acquisitionBudgetSpent": 0,
     "acquisitions": 18,
     "drops": 17,
@@ -28,6 +27,31 @@
     "paid": 0.0,
     "teamCharges": 0.0,
     "trades": 3
+  },
+  {
+    "acquisitionBudgetSpent": 0,
+    "acquisitions": 59,
+    "drops": 59,
+    "matchupAcquisitionTotals": {
+      "2": 2,
+      "3": 2,
+      "4": 5,
+      "5": 3,
+      "6": 1,
+      "7": 4,
+      "8": 4,
+      "9": 4,
+      "10": 7,
+      "11": 4,
+      "12": 7,
+      "13": 5,
+      "14": 6
+    },
+    "misc": 0,
+    "moveToActive": 153,
+    "moveToIR": 0,
+    "paid": 0.0,
+    "teamCharges": 0.0,
+    "trades": 5
   }
-   }
- ]
+]

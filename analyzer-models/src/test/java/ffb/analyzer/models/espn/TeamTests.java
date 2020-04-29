@@ -37,23 +37,10 @@ public class TeamTests {
         owners.add("{34710321-F3A4-4E6E-B103-21F3A4BE6E7A}");
         owners.add("{52DA8CA9-8127-44FD-9A8C-A9812764FDE9}");
 
-//        TeamRecordOverall overallRecord = (TeamRecordOverall) BASE_RECORD;
-//        overallRecord.setPointsAgainst(657.2f);
-//        overallRecord.setPointsFor(712);
-
         TeamRecord record = new TeamRecord();
-//        record.setAwayRecord((TeamRecordAway) BASE_RECORD);
-//        record.setDivisionRecord((TeamRecordDivision) BASE_RECORD);
-//        record.setHomeRecord((TeamRecordHome) BASE_RECORD);
-//        record.setOverallRecord(overallRecord);
+
 
         TransactionCounter transactionCounter = new TransactionCounter();
-        transactionCounter.setAcquisitionBudgetSpent(13);
-        transactionCounter.setCountOfTrades(13);
-        transactionCounter.setCountPlayerMovesToActiveRoster(42);
-        transactionCounter.setCountPlayerMovesToIR(2);
-        transactionCounter.setDroppedPlayerCount(8);
-        transactionCounter.setWaiverAcquisitions(11);
 
         Team team = new Team();
         team.setAbbreviation("PACK");

@@ -1,6 +1,5 @@
 [
-  {
-    "record": {
+{
       "away": {
         "gamesBack": 0.0,
         "losses": 3,
@@ -45,10 +44,8 @@
         "ties": 0,
         "wins": 6
       }
-    }
-  },
+    },
   {
-    "record": {
       "away": {
         "gamesBack": 0.0,
         "losses": 4,
@@ -93,10 +90,8 @@
         "ties": 0,
         "wins": 7
       }
-    }
-  },
+    },
   {
-    "record": {
       "away": {
         "gamesBack": 0.0,
         "losses": 4,
@@ -141,10 +136,8 @@
         "ties": 0,
         "wins": 5
       }
-    }
-  },
+    },
   {
-    "record": {
       "away": {
         "gamesBack": 0.0,
         "losses": 4,
@@ -189,10 +182,8 @@
         "ties": 0,
         "wins": 4
       }
-    }
   },
   {
-    "record": {
       "away": {
         "gamesBack": 0.0,
         "losses": 6,
@@ -237,10 +228,8 @@
         "ties": 0,
         "wins": 2
       }
-    }
   },
   {
-    "record": {
       "away": {
         "gamesBack": 0.0,
         "losses": 2,
@@ -285,10 +274,8 @@
         "ties": 0,
         "wins": 9
       }
-    }
   },
   {
-    "record": {
       "away": {
         "gamesBack": 0.0,
         "losses": 4,
@@ -333,10 +320,8 @@
         "ties": 0,
         "wins": 6
       }
-    }
   },
   {
-    "record": {
       "away": {
         "gamesBack": 0.0,
         "losses": 2,
@@ -381,10 +366,8 @@
         "ties": 0,
         "wins": 9
       }
-    }
   },
   {
-    "record": {
       "away": {
         "gamesBack": 0.0,
         "losses": 3,
@@ -429,10 +412,8 @@
         "ties": 0,
         "wins": 8
       }
-    }
   },
   {
-    "record": {
       "away": {
         "gamesBack": 0.0,
         "losses": 2,
@@ -478,5 +459,4 @@
         "wins": 9
       }
     }
-  }
 ]
