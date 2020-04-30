@@ -5,14 +5,7 @@
       "rank": 0,
       "rankSourceId": 0,
       "rankType": "STANDARD",
-      "slotId": 4
-    },
-    {
-      "auctionValue": 0,
-      "rank": 0,
-      "rankSourceId": 0,
-      "rankType": "PPR",
-      "slotId": 4
+      "slotId": 0
     }
   ],
   "2": [
@@ -20,15 +13,8 @@
       "auctionValue": 0,
       "rank": 0,
       "rankSourceId": 0,
-      "rankType": "STANDARD",
-      "slotId": 4
-    },
-    {
-      "auctionValue": 0,
-      "rank": 0,
-      "rankSourceId": 0,
       "rankType": "PPR",
-      "slotId": 4
+      "slotId": 0
     }
   ]
 }

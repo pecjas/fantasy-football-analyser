@@ -1,14 +1,16 @@
 package ffb.analyzer.models.espn.deserializers;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
-import ffb.analyzer.models.espn.ScoreByStat;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+
+import ffb.analyzer.models.espn.ScoreByStat;
 
 /**
  * Deserializer to turn JSON into a list of {@link ScoreByStat}.

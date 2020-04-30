@@ -9,22 +9,16 @@ import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 public interface BaseEntityEnclosingRequestBuilder<T extends HttpEntityEnclosingRequestBase> {
 
     /**
-     * Adds a URL to the request.
-     * @param url URL to send the request to.
      * @return Reference to the builder class.
      */
     BaseEntityEnclosingRequestBuilder<T> addUrl(String url);
 
     /**
-     * Adds content to the request body.
-     * @param key The parameter name in the body.
-     * @param value The value for the parameter.
      * @return Reference to the builder class.
      */
     BaseEntityEnclosingRequestBuilder<T> addRequestBodyParameter(String key, String value);
 
     /**
-     * Builds the request.
      * @return The constructed request.
      */
     T build();

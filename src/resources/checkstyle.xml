@@ -46,12 +46,16 @@
         <module name="UnusedImports"/>
         <module name="CustomImportOrder">
             <property name="sortImportsInGroupAlphabetically" value="true"/>
-            <property name="separateLineBetweenGroups" value="false"/>
-            <property name="customImportOrderRules" value="THIRD_PARTY_PACKAGE###STATIC"/>
+            <property name="separateLineBetweenGroups" value="true"/>
+            <property name="thirdPartyPackageRegExp" value="^(com|org)\."/>
+            <property name="specialImportsRegExp" value="^(ffb)\."/>
+            <property name="customImportOrderRules"
+                      value="STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE###SPECIAL_IMPORTS###STATIC"/>
         </module>
         <module name="JavadocType"/>
         <module name="JavadocMethod">
-            <property name="scope" value="protected"/>
+            <property name="scope" value="public"/>
+            <property name="allowMissingParamTags" value="true"/>
         </module>
         <module name="JavadocStyle"/>
         <module name="BooleanExpressionComplexity">
@@ -90,9 +94,6 @@
                       PLUS, PLUS_ASSIGN, QUESTION, SL, SLIST, SL_ASSIGN, SR, SR_ASSIGN,
                       STAR, STAR_ASSIGN, TYPE_EXTENSION_AND"/>
 
-        </module>
-        <module name="MissingJavadocMethodCheck">
-            <property name="allowMissingPropertyJavadoc" value="true"/>
         </module>
     </module>
     <module name="SuppressWarningsFilter"/>

@@ -1,10 +1,12 @@
 package ffb.analyzer.models.espn.deserializers;
 
+import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
+
 import ffb.analyzer.models.espn.ScoreByStat;
-import java.io.IOException;
 
 /**
  * Deserialize JSON into a {@link ScoreByStat} object.
@@ -21,8 +23,8 @@ public class ScoreByStatDeserializer extends BaseObjectDeserializer<ScoreByStat>
         JsonNode fields = node.get(statFieldName);
 
         boolean ineligible = fields.get("ineligible").booleanValue();
-        float rank = fields.get("rank").floatValue();
-        float score = fields.get("score").floatValue();
+        double rank = fields.get("rank").doubleValue();
+        double score = fields.get("score").doubleValue();
 
         ScoreByStat stat = new ScoreByStat();
         stat.setId(Integer.parseInt(statFieldName));

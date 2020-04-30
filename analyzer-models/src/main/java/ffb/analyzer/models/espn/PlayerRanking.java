@@ -17,17 +17,6 @@ public class PlayerRanking extends EspnEntity<PlayerRanking> {
     private int slotId;
     private int id;
 
-    /**
-     * Default constructor.
-     */
-    public PlayerRanking() {
-
-    }
-
-    /**
-     * Parameterized constructor.
-     * @param id Player Ranking ID.
-     */
     public PlayerRanking(int id) {
         this.id = id;
     }

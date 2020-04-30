@@ -1,28 +1,23 @@
 package ffb.analyzer.models.espn.deserializers;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+
+import ffb.analyzer.core.utilities.DateUtils;
+
 /**
  * Deserializes an ISO 8601 date formatted as 2019-08-19T07:41:09.149+0000.
  */
 public class IsoDateWithOffsetDeserializer extends BaseObjectDeserializer<Map<LocalDate, Integer>> {
-    private final DateTimeFormatter formatter;
-
-    /**
-     * Default Constructor.
-     */
-    public IsoDateWithOffsetDeserializer() {
-        this.formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-    }
+    private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ";
 
     @Override
     public Map<LocalDate, Integer> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
@@ -34,7 +29,7 @@ public class IsoDateWithOffsetDeserializer extends BaseObjectDeserializer<Map<Lo
 
         fields.forEachRemaining(field -> {
             localDates.put(
-                LocalDate.parse(field.getKey(), formatter),
+                DateUtils.fromString(field.getKey(), DATE_FORMAT),
                 field.getValue().intValue()
             );
         });

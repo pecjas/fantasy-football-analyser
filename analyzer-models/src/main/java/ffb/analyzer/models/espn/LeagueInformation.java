@@ -1,12 +1,14 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
-import ffb.analyzer.models.espn.deserializers.IsoDateWithOffsetDeserializer;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
+import ffb.analyzer.models.espn.deserializers.IsoDateWithOffsetDeserializer;
 
 /**
  * Entity representing information about a Fantasy Football league.
@@ -14,33 +16,23 @@ import java.util.Map;
 public class LeagueInformation extends EspnEntity<LeagueInformation> {
 
     public enum LeagueType {
-        PRIVATE(0),
-        PUBLIC(1);
-
-        LeagueType(int type) {
-        }
+        PRIVATE,
+        PUBLIC
     }
 
     private boolean isFull;
     private boolean isActive;
     private boolean isExpired;
-    private boolean isWillBeDeleted;
+    private boolean isToBeDeleted;
     private boolean isViewable;
     private List<Integer> previousSeasons;
     private int teamsJoined;
     private int transactionScoringPeriod;
-
-    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
     private LocalDate activatedDate;
-
-    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
     private LocalDate waiverLastExecutionDate;
-
-    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
     private LocalDate standingsUpdateDate;
 
     @JsonProperty("waiverProcessStatus")
-    @JsonDeserialize(using = IsoDateWithOffsetDeserializer.class)
     private Map<LocalDate, Integer> transactions;
 
     @JsonProperty("latestScoringPeriod")
@@ -65,6 +57,7 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
         return activatedDate;
     }
 
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
     public void setActivatedDate(LocalDate activatedDate) {
         this.activatedDate = activatedDate;
     }
@@ -93,17 +86,12 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
         isExpired = expired;
     }
 
-    /**
-     * Returns if the League is marked to be deleted.
-     * @return True if the league will be deleted. False otherwise.
-     */
-    public boolean willBeDeleted() {
-        return isWillBeDeleted;
+    public boolean getIsToBeDeleted() {
+        return isToBeDeleted;
     }
 
-    @JsonProperty("isToBeDeleted")
-    public void setWillBeDeleted(boolean willBeDeleted) {
-        isWillBeDeleted = willBeDeleted;
+    public void setIsToBeDeleted(boolean willBeDeleted) {
+        this.isToBeDeleted = willBeDeleted;
     }
 
     public boolean isViewable() {
@@ -126,6 +114,7 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
         return waiverLastExecutionDate;
     }
 
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
     public void setWaiverLastExecutionDate(LocalDate waiverLastExecutionDate) {
         this.waiverLastExecutionDate = waiverLastExecutionDate;
     }
@@ -134,6 +123,7 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
         return transactions;
     }
 
+    @JsonDeserialize(using = IsoDateWithOffsetDeserializer.class)
     public void setTransactions(Map<LocalDate, Integer> transactions) {
         this.transactions = transactions;
     }
@@ -190,6 +180,7 @@ public class LeagueInformation extends EspnEntity<LeagueInformation> {
         return standingsUpdateDate;
     }
 
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
     public void setStandingsUpdateDate(LocalDate standingsUpdateDate) {
         this.standingsUpdateDate = standingsUpdateDate;
     }

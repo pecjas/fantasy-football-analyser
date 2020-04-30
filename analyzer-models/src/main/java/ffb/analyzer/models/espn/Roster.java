@@ -1,7 +1,8 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Entity to represent a team's roster.
@@ -9,6 +10,8 @@ import java.util.List;
 public class Roster extends EspnEntity<Roster> {
 
     private double appliedStatTotal;
+
+    @JsonProperty("entries")
     private List<RosterEntry> players;
 
     public double getAppliedStatTotal() {
@@ -23,7 +26,6 @@ public class Roster extends EspnEntity<Roster> {
         return players;
     }
 
-    @JsonProperty("entries")
     public void setPlayers(List<RosterEntry> players) {
         this.players = players;
     }

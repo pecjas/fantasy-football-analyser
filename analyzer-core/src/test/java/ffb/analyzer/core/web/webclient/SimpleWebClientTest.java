@@ -1,16 +1,18 @@
 package ffb.analyzer.core.web.webclient;
 
-import ffb.analyzer.core.web.request.EntityEnclosingRequestBuilder;
-import ffb.analyzer.core.web.webclient.servlet.TestPerson;
-import ffb.analyzer.core.web.webclient.servlet.TestServletInitializer;
 import java.io.IOException;
 import java.util.List;
+
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import ffb.analyzer.core.web.request.EntityEnclosingRequestBuilder;
+import ffb.analyzer.core.web.webclient.servlet.TestPerson;
+import ffb.analyzer.core.web.webclient.servlet.TestServletInitializer;
 
 /**
  * Tests a {@link SimpleWebClient}. Assumes that port 9090 is available to run a Springboot Application.
@@ -43,8 +45,6 @@ public class SimpleWebClientTest {
     }
 
     /**
-     * Tests a GET request with an array as the response.
-     *
      * @throws IOException Thrown if request fails.
      */
     @Test
@@ -59,8 +59,7 @@ public class SimpleWebClientTest {
     }
 
     /**
-     * Tests a GET response with a single object as a response.
-     * @throws IOException
+     * @throws IOException Thrown if the request fails.
      */
     @Test
     public void testGetRequestWithSingleObjectAsResponse() throws IOException {
@@ -74,8 +73,6 @@ public class SimpleWebClientTest {
     }
 
     /**
-     * Tests a POST request.
-     *
      * @throws IOException Thrown if request fails.
      */
     @Test

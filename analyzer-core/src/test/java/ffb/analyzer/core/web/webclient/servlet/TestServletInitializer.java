@@ -1,6 +1,7 @@
 package ffb.analyzer.core.web.webclient.servlet;
 
 import java.util.Collections;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

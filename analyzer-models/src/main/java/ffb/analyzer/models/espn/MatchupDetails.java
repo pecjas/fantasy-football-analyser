@@ -1,7 +1,8 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Entity representing matchup details.
@@ -9,11 +10,8 @@ import java.util.List;
 public class MatchupDetails extends EspnEntity<MatchupDetails> {
 
     public enum Winner {
-        HOME("HOME"),
-        AWAY("AWAY");
-
-        Winner(String winner) {
-        }
+        HOME,
+        AWAY
     }
 
     private int id;
@@ -25,4 +23,21 @@ public class MatchupDetails extends EspnEntity<MatchupDetails> {
 
     @JsonProperty("home")
     private List<TeamScore> homeTeamScores;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getWeekId() {
+        return weekId;
+    }
+
+    public void setWeekId(int weekId) {
+        this.weekId = weekId;
+    }
+
 }

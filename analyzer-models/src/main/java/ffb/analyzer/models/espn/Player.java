@@ -1,12 +1,16 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import ffb.analyzer.models.espn.deserializers.PlayerRankingsDeserializer;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import ffb.analyzer.models.espn.deserializers.PlayerRankingsDeserializer;
+
+
 
 /**
  * Entity representing a player.
@@ -34,11 +38,6 @@ public class Player extends EspnEntity<Player> {
 
         private final int id;
 
-        /**
-         * Converts an integer to a {@link Position}.
-         * @param positionId ID of the position.
-         * @return {@link Position}.
-         */
         public static Position valueOf(int positionId) {
             return POSITION_BY_ID.get(positionId);
         }
@@ -64,17 +63,18 @@ public class Player extends EspnEntity<Player> {
     }
 
     private boolean active;
-    private Position position;
     private boolean droppable;
     private List<Integer> eligibleSlots;
     private String firstName;
-    private String fullName;
     private String lastName;
     private int id;
     private boolean injured;
-    private InjuryStatus status;
+    private InjuryStatus injuryStatus;
     private int proTeamId;
     private List<PlayerRanking> rankings;
+
+    @JsonProperty("defaultPositionId")
+    private Position position;
 
     public boolean isActive() {
         return active;
@@ -88,8 +88,7 @@ public class Player extends EspnEntity<Player> {
         return position;
     }
 
-    @JsonProperty("defaultPositionId")
-    public void setPosition(int position) {
+    public void setPosition(Integer position) {
         this.position = Position.valueOf(position);
     }
 
@@ -117,20 +116,16 @@ public class Player extends EspnEntity<Player> {
         this.firstName = firstName;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFullName() {
+        return String.format("%s %s", firstName, lastName);
     }
 
     public int getId() {
@@ -149,13 +144,12 @@ public class Player extends EspnEntity<Player> {
         this.injured = injured;
     }
 
-    public InjuryStatus getStatus() {
-        return status;
+    public InjuryStatus getInjuryStatus() {
+        return injuryStatus;
     }
 
-    @JsonProperty("injuryStatus")
-    public void setStatus(String status) {
-        this.status = InjuryStatus.valueOf(status);
+    public void setInjuryStatus(InjuryStatus status) {
+        this.injuryStatus = status;
     }
 
     public int getProTeamId() {

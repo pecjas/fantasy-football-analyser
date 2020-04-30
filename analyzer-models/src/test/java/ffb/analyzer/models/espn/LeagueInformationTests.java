@@ -2,16 +2,23 @@ package ffb.analyzer.models.espn;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
+
 import org.junit.Assert;
+
+import ffb.analyzer.core.utilities.DateUtils;
 
 /**
  * Unit Tests for {@link LeagueInformation}.
  */
 public class LeagueInformationTests extends DeserializingResourceLoader {
+
+    private static final int EXPECTED_WEEK = 16;
+    private static final int EXPECTED_NUMBER_OF_TEAMS = 12;
+    private static final int EXPECTED_SCORING_PERIOD = 18;
 
     private static final LocalDate EXPECTED_DATE = LocalDate.of(2020, 1, 1);
     private static final List<Integer> PREVIOUS_SEASONS = List.of(
@@ -32,14 +39,13 @@ public class LeagueInformationTests extends DeserializingResourceLoader {
     private static final Map<LocalDate, Integer> EXPECTED_TRANSACTION_COUNTS;
 
     static {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         EXPECTED_TRANSACTION_COUNTS = RAW_EXPECTED_TRANSACTION_COUNT
             .entrySet()
             .stream()
-            .collect(Collectors.toMap(entry -> {
-                String date = entry.getKey();
-                return LocalDate.parse(entry.getKey(), formatter);
-            }, Map.Entry::getValue));
+            .collect(Collectors.toMap(entry ->
+                DateUtils.fromString(entry.getKey(), "yyyy-MM-dd'T'HH:mm:ss.SSSZ"),
+                Entry::getValue)
+            );
     }
 
     @Override
@@ -63,17 +69,19 @@ public class LeagueInformationTests extends DeserializingResourceLoader {
         Assert.assertTrue(league.isViewable());
 
         Assert.assertFalse(league.isExpired());
-        Assert.assertFalse(league.willBeDeleted());
+        Assert.assertFalse(league.getIsToBeDeleted());
 
-        Assert.assertEquals(12, league.getTeamsJoined());
+        Assert.assertEquals(EXPECTED_NUMBER_OF_TEAMS, league.getTeamsJoined());
     }
 
     private void checkScoringInformation(LeagueInformation league) {
-        Assert.assertEquals(16, league.getCurrentWeek());
-        Assert.assertEquals(16, league.getFinalWeek());
-        Assert.assertEquals(1, league.getFirstWeek());
-        Assert.assertEquals(18, league.getLastScoringPeriod());
-        Assert.assertEquals(18, league.getTransactionScoringPeriod());
+        Assert.assertEquals(EXPECTED_WEEK, league.getCurrentWeek());
+        Assert.assertEquals(EXPECTED_WEEK, league.getFinalWeek());
+        Assert.assertEquals(EXPECTED_WEEK, league.getFirstWeek());
+
+        Assert.assertEquals(EXPECTED_SCORING_PERIOD, league.getLastScoringPeriod());
+        Assert.assertEquals(EXPECTED_SCORING_PERIOD, league.getTransactionScoringPeriod());
+
         Assert.assertEquals(EXPECTED_DATE, league.getStandingsUpdateDate());
     }
 

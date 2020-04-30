@@ -4,7 +4,7 @@
   "currentLeagueType": 0,
   "currentMatchupPeriod": 16,
   "finalScoringPeriod": 16,
-  "firstScoringPeriod": 1,
+  "firstScoringPeriod": 16,
   "isActive": true,
   "isExpired": false,
   "isFull": true,

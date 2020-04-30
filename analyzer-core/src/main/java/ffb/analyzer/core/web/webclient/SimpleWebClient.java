@@ -1,11 +1,12 @@
 package ffb.analyzer.core.web.webclient;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -23,9 +24,6 @@ public class SimpleWebClient implements BaseWebClient {
 
     private final ObjectMapper objectMapper;
 
-    /**
-     * Default constructor.
-     */
     public SimpleWebClient() {
         this.objectMapper = new ObjectMapper();
         DEFAULT_DESERIALIZATION_OPTIONS.forEach(objectMapper::enable);

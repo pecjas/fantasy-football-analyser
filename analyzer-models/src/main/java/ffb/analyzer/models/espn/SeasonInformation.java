@@ -1,9 +1,11 @@
 package ffb.analyzer.models.espn;
 
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
-import java.time.LocalDate;
 
 /**
  * Class representing the information about a season.
@@ -12,20 +14,15 @@ public class SeasonInformation extends EspnEntity<SeasonInformation> {
     private String name;
     private int gameId;
     private int displayOrder;
-
-    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    private boolean isActive;
     private LocalDate endDate;
-
-    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
     private LocalDate startDate;
 
     @JsonProperty("abbrev")
     private String abbreviation;
 
     @JsonProperty("display")
-    private boolean shouldDisplay;
-
-    private boolean active;
+    private boolean isDisplayable;
 
     @JsonProperty("currentScoringPeriod")
     private ScoringPeriod scoringPeriod;
@@ -45,6 +42,7 @@ public class SeasonInformation extends EspnEntity<SeasonInformation> {
         return endDate;
     }
 
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
@@ -53,6 +51,7 @@ public class SeasonInformation extends EspnEntity<SeasonInformation> {
         return startDate;
     }
 
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
@@ -81,25 +80,20 @@ public class SeasonInformation extends EspnEntity<SeasonInformation> {
         this.abbreviation = abbreviation;
     }
 
-    /**
-     * Returns the display status for the season.
-     * @return True if the season should be displayed. False otherwise.
-     */
-    @JsonProperty("display")
-    public boolean shouldDisplay() {
-        return shouldDisplay;
+    public boolean isDisplayable() {
+        return isDisplayable;
     }
 
-    public void setShouldDisplay(boolean shouldDisplay) {
-        this.shouldDisplay = shouldDisplay;
+    public void setIsDisplayable(boolean shouldDisplay) {
+        this.isDisplayable = shouldDisplay;
     }
 
     public boolean isActive() {
-        return active;
+        return isActive;
     }
 
     public void setActive(boolean activeStatus) {
-        this.active = activeStatus;
+        this.isActive = activeStatus;
     }
 
     public ScoringPeriod getScoringPeriod() {

@@ -1,11 +1,12 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
 /**
@@ -22,7 +23,7 @@ abstract class DeserializingResourceLoader {
     /**
      * Configures a {@link ObjectMapper} to use for deserialization. Override to enable more features in the
      * {@link ObjectMapper}.
-     * @return {@link ObjectMapper}
+     * @return {@link ObjectMapper}.
      */
     protected ObjectMapper configureObjectMapper() {
         return new ObjectMapper()

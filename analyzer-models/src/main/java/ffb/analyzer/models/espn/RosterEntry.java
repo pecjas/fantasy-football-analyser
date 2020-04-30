@@ -1,9 +1,12 @@
 package ffb.analyzer.models.espn;
 
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import ffb.analyzer.models.espn.Player.InjuryStatus;
 import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
-import java.time.LocalDate;
+
 
 /**
  * Entity representing a single roster entity.

@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Supplier;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
@@ -21,10 +22,6 @@ public final class EntityEnclosingRequestBuilder<T extends HttpEntityEnclosingRe
     private final Supplier<T> providedConstructor;
     private String url;
 
-    /**
-     * Parameterized constructor.
-     * @param constructor Constructor to use to build the request.
-     */
     private EntityEnclosingRequestBuilder(final Supplier<T> constructor) {
         this.providedConstructor = constructor;
         this.requestParameters = new HashSet<>();
@@ -53,9 +50,6 @@ public final class EntityEnclosingRequestBuilder<T extends HttpEntityEnclosingRe
     }
 
     /**
-     * Instantiates an instance of a {@link EntityEnclosingRequestBuilder}.
-     * @param constructor Constructor to use to build the request.
-     * @param <T> Type of request to build.
      * @return New instance of a {@link EntityEnclosingRequestBuilder}.
      */
     public static <T extends HttpEntityEnclosingRequestBase> EntityEnclosingRequestBuilder<T>

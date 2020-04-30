@@ -9,7 +9,7 @@ public class SeasonMatchupTests extends DeserializingResourceLoader {
 
     @Override
     public void testDeserialization() throws IOException {
-        SeasonMatchups seasonMatchups = deserializeSingleObject(SeasonMatchups.class);
+        deserializeSingleObject(SeasonMatchups.class);
     }
 
     @Override

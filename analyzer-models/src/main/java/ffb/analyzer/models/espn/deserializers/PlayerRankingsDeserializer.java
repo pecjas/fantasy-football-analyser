@@ -1,14 +1,16 @@
 package ffb.analyzer.models.espn.deserializers;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
-import ffb.analyzer.models.espn.PlayerRanking;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+
+import ffb.analyzer.models.espn.PlayerRanking;
 
 /**
  * Deserializes JSON into a list of {@link PlayerRanking}.
@@ -26,11 +28,11 @@ public class PlayerRankingsDeserializer extends BaseObjectDeserializer<List<Play
         throws IOException
     {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
-        Iterator<Map.Entry<String, JsonNode>> fields = node.fields();
+        Iterator<Entry<String, JsonNode>> fields = node.fields();
         List<PlayerRanking> rankings = new ArrayList<>();
 
         fields.forEachRemaining(field -> {
-            deserializeAndAddRanking(rankings, Integer.parseInt(field.getKey()), field.getValue());
+            deserializeAndAddRanking(rankings, parseInt(field.getKey()), field.getValue());
         });
 
         return rankings;
@@ -39,6 +41,7 @@ public class PlayerRankingsDeserializer extends BaseObjectDeserializer<List<Play
     private void deserializeAndAddRanking(List<PlayerRanking> rankings, Integer id, JsonNode node) {
         node.forEach(rankJsonObj -> {
             PlayerRanking ranking = new PlayerRanking(id);
+
             ranking.setAuctionValue(parseInt(rankJsonObj, AUCTION_FIELD));
             ranking.setSlotId(parseInt(rankJsonObj, SLOT_FIELD));
 
@@ -46,13 +49,16 @@ public class PlayerRankingsDeserializer extends BaseObjectDeserializer<List<Play
             ranking.setRankSourceId(parseInt(rankJsonObj, RANK_SOURCE_FIELD));
             ranking.setRankType(rankJsonObj.get(RANK_TYPE_FIELD).asText());
 
-
             rankings.add(ranking);
         });
     }
 
     private int parseInt(JsonNode node, String fieldName) {
         return node.get(fieldName).intValue();
+    }
+
+    private int parseInt(String value) {
+        return Integer.parseInt(value);
     }
 
 }
