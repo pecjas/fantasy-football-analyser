@@ -2,7 +2,7 @@ package ffb.analyzer.models.espn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public abstract class TeamRecordBase extends EspnEntity<TeamRecordBase> {
+abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T> {
     public enum StreakType {
         WIN,
         LOSS,
@@ -23,37 +23,51 @@ public abstract class TeamRecordBase extends EspnEntity<TeamRecordBase> {
     private StreakType streakType;
 
 
-    public int getWins() { return wins; }
+    public int getWins() {
+        return wins;
+    }
     public void setWins(int wins) {
         this.wins = wins;
     }
 
-    public int getLosses() { return losses; }
+    public int getLosses() {
+        return losses;
+    }
     public void setLosses(int losses) {
         this.losses = losses;
     }
 
-    public int getTies() { return ties; }
+    public int getTies() {
+        return ties;
+    }
     public void setTies(int ties) {
         this.ties = ties;
     }
 
-    public int getGamesBack() { return gamesBack; }
+    public int getGamesBack() {
+        return gamesBack;
+    }
     public void setGamesBack(int gamesBack) {
         this.gamesBack = gamesBack;
     }
 
-    public float getWinPercentage() { return winPercentage; }
+    public float getWinPercentage() {
+        return winPercentage;
+    }
     public void setWinPercentage(float winPercentage) {
         this.winPercentage = winPercentage;
     }
 
-    public int getStreakLength() { return streakLength; }
+    public int getStreakLength() {
+        return streakLength;
+    }
     public void setStreakLength(int streakLength) {
         this.streakLength = streakLength;
     }
 
-    public StreakType getStreakType() { return streakType; }
+    public StreakType getStreakType() {
+        return streakType;
+    }
     public void setStreakType(StreakType streakType) {
         this.streakType = streakType;
     }

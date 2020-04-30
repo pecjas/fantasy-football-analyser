@@ -1,5 +1,14 @@
 package ffb.analyzer.models.espn;
 
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.net.URL;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,14 +16,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ffb.analyzer.models.espn.Team;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.net.URL;
+import ffb.test.utilities.GenericTestUtils;
 
 public class TeamTests {
     private static final String TEAMS = "teams.json";
@@ -32,10 +34,11 @@ public class TeamTests {
     public void testTeamSerialization() throws JsonProcessingException, MalformedURLException {
         DraftStrategy strategy = new DraftStrategy();
 
-        List<String> owners = new ArrayList<String>();
-        owners.add("{E051BF6F-D9BD-46FA-91BF-6FD9BD86FA35}");
-        owners.add("{34710321-F3A4-4E6E-B103-21F3A4BE6E7A}");
-        owners.add("{52DA8CA9-8127-44FD-9A8C-A9812764FDE9}");
+        List<String> owners = List.of(
+                "{E051BF6F-D9BD-46FA-91BF-6FD9BD86FA35}",
+                "{34710321-F3A4-4E6E-B103-21F3A4BE6E7A}",
+                "{52DA8CA9-8127-44FD-9A8C-A9812764FDE9}"
+        );
 
         TeamRecord record = new TeamRecord();
 
@@ -67,7 +70,7 @@ public class TeamTests {
     }
 
     @Test
-    public void testTeamDeserialization() throws IOException {
+    public void testTeamDeserialization() throws IOException, InvocationTargetException, IllegalAccessException {
 
         File file = new File(Objects.requireNonNull(getClass()
                 .getClassLoader()
@@ -77,6 +80,7 @@ public class TeamTests {
         List<Team> teams = MAPPER.readValue(file,
                 MAPPER.getTypeFactory().constructCollectionType(List.class, Team.class));
 
-        Assert.assertEquals(EXPECTED_TEAM_COUNT, teams.size());
+        //Assert.assertEquals(EXPECTED_TEAM_COUNT, teams.size());
+        GenericTestUtils.validateGetMethodsReturnNonNullValue(teams);
     }
 }

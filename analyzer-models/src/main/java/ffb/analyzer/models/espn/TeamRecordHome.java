@@ -1,4 +1,4 @@
 package ffb.analyzer.models.espn;
 
-public class TeamRecordHome extends TeamRecordBase {
+public class TeamRecordHome extends TeamRecordBase<TeamRecordHome> {
 }

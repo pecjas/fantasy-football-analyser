@@ -1,26 +1,26 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TransactionCounter extends EspnEntity<TransactionCounter> {
     private float acquisitionBudgetSpent;
 
     @JsonProperty("acquisitions")
-    private int waiverAcquisitions;
+    private int countOfWaiverAcquisitions;
 
     @JsonProperty("drops")
-    private int droppedPlayerCount;
+    private int countOfDroppedPlayers;
 
     @JsonProperty("matchupAcquisitionTotals")
-    private Map<String, Integer> acquisitionsByScoringPeriod;
+    private Map<Integer, Integer> acquisitionsByScoringPeriod;
 
     @JsonProperty("moveToActive")
-    private int countPlayerMovesToActiveRoster;
+    private int countOfPlayerMovesToActiveRoster;
 
     @JsonProperty("moveToIR")
-    private int countPlayerMovesToIR;
+    private int countOfPlayerMovesToIR;
 
     //TODO: paid
     //TODO: teamCharges
@@ -29,37 +29,51 @@ public class TransactionCounter extends EspnEntity<TransactionCounter> {
     private int countOfTrades;
 
 
-    public float getAcquisitionBudgetSpent() { return acquisitionBudgetSpent; }
+    public float getAcquisitionBudgetSpent() {
+        return acquisitionBudgetSpent;
+    }
     public void setAcquisitionBudgetSpent(float acquisitionBudgetSpent) {
         this.acquisitionBudgetSpent = acquisitionBudgetSpent;
     }
 
-    public int getWaiverAcquisitions() { return waiverAcquisitions; }
-    public void setWaiverAcquisitions(int waiverAcquisitions) {
-        this.waiverAcquisitions = waiverAcquisitions;
+    public int getCountOfWaiverAcquisitions() {
+        return countOfWaiverAcquisitions;
+    }
+    public void setCountOfWaiverAcquisitions(int waiverAcquisitions) {
+        this.countOfWaiverAcquisitions = waiverAcquisitions;
     }
 
-    public int getDroppedPlayerCount() { return droppedPlayerCount; }
-    public void setDroppedPlayerCount(int droppedPlayerCount) {
-        this.droppedPlayerCount = droppedPlayerCount;
+    public int getCountOfDroppedPlayers() {
+        return countOfDroppedPlayers;
+    }
+    public void setCountOfDroppedPlayers(int countOfDroppedPlayers) {
+        this.countOfDroppedPlayers = countOfDroppedPlayers;
     }
 
-    public Map<String, Integer> getAcquisitionsByScoringPeriod() { return acquisitionsByScoringPeriod; }
-    public void setAcquisitionsByScoringPeriod(Map<String, Integer> acquisitionsByScoringPeriod) {
+    public Map<Integer, Integer> getAcquisitionsByScoringPeriod() {
+        return acquisitionsByScoringPeriod;
+    }
+    public void setAcquisitionsByScoringPeriod(Map<Integer, Integer> acquisitionsByScoringPeriod) {
         this.acquisitionsByScoringPeriod = acquisitionsByScoringPeriod;
     }
 
-    public int getCountPlayerMovesToActiveRoster() { return countPlayerMovesToActiveRoster; }
-    public void setCountPlayerMovesToActiveRoster(int countPlayerMovesToActiveRoster) {
-        this.countPlayerMovesToActiveRoster = countPlayerMovesToActiveRoster;
+    public int getCountOfPlayerMovesToActiveRoster() {
+        return countOfPlayerMovesToActiveRoster;
+    }
+    public void setCountOfPlayerMovesToActiveRoster(int countOfPlayerMovesToActiveRoster) {
+        this.countOfPlayerMovesToActiveRoster = countOfPlayerMovesToActiveRoster;
     }
 
-    public int getCountPlayerMovesToIR() { return countPlayerMovesToIR; }
-    public void setCountPlayerMovesToIR(int countPlayerMovesToIR) {
-        this.countPlayerMovesToIR = countPlayerMovesToIR;
+    public int getCountOfPlayerMovesToIR() {
+        return countOfPlayerMovesToIR;
+    }
+    public void setCountOfPlayerMovesToIR(int countOfPlayerMovesToIR) {
+        this.countOfPlayerMovesToIR = countOfPlayerMovesToIR;
     }
 
-    public int getCountOfTrades() { return countOfTrades; }
+    public int getCountOfTrades() {
+        return countOfTrades;
+    }
     public void setCountOfTrades(int countOfTrades) {
         this.countOfTrades = countOfTrades;
     }

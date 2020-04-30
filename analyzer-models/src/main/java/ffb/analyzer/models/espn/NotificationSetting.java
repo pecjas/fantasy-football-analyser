@@ -1,11 +1,11 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.lang.String;
 
-public class NotificationSetting {
-    public enum notificationType {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class NotificationSetting extends EspnEntity<NotificationSetting> {
+    public enum NotificationType {
         TEAM_TRADE_OFFER,
         TEAM_PLAYER_AVAILABILITY,
         TEAM_PLAYER_INJURY,
@@ -19,10 +19,14 @@ public class NotificationSetting {
     @JsonProperty("id")
     private String playerNotificationId;
 
-    public boolean isEnabled() { return enabled; }
+    public boolean isEnabled() {
+        return enabled;
+    }
     public void setEnabled(boolean enabled) { this.enabled = enabled; }
 
-    public String getPlayerNotificationId() { return playerNotificationId; }
+    public String getPlayerNotificationId() {
+        return playerNotificationId;
+    }
     public void setPlayerNotificationId(String playerNotificationId) {
         this.playerNotificationId = playerNotificationId;
     }

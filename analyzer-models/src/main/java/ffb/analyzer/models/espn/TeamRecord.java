@@ -16,22 +16,30 @@ public class TeamRecord extends EspnEntity<TeamRecord> {
     private TeamRecordOverall overallRecord;
 
 
-    public TeamRecordAway getAwayRecord() { return awayRecord; }
+    public TeamRecordAway getAwayRecord() {
+        return awayRecord;
+    }
     public void setAwayRecord(TeamRecordAway awayRecord) {
         this.awayRecord = awayRecord;
     }
 
-    public TeamRecordHome getHomeRecord() { return homeRecord; }
+    public TeamRecordHome getHomeRecord() {
+        return homeRecord;
+    }
     public void setHomeRecord(TeamRecordHome homeRecord) {
         this.homeRecord = homeRecord;
     }
 
-    public TeamRecordDivision getDivisionRecord() { return divisionRecord; }
+    public TeamRecordDivision getDivisionRecord() {
+        return divisionRecord;
+    }
     public void setDivisionRecord(TeamRecordDivision divisionRecord) {
         this.divisionRecord = divisionRecord;
     }
 
-    public TeamRecordOverall getOverallRecord() { return overallRecord; }
+    public TeamRecordOverall getOverallRecord() {
+        return overallRecord;
+    }
     public void setOverallRecord(TeamRecordOverall overallRecord) {
         this.overallRecord = overallRecord;
     }

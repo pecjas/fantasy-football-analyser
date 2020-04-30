@@ -1,5 +1,11 @@
 package ffb.analyzer.models.espn;
 
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+import java.util.Objects;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,15 +13,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ffb.test.utilities.GenericTests;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import ffb.test.utilities.GenericTestUtils;
 
 public class TransactionCounterTests {
     private static final String TRANSACTION_COUNTER = "transaction-counter.json";
@@ -36,10 +34,10 @@ public class TransactionCounterTests {
 
         transactionCounter.setAcquisitionBudgetSpent(13);
         transactionCounter.setCountOfTrades(13);
-        transactionCounter.setCountPlayerMovesToActiveRoster(42);
-        transactionCounter.setCountPlayerMovesToIR(2);
-        transactionCounter.setDroppedPlayerCount(8);
-        transactionCounter.setWaiverAcquisitions(11);
+        transactionCounter.setCountOfPlayerMovesToActiveRoster(42);
+        transactionCounter.setCountOfPlayerMovesToIR(2);
+        transactionCounter.setCountOfDroppedPlayers(8);
+        transactionCounter.setCountOfWaiverAcquisitions(11);
 
         String json = MAPPER.writeValueAsString(transactionCounter);
 
@@ -57,10 +55,10 @@ public class TransactionCounterTests {
         List<TransactionCounter> transactionCounters = MAPPER.readValue(file,
                 MAPPER.getTypeFactory().constructCollectionType(List.class, TransactionCounter.class));
 
-        Assert.assertEquals(EXPECTED_ACQUISITION_COUNT, transactionCounters.get(0).getWaiverAcquisitions());
-        Assert.assertEquals(EXPECTED_DROP_COUNT, transactionCounters.get(0).getDroppedPlayerCount());
+        Assert.assertEquals(EXPECTED_ACQUISITION_COUNT, transactionCounters.get(0).getCountOfWaiverAcquisitions());
+        Assert.assertEquals(EXPECTED_DROP_COUNT, transactionCounters.get(0).getCountOfDroppedPlayers());
         Assert.assertFalse(transactionCounters.get(0).getAcquisitionsByScoringPeriod().isEmpty());
 
-        GenericTests.validateGetMethodsReturnNonNullValue(transactionCounters);
+        GenericTestUtils.validateGetMethodsReturnNonNullValue(transactionCounters);
     }
 }

@@ -1,5 +1,12 @@
 package ffb.analyzer.models.espn;
 
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
+import java.util.List;
+import java.util.Objects;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,13 +14,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ffb.test.utilities.GenericTests;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
-import java.util.List;
-import java.util.Objects;
+import ffb.test.utilities.GenericTestUtils;
 
 public class TeamRecordTests {
     private static final String TEAM_RECORDS = "team-records.json";
@@ -54,6 +55,6 @@ public class TeamRecordTests {
 
         Assert.assertEquals(EXPECTED_TEAM_COUNT, teamRecords.size());
 
-        GenericTests.validateGetMethodsReturnNonNullValue(teamRecords);
+        GenericTestUtils.validateGetMethodsReturnNonNullValue(teamRecords);
     }
 }
