@@ -62,13 +62,10 @@ public class Player extends EspnEntity<Player> {
         DOUBTFUL
     }
 
-    private boolean active;
-    private boolean droppable;
     private List<Integer> eligibleSlots;
     private String firstName;
     private String lastName;
     private int id;
-    private boolean injured;
     private InjuryStatus injuryStatus;
     private int proTeamId;
     private List<PlayerRanking> rankings;
@@ -76,12 +73,21 @@ public class Player extends EspnEntity<Player> {
     @JsonProperty("defaultPositionId")
     private Position position;
 
+    @JsonProperty("droppable")
+    private boolean isDroppable;
+
+    @JsonProperty("active")
+    private boolean isActive;
+
+    @JsonProperty("injured")
+    private boolean isInjured;
+
     public boolean isActive() {
-        return active;
+        return isActive;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setIsActive(boolean active) {
+        this.isActive = active;
     }
 
     public Position getPosition() {
@@ -93,11 +99,11 @@ public class Player extends EspnEntity<Player> {
     }
 
     public boolean isDroppable() {
-        return droppable;
+        return isDroppable;
     }
 
     public void setDroppable(boolean droppable) {
-        this.droppable = droppable;
+        this.isDroppable = droppable;
     }
 
     public List<Integer> getEligibleSlots() {
@@ -137,11 +143,11 @@ public class Player extends EspnEntity<Player> {
     }
 
     public boolean isInjured() {
-        return injured;
+        return isInjured;
     }
 
-    public void setInjured(boolean injured) {
-        this.injured = injured;
+    public void setIsInjured(boolean injured) {
+        this.isInjured = injured;
     }
 
     public InjuryStatus getInjuryStatus() {
