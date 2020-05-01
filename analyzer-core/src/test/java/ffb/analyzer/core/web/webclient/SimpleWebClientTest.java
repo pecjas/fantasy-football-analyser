@@ -1,8 +1,7 @@
 package ffb.analyzer.core.web.webclient;
 
-import ffb.analyzer.core.web.request.EntityEnclosingRequestBuilder;
-import ffb.analyzer.core.web.webclient.servlet.TestPerson;
-import ffb.analyzer.core.web.webclient.servlet.TestServletInitializer;
+import java.io.IOException;
+import java.util.List;
 
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -11,8 +10,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.util.List;
+import ffb.analyzer.core.web.request.EntityEnclosingRequestBuilder;
+import ffb.analyzer.core.web.webclient.servlet.TestPerson;
+import ffb.analyzer.core.web.webclient.servlet.TestServletInitializer;
 
 /**
  * Tests a {@link SimpleWebClient}. Assumes that port 9090 is available to run a Springboot Application.
@@ -27,20 +27,24 @@ public class SimpleWebClientTest {
 
     private static SimpleWebClient client;
 
+    /**
+     * Initializes servlet for the tests.
+     */
     @BeforeClass
     public static void prepareTests() {
         TestServletInitializer.main(new String[1]);
         client = new SimpleWebClient();
     }
 
+    /**
+     * Closes servlet after all the tests are run.
+     */
     @AfterClass
     public static void cleanupTests() {
         TestServletInitializer.closeContext();
     }
 
     /**
-     * Tests a GET request.
-     *
      * @throws IOException Thrown if request fails.
      */
     @Test
@@ -54,6 +58,9 @@ public class SimpleWebClientTest {
         Assert.assertNotNull(response.get(0).getLastName());
     }
 
+    /**
+     * @throws IOException Thrown if the request fails.
+     */
     @Test
     public void testGetRequestWithSingleObjectAsResponse() throws IOException {
         HttpGet request = new HttpGet(GET_SINGLE_URL);
@@ -66,8 +73,6 @@ public class SimpleWebClientTest {
     }
 
     /**
-     * Tests a POST request.
-     *
      * @throws IOException Thrown if request fails.
      */
     @Test

@@ -1,5 +1,8 @@
 package ffb.analyzer.core.web.request;
 
+/**
+ * Class representing a HTTP query parameter.
+ */
 public final class HttpQueryParameter {
     private String name;
     private String value;

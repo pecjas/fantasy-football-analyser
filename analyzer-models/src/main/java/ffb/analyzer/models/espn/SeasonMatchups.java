@@ -1,15 +1,17 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
-public class SeasonMatchups {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * Entity representing all of the matchups in a season.
+ */
+public class SeasonMatchups extends EspnEntity<SeasonMatchups> {
 
     private DraftDetail draftDetails;
     private int gameId;
     private int id;
-    private int segmentId;
 
     @JsonProperty("status")
     private LeagueInformation leagueInformation;
@@ -23,11 +25,11 @@ public class SeasonMatchups {
     @JsonProperty("schedule")
     private List<MatchupDetails> matchupDetails;
 
-    public DraftDetail getDraftDetails() {
+    public DraftDetail getDraftDetail() {
         return draftDetails;
     }
 
-    public void setDraftDetails(DraftDetail draftDetails) {
+    public void setDraftDetail(DraftDetail draftDetails) {
         this.draftDetails = draftDetails;
     }
 
@@ -45,14 +47,6 @@ public class SeasonMatchups {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getSegmentId() {
-        return segmentId;
-    }
-
-    public void setSegmentId(int segmentId) {
-        this.segmentId = segmentId;
     }
 
     public LeagueInformation getLeagueInformation() {
@@ -86,6 +80,5 @@ public class SeasonMatchups {
     public void setMatchupDetails(List<MatchupDetails> matchupDetails) {
         this.matchupDetails = matchupDetails;
     }
-
 
 }

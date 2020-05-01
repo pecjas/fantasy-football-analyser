@@ -1,36 +1,39 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import ffb.analyzer.models.espn.serialization.EpochMillisecondDeserializer;
-
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
-public class LeagueInformation {
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
+import ffb.analyzer.models.espn.deserializers.IsoDateWithOffsetDeserializer;
+
+/**
+ * Entity representing information about a Fantasy Football league.
+ */
+public class LeagueInformation extends EspnEntity<LeagueInformation> {
 
     public enum LeagueType {
-        PRIVATE(0),
-        PUBLIC(1);
-
-        LeagueType(int type) {}
+        PRIVATE,
+        PUBLIC
     }
 
-    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
-    private Date activatedDate;
     private boolean isFull;
     private boolean isActive;
     private boolean isExpired;
-    private boolean isPlayoffMatchupEdited;
-    private boolean isWillBeDeleted;
+    private boolean isToBeDeleted;
     private boolean isViewable;
-    private boolean isWaiverOrderEdited;
     private List<Integer> previousSeasons;
-    private Date waiverLastExecutionDate;
+    private int teamsJoined;
+    private int transactionScoringPeriod;
+    private LocalDate activatedDate;
+    private LocalDate waiverLastExecutionDate;
+    private LocalDate standingsUpdateDate;
 
     @JsonProperty("waiverProcessStatus")
-    private Map<Date, Integer> transactions;
+    private Map<LocalDate, Integer> transactions;
 
     @JsonProperty("latestScoringPeriod")
     private int lastScoringPeriod;
@@ -50,12 +53,12 @@ public class LeagueInformation {
     @JsonProperty("currentLeagueType")
     private LeagueType currentType;
 
-
-    public Date getActivatedDate() {
+    public LocalDate getActivatedDate() {
         return activatedDate;
     }
 
-    public void setActivatedDate(Date activatedDate) {
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    public void setActivatedDate(LocalDate activatedDate) {
         this.activatedDate = activatedDate;
     }
 
@@ -63,7 +66,7 @@ public class LeagueInformation {
         return isFull;
     }
 
-    public void setFull(boolean full) {
+    public void setIsFull(boolean full) {
         isFull = full;
     }
 
@@ -71,7 +74,7 @@ public class LeagueInformation {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setIsActive(boolean active) {
         isActive = active;
     }
 
@@ -79,40 +82,24 @@ public class LeagueInformation {
         return isExpired;
     }
 
-    public void setExpired(boolean expired) {
+    public void setIsExpired(boolean expired) {
         isExpired = expired;
     }
 
-    public boolean isPlayoffMatchupEdited() {
-        return isPlayoffMatchupEdited;
+    public boolean getIsToBeDeleted() {
+        return isToBeDeleted;
     }
 
-    public void setPlayoffMatchupEdited(boolean playoffMatchupEdited) {
-        isPlayoffMatchupEdited = playoffMatchupEdited;
-    }
-
-    public boolean isWillBeDeleted() {
-        return isWillBeDeleted;
-    }
-
-    public void setWillBeDeleted(boolean willBeDeleted) {
-        isWillBeDeleted = willBeDeleted;
+    public void setIsToBeDeleted(boolean willBeDeleted) {
+        this.isToBeDeleted = willBeDeleted;
     }
 
     public boolean isViewable() {
         return isViewable;
     }
 
-    public void setViewable(boolean viewable) {
+    public void setIsViewable(boolean viewable) {
         isViewable = viewable;
-    }
-
-    public boolean isWaiverOrderEdited() {
-        return isWaiverOrderEdited;
-    }
-
-    public void setWaiverOrderEdited(boolean waiverOrderEdited) {
-        isWaiverOrderEdited = waiverOrderEdited;
     }
 
     public List<Integer> getPreviousSeasons() {
@@ -123,19 +110,21 @@ public class LeagueInformation {
         this.previousSeasons = previousSeasons;
     }
 
-    public Date getWaiverLastExecutionDate() {
+    public LocalDate getWaiverLastExecutionDate() {
         return waiverLastExecutionDate;
     }
 
-    public void setWaiverLastExecutionDate(Date waiverLastExecutionDate) {
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    public void setWaiverLastExecutionDate(LocalDate waiverLastExecutionDate) {
         this.waiverLastExecutionDate = waiverLastExecutionDate;
     }
 
-    public Map<Date, Integer> getTransactions() {
+    public Map<LocalDate, Integer> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Map<Date, Integer> transactions) {
+    @JsonDeserialize(using = IsoDateWithOffsetDeserializer.class)
+    public void setTransactions(Map<LocalDate, Integer> transactions) {
         this.transactions = transactions;
     }
 
@@ -185,5 +174,30 @@ public class LeagueInformation {
 
     public void setCurrentType(LeagueType currentType) {
         this.currentType = currentType;
+    }
+
+    public LocalDate getStandingsUpdateDate() {
+        return standingsUpdateDate;
+    }
+
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    public void setStandingsUpdateDate(LocalDate standingsUpdateDate) {
+        this.standingsUpdateDate = standingsUpdateDate;
+    }
+
+    public int getTeamsJoined() {
+        return teamsJoined;
+    }
+
+    public void setTeamsJoined(int teamsJoined) {
+        this.teamsJoined = teamsJoined;
+    }
+
+    public int getTransactionScoringPeriod() {
+        return transactionScoringPeriod;
+    }
+
+    public void setTransactionScoringPeriod(int transactionScoringPeriod) {
+        this.transactionScoringPeriod = transactionScoringPeriod;
     }
 }

@@ -4,16 +4,19 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Entity representing a team's score.
+ */
 public class TeamScore extends EspnEntity<TeamScore> {
     private CumulativeScore cumulativeScore;
     private int gamesPlayed;
     private int teamId;
 
     @JsonProperty("totalPoints")
-    private float points;
+    private double points;
 
     @JsonProperty("pointsByScoringPeriod")
-    private Map<Integer, Float> scores;
+    private Map<Integer, Double> scores;
 
     public CumulativeScore getCumulativeScore() {
         return cumulativeScore;
@@ -39,19 +42,19 @@ public class TeamScore extends EspnEntity<TeamScore> {
         this.teamId = teamId;
     }
 
-    public float getPoints() {
+    public double getPoints() {
         return points;
     }
 
-    public void setPoints(float points) {
+    public void setPoints(double points) {
         this.points = points;
     }
 
-    public Map<Integer, Float> getScores() {
+    public Map<Integer, Double> getScores() {
         return scores;
     }
 
-    public void setScores(Map<Integer, Float> scores) {
+    public void setScores(Map<Integer, Double> scores) {
         this.scores = scores;
     }
 }

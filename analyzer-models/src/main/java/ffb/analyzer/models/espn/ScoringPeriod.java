@@ -1,6 +1,6 @@
 package ffb.analyzer.models.espn;
 
-public class ScoringPeriod {
+public class ScoringPeriod extends EspnEntity<ScoringPeriod> {
 
     private int id;
 

@@ -1,0 +1,63 @@
+{
+  "active": true,
+  "defaultPositionId": 2,
+  "droppable": true,
+  "eligibleSlots": [
+    2,
+    3,
+    23,
+    7,
+    20,
+    21
+  ],
+  "firstName": "First",
+  "fullName": "First Last",
+  "id": 15825,
+  "injured": false,
+  "injuryStatus": "ACTIVE",
+  "lastName": "Last",
+  "lastNewsDate": 1582653672000,
+  "lastVideoDate": 1576863656000,
+  "proTeamId": 20,
+  "rankings": {
+    "0": [
+      {
+        "auctionValue": 0,
+        "rank": 5,
+        "rankSourceId": 7,
+        "rankType": "STANDARD",
+        "slotId": 2
+      },
+      {
+        "auctionValue": 0,
+        "rank": 5,
+        "rankSourceId": 7,
+        "rankType": "PPR",
+        "slotId": 2
+      }
+    ],
+    "1": [
+      {
+        "auctionValue": 0,
+        "rank": 0,
+        "rankSourceId": 0,
+        "rankType": "STANDARD",
+        "slotId": 2
+      },
+      {
+        "auctionValue": 0,
+        "rank": 0,
+        "rankSourceId": 0,
+        "rankType": "PPR",
+        "slotId": 2
+      },
+      {
+        "auctionValue": 0,
+        "rank": 15,
+        "rankSourceId": 2,
+        "rankType": "PPR",
+        "slotId": 2
+      }
+    ]
+  }
+}

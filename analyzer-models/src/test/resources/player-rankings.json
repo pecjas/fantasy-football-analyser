@@ -1,0 +1,20 @@
+{
+  "1": [
+    {
+      "auctionValue": 0,
+      "rank": 0,
+      "rankSourceId": 0,
+      "rankType": "STANDARD",
+      "slotId": 0
+    }
+  ],
+  "2": [
+    {
+      "auctionValue": 0,
+      "rank": 0,
+      "rankSourceId": 0,
+      "rankType": "PPR",
+      "slotId": 0
+    }
+  ]
+}

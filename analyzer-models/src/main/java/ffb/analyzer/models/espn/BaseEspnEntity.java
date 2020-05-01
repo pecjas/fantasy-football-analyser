@@ -1,6 +1,8 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-
+/**
+ * Common interface for ESPN entities.
+ * @param <T> Type of ESPN entity.
+ */
 public interface BaseEspnEntity<T extends BaseEspnEntity<T>> {
 }

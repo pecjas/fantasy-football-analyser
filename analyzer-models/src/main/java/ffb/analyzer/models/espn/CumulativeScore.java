@@ -1,16 +1,23 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class CumulativeScore {
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import ffb.analyzer.models.espn.deserializers.ScoresByStatDeserializer;
+
+
+/**
+ * Entity representing the cumulative score for a match up.
+ */
+public class CumulativeScore extends EspnEntity<CumulativeScore> {
     private int losses;
     private int ties;
     private int wins;
 
     @JsonProperty("scoreByStat")
-    ScoresByStats scoresByStats;
+    List<ScoreByStat> scoresByStats;
 
     public int getLosses() {
         return losses;
@@ -36,11 +43,12 @@ public class CumulativeScore {
         this.wins = wins;
     }
 
-    public ScoresByStats getScoresByStats() {
+    public List<ScoreByStat> getScoresByStats() {
         return scoresByStats;
     }
 
-    public void setScoresByStats(ScoresByStats scoresByStats) {
+    @JsonDeserialize(using = ScoresByStatDeserializer.class)
+    public void setScoresByStats(List<ScoreByStat>  scoresByStats) {
         this.scoresByStats = scoresByStats;
     }
 }

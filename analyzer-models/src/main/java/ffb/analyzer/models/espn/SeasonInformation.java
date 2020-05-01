@@ -1,33 +1,28 @@
 package ffb.analyzer.models.espn;
 
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import ffb.analyzer.models.espn.serialization.EpochMillisecondDeserializer;
 
-import java.util.Date;
+import ffb.analyzer.models.espn.deserializers.EpochMillisecondDeserializer;
 
 /**
  * Class representing the information about a season.
  */
-public class SeasonInformation {
+public class SeasonInformation extends EspnEntity<SeasonInformation> {
     private String name;
     private int gameId;
     private int displayOrder;
-
-    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
-    private Date endDate;
-
-    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
-    private Date startDate;
+    private boolean isActive;
+    private LocalDate endDate;
+    private LocalDate startDate;
 
     @JsonProperty("abbrev")
     private String abbreviation;
 
     @JsonProperty("display")
-    private boolean shouldDisplay;
-
-    @JsonProperty("active")
-    private boolean activeStatus;
+    private boolean isDisplayable;
 
     @JsonProperty("currentScoringPeriod")
     private ScoringPeriod scoringPeriod;
@@ -43,19 +38,21 @@ public class SeasonInformation {
         this.name = name;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    @JsonDeserialize(using = EpochMillisecondDeserializer.class)
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
@@ -83,20 +80,20 @@ public class SeasonInformation {
         this.abbreviation = abbreviation;
     }
 
-    public boolean isShouldDisplay() {
-        return shouldDisplay;
+    public boolean isDisplayable() {
+        return isDisplayable;
     }
 
-    public void setShouldDisplay(boolean shouldDisplay) {
-        this.shouldDisplay = shouldDisplay;
+    public void setIsDisplayable(boolean shouldDisplay) {
+        this.isDisplayable = shouldDisplay;
     }
 
-    public boolean isActiveStatus() {
-        return activeStatus;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public void setActiveStatus(boolean activeStatus) {
-        this.activeStatus = activeStatus;
+    public void setActive(boolean activeStatus) {
+        this.isActive = activeStatus;
     }
 
     public ScoringPeriod getScoringPeriod() {

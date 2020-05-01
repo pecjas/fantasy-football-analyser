@@ -1,33 +1,34 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import ffb.analyzer.models.espn.ScoreByStat;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
-public class ScoreByStatTests {
+import org.junit.Assert;
 
-    private static final String SCORE_BY_STATS_FILE = "score-by-stat.json";
+/**
+ * Unit tests for {@link ScoreByStat}.
+ */
+public class ScoreByStatTests extends DeserializingResourceLoader {
+    private static final double DELTA = .1;
+    private static final int EXPECTED_INT_VALUE = 1;
+    private static final double EXPECTED_DOUBLE_VALUE = 1.0;
 
-    @Test
-    public void testScoreByStatDeserialization() throws IOException {
-        File file = new File(Objects.requireNonNull(getClass()
-            .getClassLoader()
-            .getResource(SCORE_BY_STATS_FILE)
-        ).getFile());
+    @Override
+    public void testDeserialization() throws IOException {
 
-        ObjectMapper mapper = new ObjectMapper().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
+        List<ScoreByStat> scores = deserializeObjects(ScoreByStat.class);
+        Assert.assertEquals(EXPECTED_INT_VALUE, scores.size());
 
-        List<ScoreByStat> scores = mapper.readValue(file,
-            mapper.getTypeFactory().constructCollectionType(List.class, ScoreByStat.class));
+        ScoreByStat score = scores.get(0);
 
-        Assert.assertEquals(1, scores.size());
+        Assert.assertEquals(EXPECTED_INT_VALUE, score.getId());
+        Assert.assertFalse(score.isIneligible());
+        Assert.assertEquals(EXPECTED_DOUBLE_VALUE, score.getRank(), DELTA);
+        Assert.assertEquals(EXPECTED_DOUBLE_VALUE, score.getScore(), DELTA);
+    }
 
+    @Override
+    protected String getResourceFileName() {
+        return "score-by-stat.json";
     }
 }

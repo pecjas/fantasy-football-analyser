@@ -1,35 +1,28 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
-public class CumulativeScoreTests {
-    private static final String CUMULATIVE_SCORE_FILE = "cumulative-score.json";
+import org.junit.Assert;
 
-    @Test
-    public void testCumulativeScoreDeserialization() throws IOException {
-        File file = new File(Objects.requireNonNull(getClass()
-            .getClassLoader()
-            .getResource(CUMULATIVE_SCORE_FILE)
-        ).getFile());
+public class CumulativeScoreTests extends DeserializingResourceLoader {
+    private static final int EXPECTED_VALUE = 999;
+    private static final int EXPECTED_SCORES_BY_STAT_COUNT = 7;
+    private static final int EXPECTED_CUMULATIVE_SCORE_COUNT = 1;
 
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
+    @Override
+    public void testDeserialization() throws IOException {
+        List<CumulativeScore> cumulativeScores = deserializeObjects(CumulativeScore.class);
 
-        List<CumulativeScore> cumulativeScores = mapper.readValue(file,
-            mapper.getTypeFactory().constructCollectionType(List.class, CumulativeScore.class));
+        Assert.assertEquals(EXPECTED_CUMULATIVE_SCORE_COUNT, cumulativeScores.size());
+        Assert.assertEquals(EXPECTED_VALUE, cumulativeScores.get(0).getLosses());
+        Assert.assertEquals(EXPECTED_VALUE, cumulativeScores.get(0).getWins());
+        Assert.assertEquals(EXPECTED_VALUE, cumulativeScores.get(0).getTies());
+        Assert.assertEquals(EXPECTED_SCORES_BY_STAT_COUNT, cumulativeScores.get(0).getScoresByStats().size());
+    }
 
-        Assert.assertEquals(1, cumulativeScores.size());
-        Assert.assertEquals(0, cumulativeScores.get(0).getLosses());
-        Assert.assertEquals(0, cumulativeScores.get(0).getWins());
-        Assert.assertEquals(0, cumulativeScores.get(0).getTies());
-        Assert.assertEquals(7, cumulativeScores.get(0).getScoresByStats().getScores().size());
+    @Override
+    protected String getResourceFileName() {
+        return "cumulative-score.json";
     }
 }

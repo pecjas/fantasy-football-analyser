@@ -1,40 +1,34 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import ffb.analyzer.models.espn.ScoringPeriod;
-import ffb.analyzer.models.espn.SeasonInformation;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import ffb.analyzer.core.utilities.DateUtils;
 
-public class SeasonInformationTests {
 
-    private static final String SEASON_INFORMATION_FILE = "season-information.json";
-    private static final int EXPECTED_SEASON_COUNT = 17;
-    private static final Date END_DATE = new Date();
-    private static final Date START_DATE = new Date();
+/**
+ * Unit tests for {@link SeasonInformation}.
+ */
+public class SeasonInformationTests extends DeserializingResourceLoader {
+
+    private static final int EXPECTED_INT_VALUE = 5;
+    private static final int EXPECTED_YEAR = 2020;
+    private static final String EXPECTED_SEASON_NAME = "Fantasy Football 2020";
+    private static final String EXPECTED_SEASON_ABBREVIATION = "FFL 2020";
+    private static final int EXPECTED_SEASON_COUNT = 1;
+    private static final LocalDate END_DATE = DateUtils.fromEpochMillisecond(1646809200000L);
+    private static final LocalDate START_DATE = DateUtils.fromEpochMillisecond(1583737200000L);
     private static final int ID = 2020;
-
-    private static ObjectMapper mapper;
-
-    @BeforeClass
-    public static void prepareForTests() {
-        mapper = new ObjectMapper().enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
-    }
 
     /**
      * Verifies that a {@link SeasonInformation} can be serialized to JSON.
      *
-     * @throws JsonProcessingException Thrown if serialization fails.
+     * @throws JsonProcessingException Thrown if deserializers fails.
      */
     @Test
     public void testSeasonInformationSerialization() throws JsonProcessingException {
@@ -43,7 +37,7 @@ public class SeasonInformationTests {
 
         SeasonInformation info = new SeasonInformation();
         info.setAbbreviation("AAA");
-        info.setActiveStatus(true);
+        info.setActive(true);
         info.setDisplayOrder(0);
         info.setGameId(1);
         info.setName("Test Season");
@@ -58,19 +52,36 @@ public class SeasonInformationTests {
     /**
      * Verifies that JSON can be deserialied into {@link SeasonInformation}.
      *
-     * @throws IOException Thrown if serialization fails, or resource does not exist.
+     * @throws IOException Thrown if deserializers fails, or resource does not exist.
      */
     @Test
-    public void testSeasonInformationDeserialization() throws IOException {
-        File file = new File(Objects.requireNonNull(getClass()
-            .getClassLoader()
-            .getResource(SEASON_INFORMATION_FILE)
-        ).getFile());
-
-        List<SeasonInformation> seasons = mapper.readValue(file,
-            mapper.getTypeFactory().constructCollectionType(List.class, SeasonInformation.class));
+    public void testDeserialization() throws IOException {
+        List<SeasonInformation> seasons = deserializeObjects(SeasonInformation.class);
 
         Assert.assertFalse(seasons.isEmpty());
         Assert.assertEquals(EXPECTED_SEASON_COUNT, seasons.size());
+
+        checkForExpectedValues(seasons.get(0));
+    }
+
+    private void checkForExpectedValues(SeasonInformation season) {
+        Assert.assertTrue(season.isActive());
+        Assert.assertTrue(season.isDisplayable());
+
+        Assert.assertEquals(EXPECTED_INT_VALUE, season.getScoringPeriod().getId());
+        Assert.assertEquals(EXPECTED_INT_VALUE, season.getGameId());
+        Assert.assertEquals(EXPECTED_YEAR, season.getYear());
+        Assert.assertEquals(EXPECTED_INT_VALUE, season.getDisplayOrder());
+
+        Assert.assertEquals(START_DATE, season.getStartDate());
+        Assert.assertEquals(END_DATE, season.getEndDate());
+
+        Assert.assertTrue(season.getName().equalsIgnoreCase(EXPECTED_SEASON_NAME));
+        Assert.assertTrue(season.getAbbreviation().equalsIgnoreCase(EXPECTED_SEASON_ABBREVIATION));
+    }
+
+    @Override
+    protected String getResourceFileName() {
+        return "season-information.json";
     }
 }

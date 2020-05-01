@@ -1,8 +1,8 @@
 {
-  "losses": 0,
+  "losses": 999,
   "statBySlot": null,
-  "ties": 0,
-  "wins": 0,
+  "ties": 999,
+  "wins": 999,
   "scoreByStat": {
     "128": {
       "ineligible": false,

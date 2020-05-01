@@ -1,23 +1,17 @@
-package ffb.analyzer.models.espn.serialization;
+package ffb.analyzer.models.espn.deserializers;
 
-import ffb.analyzer.models.espn.ScoreByStat;
+import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-import java.io.IOException;
+import ffb.analyzer.models.espn.ScoreByStat;
 
-public class ScoreByStatDeserializer extends StdDeserializer<ScoreByStat> {
-
-    public ScoreByStatDeserializer() {
-        this(null);
-    }
-
-    public ScoreByStatDeserializer(Class<?> vc) {
-        super(vc);
-    }
+/**
+ * Deserialize JSON into a {@link ScoreByStat} object.
+ */
+public class ScoreByStatDeserializer extends BaseObjectDeserializer<ScoreByStat> {
 
     @Override
     public ScoreByStat deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
@@ -29,8 +23,8 @@ public class ScoreByStatDeserializer extends StdDeserializer<ScoreByStat> {
         JsonNode fields = node.get(statFieldName);
 
         boolean ineligible = fields.get("ineligible").booleanValue();
-        float rank = fields.get("rank").floatValue();
-        float score = fields.get("score").floatValue();
+        double rank = fields.get("rank").doubleValue();
+        double score = fields.get("score").doubleValue();
 
         ScoreByStat stat = new ScoreByStat();
         stat.setId(Integer.parseInt(statFieldName));

@@ -1,15 +1,19 @@
 package ffb.analyzer.core.web.request;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
-import org.apache.http.message.BasicNameValuePair;
-
 import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Supplier;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
+import org.apache.http.message.BasicNameValuePair;
+
+/**
+ * Implementation of a {@link BaseEntityEnclosingRequestBuilder}.
+ * @param <T> Type of request to be built.
+ */
 public final class EntityEnclosingRequestBuilder<T extends HttpEntityEnclosingRequestBase>
     implements BaseEntityEnclosingRequestBuilder<T>
 {
@@ -45,6 +49,9 @@ public final class EntityEnclosingRequestBuilder<T extends HttpEntityEnclosingRe
         return request;
     }
 
+    /**
+     * @return New instance of a {@link EntityEnclosingRequestBuilder}.
+     */
     public static <T extends HttpEntityEnclosingRequestBase> EntityEnclosingRequestBuilder<T>
         newInstance(Supplier<T> constructor)
     {
