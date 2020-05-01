@@ -18,7 +18,8 @@ public class RosterEntry extends EspnEntity<RosterEntry> {
      */
     public enum AcquisitionType {
         DRAFT,
-        TRADE
+        TRADE,
+        ADD
     }
 
     /**

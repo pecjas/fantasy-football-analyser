@@ -35,8 +35,8 @@ public class ScoresByStatDeserializer extends BaseObjectDeserializer<List<ScoreB
             ScoreByStat score = new ScoreByStat();
             score.setId(Integer.parseInt(statIdName));
             score.setIneligible(statNode.get(INELIGIBLE_FIELD_NAME).booleanValue());
-            score.setScore(statNode.get(SCORE_FIELD_NAME).doubleValue());
-            score.setRank(statNode.get(RANK_FIELD_NAME).doubleValue());
+            score.setScore(statNode.get(SCORE_FIELD_NAME).floatValue());
+            score.setRank(statNode.get(RANK_FIELD_NAME).floatValue());
 
             scores.add(score);
         });

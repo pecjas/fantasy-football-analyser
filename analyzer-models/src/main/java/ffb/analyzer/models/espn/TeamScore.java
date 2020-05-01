@@ -13,10 +13,10 @@ public class TeamScore extends EspnEntity<TeamScore> {
     private int teamId;
 
     @JsonProperty("totalPoints")
-    private double points;
+    private float points;
 
     @JsonProperty("pointsByScoringPeriod")
-    private Map<Integer, Double> scores;
+    private Map<Integer, Float> scores;
 
     public CumulativeScore getCumulativeScore() {
         return cumulativeScore;
@@ -42,19 +42,19 @@ public class TeamScore extends EspnEntity<TeamScore> {
         this.teamId = teamId;
     }
 
-    public double getPoints() {
+    public float getPoints() {
         return points;
     }
 
-    public void setPoints(double points) {
+    public void setPoints(float points) {
         this.points = points;
     }
 
-    public Map<Integer, Double> getScores() {
+    public Map<Integer, Float> getScores() {
         return scores;
     }
 
-    public void setScores(Map<Integer, Double> scores) {
+    public void setScores(Map<Integer, Float> scores) {
         this.scores = scores;
     }
 }

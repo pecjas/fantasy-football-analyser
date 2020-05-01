@@ -1,6 +1,5 @@
 package ffb.analyzer.models.espn;
 
-import java.lang.String;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

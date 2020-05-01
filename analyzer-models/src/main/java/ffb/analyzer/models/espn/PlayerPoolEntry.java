@@ -30,7 +30,7 @@ public class PlayerPoolEntry extends EspnEntity<PlayerPoolEntry> {
         }
     }
 
-    private double appliedStatTotal;
+    private float appliedStatTotal;
     private int id;
     private List<Player> players;
     private boolean lineupLocked;
@@ -41,11 +41,11 @@ public class PlayerPoolEntry extends EspnEntity<PlayerPoolEntry> {
     @JsonProperty("onTeamId")
     private int teamId;
 
-    public double getAppliedStatTotal() {
+    public float getAppliedStatTotal() {
         return appliedStatTotal;
     }
 
-    public void setAppliedStatTotal(double appliedStatTotal) {
+    public void setAppliedStatTotal(float appliedStatTotal) {
         this.appliedStatTotal = appliedStatTotal;
     }
 

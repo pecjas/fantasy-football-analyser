@@ -23,8 +23,8 @@ public class ScoreByStatDeserializer extends BaseObjectDeserializer<ScoreByStat>
         JsonNode fields = node.get(statFieldName);
 
         boolean ineligible = fields.get("ineligible").booleanValue();
-        double rank = fields.get("rank").doubleValue();
-        double score = fields.get("score").doubleValue();
+        float rank = fields.get("rank").floatValue();
+        float score = fields.get("score").floatValue();
 
         ScoreByStat stat = new ScoreByStat();
         stat.setId(Integer.parseInt(statFieldName));

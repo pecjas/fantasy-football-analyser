@@ -9,16 +9,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Roster extends EspnEntity<Roster> {
 
-    private double appliedStatTotal;
+    private float appliedStatTotal;
 
     @JsonProperty("entries")
     private List<RosterEntry> players;
 
-    public double getAppliedStatTotal() {
+    public float getAppliedStatTotal() {
         return appliedStatTotal;
     }
 
-    public void setAppliedStatTotal(double appliedStatTotal) {
+    public void setAppliedStatTotal(float appliedStatTotal) {
         this.appliedStatTotal = appliedStatTotal;
     }
 
