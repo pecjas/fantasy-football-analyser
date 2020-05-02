@@ -1,6 +1,5 @@
 package ffb.analyzer.sql;
 
-import com.mysql.cj.MysqlConnection;
 import ffb.analyzer.sql.connection.DatabaseConnector;
 import org.junit.Assert;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-connection.properties
+**/*/connection.properties
 target
 *.class
 .jar
