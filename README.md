@@ -18,8 +18,8 @@ Be sure to install the dependencies on your computer
 ##Create your database
 1. Follow the instructions [here](https://dev.mysql.com/doc/refman/8.0/en/installing.html) 
    to install and configure MySql
-2. Create a new database
-3. Copy `connection.properties.example` to `connection.properties`
+2. Create a new database in MySql
+3. In the analyzer-core module, copy `connection.properties.example` to `connection.properties`
     ```bash
    $ cp connection.properties.example connection.properties #unix-like OS
    $ copy connection.properties.example connection.properties #windows OS
@@ -27,6 +27,8 @@ Be sure to install the dependencies on your computer
 4. Fill in the connection details documented in `connection.properties`
 5. Run the liquibase command to populate your schema. The parameters should be the same as in 
    the `connection.properties` file.
+   
+**Note:** If you want to connect to MySql without a password, remove or clear out the DB_PASSWORD field.
 
 ##Useful Commands 
 * Checkstyle
@@ -35,8 +37,20 @@ Be sure to install the dependencies on your computer
     ```
 * Liquibase - fill in the required parameters
     ```bash
-    $ mvn clean install liquibase:update -pl analyzer-sql -Ddb.host=[HOST NAME] \ #default host is 127.0.0.1
-      -Ddb.port=[PORT] -Ddb.name=[SCHEMA NAME] \ #default port is 3306
-      -Ddb.useSSL=[TRUE|FALSE] -Ddb.username=[DB USER] -Ddb.password=[PASSWORD] #Defaults are FALSE, root, admin
+    $ mvn clean install liquibase:update -pl analyzer-sql -Ddb.host=[HOST NAME] -Ddb.port=[PORT] \
+      -Ddb.name=[DATABASE NAME] -Ddb.useSSL=[TRUE|FALSE] -Ddb.username=[DB USER] -Ddb.password=[PASSWORD] \
+      -Ddb.tz=[TIMEZONE]
+    ```
+    **Note:** The defaults for liquibase parameters are:
+    * db.host: 127.0.0.1
+    * db.port: 3306
+    * db.name: new
+    * db.useSSL: FALSE
+    * db.username: root
+    * db.password: `NULL`
+    * db.tz: America/Chicago
+* Running Integrated Tests
+    ```bash
+    $ mvn clean test -pl analyzer-tests
     ```
 
