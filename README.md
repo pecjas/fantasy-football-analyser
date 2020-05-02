@@ -3,17 +3,40 @@ A project to track and analyze data related to NFL fantasy football.
 
 Idea inspired by V1 of the project available here: https://github.com/pecjas/FFBStats
 
-David: 
+##Table of Contents
+[Getting Started](#getting-started)
 
-1. Expand current script functionality to work for multiple leagues
-2. Move UI components into the browser
-3. Allow users to enter league information from the browser
-4. Expand analysis to player point stats over time
-5. Add flexiblity to use different FFB websites
 
-Jason:
-1. Cache data retrieved between sessions. Re-retrieve only when necessary.
-2. Generate predictions based on combination of player and other external data
-3. Ability to generate "bot" to draft and compete in league.
-4. Trigger Trade Suggestion emails to users.
-5. "What if" scores - Allow users to see what the score of a matchup would have been if different rules were in place.
+##Getting Started
+Be sure to install the dependencies on your computer
+* Java: Java 11
+* MySql: 8.0.20
+* MySQL Workbench: Any Version
+* TODO: Add JS Dependencies
+
+
+##Create your database
+1. Follow the instructions [here](https://dev.mysql.com/doc/refman/8.0/en/installing.html) 
+   to install and configure MySql
+2. Create a new database
+3. Copy `connection.properties.example` to `connection.properties`
+    ```bash
+   $ cp connection.properties.example connection.properties #unix-like OS
+   $ copy connection.properties.example connection.properties #windows OS
+    ```
+4. Fill in the connection details documented in `connection.properties`
+5. Run the liquibase command to populate your schema. The parameters should be the same as in 
+   the `connection.properties` file.
+
+##Useful Commands 
+* Checkstyle
+    ```bash
+    $ mvn checkstyle:checkstyle
+    ```
+* Liquibase - fill in the required parameters
+    ```bash
+    $ mvn clean install liquibase:update -pl analyzer-sql -Ddb.host=[HOST NAME] \ #default host is 127.0.0.1
+      -Ddb.port=[PORT] -Ddb.name=[SCHEMA NAME] \ #default port is 3306
+      -Ddb.useSSL=[TRUE|FALSE] -Ddb.username=[DB USER] -Ddb.password=[PASSWORD] #Defaults are FALSE, root, admin
+    ```
+

@@ -10,6 +10,7 @@
     <module>analyzer-core</module>
     <module>analyzer-tests</module>
     <module>analyzer-models</module>
+      <module>analyzer-sql</module>
   </modules>
   <name>fantasy-football-analyzer</name>
   <url>https://github.com/pecjas/fantasy-football-analyzer</url>
