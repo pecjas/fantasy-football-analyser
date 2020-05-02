@@ -1,6 +1,6 @@
-package ffb.analyzer.sql;
+package ffb.analyzer.tests.db;
 
-import ffb.analyzer.sql.connection.DatabaseConnector;
+import ffb.analyzer.core.db.DatabaseConnector;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class DatabaseConnectorTests {
         Connection connection = null;
         DatabaseConnector connector = null;
         try {
-            connector = new DatabaseConnector();
+            connector = DatabaseConnector.getInstance();
             connection = connector.getConnection();
 
             Assert.assertNotNull(connection);

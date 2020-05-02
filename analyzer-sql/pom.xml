@@ -10,22 +10,26 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ffb.analyzer.sql</groupId>
   <artifactId>analyzer-sql</artifactId>
-  <version>1.0-SNAPSHOT</version>
   <name>analyzer-sql</name>
   <properties>
     <db.useSSL>FALSE</db.useSSL>
     <db.host>127.0.0.1</db.host>
     <db.port>3306</db.port>
     <db.name>new</db.name>
-    <db.url>jdbc:mysql://${db.host}:${db.port}/${db.name}?autoReconnect=true&amp;useSSL=${db.useSSL}</db.url>
+    <db.tz>America/Chicago</db.tz>
+    <db.url>jdbc:mysql://${db.host}:${db.port}/${db.name}?autoReconnect=true&amp;useSSL=${db.useSSL}&amp;serverTimezone=${db.tz}</db.url>
     <db.username>root</db.username>
-    <db.password>admin</db.password>
   </properties>
   <dependencies>
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.18</version>
+    </dependency>
+    <dependency>
+      <groupId>ffb.analyzer.core</groupId>
+      <artifactId>analyzer-core</artifactId>
+      <version>${project.parent.version}</version>
     </dependency>
   </dependencies>
   <build>
@@ -53,7 +57,7 @@
           <artifactId>liquibase-maven-plugin</artifactId>
           <version>3.8.9</version>
           <configuration>
-            <changelogFile>ffb/analyzer/sql/changelog-master.xml</changelogFile>
+            <changeLogFile>ffb/analyzer/sql/changelog-master.xml</changeLogFile>
             <driver>com.mysql.cj.jdbc.Driver</driver>
             <url>${db.url}</url>
             <username>${db.username}</username>

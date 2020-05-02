@@ -1,4 +1,4 @@
-package ffb.analyzer.sql.connection;
+package ffb.analyzer.core.db;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,7 +9,6 @@ import java.util.Properties;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 public class DatabaseConnector implements AutoCloseable {
-
     private static final String PROPERTY_FILE_NAME = "connection.properties";
     private static final String HOST_PROPERTY_FIELD = "DB_HOST";
     private static final String PORT_PROPERTY_FIELD = "DB_PORT";
@@ -17,10 +16,12 @@ public class DatabaseConnector implements AutoCloseable {
     private static final String USER_NAME_PROPERTY_FIELD = "DB_USER";
     private static final String PASSWORD_PROPERTY_FIELD = "DB_PASSWORD";
 
+    private static DatabaseConnector connector = null;
+
     private Connection connection;
     private final MysqlDataSource dataSource;
 
-    public DatabaseConnector() throws IOException, SQLException {
+    private DatabaseConnector() throws IOException, SQLException {
         this.dataSource = getDataSource();
     }
 
@@ -42,7 +43,10 @@ public class DatabaseConnector implements AutoCloseable {
 
     public void configureDataSource(MysqlDataSource dataSource) throws IOException, SQLException {
         Properties props = new Properties();
-        props.load(getClass().getClassLoader().getResourceAsStream(PROPERTY_FILE_NAME));
+        props.load(getClass()
+            .getClassLoader()
+            .getResourceAsStream(PROPERTY_FILE_NAME)
+        );
 
         dataSource.setServerName(getPropertyValue(props, HOST_PROPERTY_FIELD));
         dataSource.setPort(Integer.parseInt(getPropertyValue(props, PORT_PROPERTY_FIELD)));
@@ -63,5 +67,13 @@ public class DatabaseConnector implements AutoCloseable {
         if (connection != null) {
             connection.close();
         }
+    }
+
+    public static DatabaseConnector getInstance() throws IOException, SQLException {
+        if (connector == null) {
+            connector = new DatabaseConnector();
+        }
+
+        return connector;
     }
 }
