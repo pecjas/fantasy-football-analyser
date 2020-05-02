@@ -1,13 +1,10 @@
 package ffb.analyzer.models.espn;
 
-import java.lang.String;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class Team extends EspnEntity<Team> {
     private int id;

@@ -65,7 +65,7 @@ public class Player extends EspnEntity<Player> {
     private List<Integer> eligibleSlots;
     private String firstName;
     private String lastName;
-    private int id;
+    private int playerId;
     private InjuryStatus injuryStatus;
     private int proTeamId;
     private List<PlayerRanking> rankings;
@@ -135,11 +135,11 @@ public class Player extends EspnEntity<Player> {
     }
 
     public int getId() {
-        return id;
+        return playerId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.playerId = id;
     }
 
     public boolean isInjured() {

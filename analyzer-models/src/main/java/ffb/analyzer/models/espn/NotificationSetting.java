@@ -1,7 +1,5 @@
 package ffb.analyzer.models.espn;
 
-import java.lang.String;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NotificationSetting extends EspnEntity<NotificationSetting> {
@@ -22,7 +20,9 @@ public class NotificationSetting extends EspnEntity<NotificationSetting> {
     public boolean isEnabled() {
         return enabled;
     }
-    public void setEnabled(boolean enabled) { this.enabled = enabled; }
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 
     public String getPlayerNotificationId() {
         return playerNotificationId;

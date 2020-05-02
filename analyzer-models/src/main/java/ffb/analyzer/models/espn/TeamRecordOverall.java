@@ -1,6 +1,6 @@
 package ffb.analyzer.models.espn;
 
-    public class TeamRecordOverall extends TeamRecordBase<TeamRecordOverall> {
+public class TeamRecordOverall extends TeamRecordBase<TeamRecordOverall> {
     private float pointsFor;
     private float pointsAgainst;
 

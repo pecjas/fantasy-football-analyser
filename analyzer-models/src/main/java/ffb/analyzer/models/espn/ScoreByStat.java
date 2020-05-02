@@ -11,8 +11,8 @@ import ffb.analyzer.models.espn.deserializers.ScoreByStatDeserializer;
 public class ScoreByStat extends EspnEntity<ScoreByStat> {
     private int id;
     private boolean ineligible;
-    private double rank;
-    private double score;
+    private float rank;
+    private float score;
 
     public int getId() {
         return id;
@@ -30,19 +30,19 @@ public class ScoreByStat extends EspnEntity<ScoreByStat> {
         this.ineligible = ineligible;
     }
 
-    public double getRank() {
+    public float getRank() {
         return rank;
     }
 
-    public void setRank(double rank) {
+    public void setRank(float rank) {
         this.rank = rank;
     }
 
-    public double getScore() {
+    public float getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(float score) {
         this.score = score;
     }
 }
