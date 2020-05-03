@@ -1,0 +1,6 @@
+id,value,label
+0,NORMAL,Normal
+1,ACTIVE,Active
+2,QUESTIONABLE,Questionable
+3,OUT,Out
+4,DOUBTFUL,Doubtful

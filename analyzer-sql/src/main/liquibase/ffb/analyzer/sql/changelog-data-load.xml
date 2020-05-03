@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="Populate NOTIFICATION_SETTING" author="david.hu" runOnChange="true">
+        <delete tableName="NOTIFICATION_SETTINGS"/>
+        <loadData tableName="NOTIFICATION_SETTING" relativeToChangelogFile="true"
+                  file="data/notification-settings.csv" >
+            <column header="id" type="numeric"/>
+            <column header="value" type="string"/>
+            <column header="label" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="Populate LEAGUE_TYPE" author="david.hu" runOnChange="true">
+        <delete tableName="LEAGUE_TYPE"/>
+        <loadData tableName="LEAGUE_TYPE" relativeToChangelogFile="true"
+                  file="data/league-type.csv">
+            <column header="id" type="numeric"/>
+            <column header="value" type="string"/>
+            <column header="value" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="populate ACQUISITION_TYPE" author="david.hu" runOnChange="true">
+        <delete tableName="ACQUISITION_TYPE"/>
+        <loadData tableName="ACQUISITION_TYPE" relativeToChangelogFile="true"
+                  file="data/acquisition-type.csv">
+            <column header="id" type="numeric"/>
+            <column header="value" type="string"/>
+            <column header="value" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="populate INJURY_STATUS" author="david.hu" runOnChange="true">
+        <delete tableName="INJURY_STATUS"/>
+        <loadData tableName="INJURY_STATUS" relativeToChangelogFile="true"
+                  file="data/injury-status.csv">
+            <column header="id" type="numeric"/>
+            <column header="value" type="string"/>
+            <column header="value" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="populate PLAYER_STATUS" author="david.hu" runOnChange="true">
+        <delete tableName="PLAYER_STATUS"/>
+        <loadData tableName="PLAYER_STATUS" relativeToChangelogFile="true"
+                  file="data/player-status.csv">
+            <column header="id" type="numeric"/>
+            <column header="value" type="string"/>
+            <column header="value" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="populate PLAYER_POSITION" author="david.hu" runOnChange="true">
+        <delete tableName="PLAYER_POSITION"/>
+        <loadData tableName="PLAYER_POSITION" relativeToChangelogFile="true"
+                  file="data/position.csv">
+            <column header="id" type="numeric"/>
+            <column header="value" type="string"/>
+            <column header="value" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="populate RANK_TYPE" author="david.hu" runOnChange="true">
+        <delete tableName="RANK_TYPE"/>
+        <loadData tableName="RANK_TYPE" relativeToChangelogFile="true"
+                  file="data/rank-type.csv">
+            <column header="id" type="numeric"/>
+            <column header="value" type="string"/>
+            <column header="value" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="populate ROSTER_STATUS" author="david.hu" runOnChange="true">
+        <delete tableName="ROSTER_STATUS"/>
+        <loadData tableName="ROSTER_STATUS" relativeToChangelogFile="true"
+                  file="data/roster-status.csv">
+            <column header="id" type="numeric"/>
+            <column header="value" type="string"/>
+            <column header="value" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="populate STREAK_TYPE" author="david.hu" runOnChange="true">
+        <delete tableName="STREAK_TYPE"/>
+        <loadData tableName="STREAK_TYPE" relativeToChangelogFile="true"
+                  file="data/streak-type.csv">
+            <column header="id" type="numeric"/>
+            <column header="value" type="string"/>
+            <column header="value" type="string"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet id="populate WINNER" author="david.hu">
+        <delete tableName="WINNER"/>
+        <loadData tableName="WINNER" relativeToChangelogFile="true"
+                  file="data/winner.csv">
+            <column header="id" type="numeric"/>
+            <column header="value" type="string"/>
+            <column header="value" type="string"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

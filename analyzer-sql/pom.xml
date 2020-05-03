@@ -40,6 +40,8 @@
         <includes>
           <include>**/*.xml</include>
           <include>**/*.sql</include>
+          <include>**/*.metadata</include>
+          <include>**/*.csv</include>
         </includes>
       </resource>
       <resource>

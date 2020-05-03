@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="Create NOTIFICATION_SETTING table" author="david.hu">
+        <createTable tableName="NOTIFICATION_SETTING">
+            <column name="ID" type="int" remarks="Primary key">
+                <constraints primaryKey="true" notNullConstraintName="NOTIF_SETTING_ID_NOT_NULL"/>
+            </column>
+            <column name="VALUE" type="varchar(30)" remarks="String value associated with the primary key">
+                <constraints nullable="false" notNullConstraintName="NOTIF_SETTING_VAL_NOT_NULL"/>
+            </column>
+            <column name="LABEL" type="varchar(30)" remarks="UI formatted label">
+                <constraints nullable="false" notNullConstraintName="NOTIF_SETTING_LABEL_NOT_NULL"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Create LEAGUE_TYPE table" author="david.hu">
+        <createTable tableName="LEAGUE_TYPE">
+            <column name="ID" type="int" remarks="Primary key">
+                <constraints primaryKey="true" notNullConstraintName="PK_LEAGUE_TYPE"/>
+            </column>
+            <column name="VALUE" type="varchar(30)" remarks="String value associated with the primary key">
+                <constraints nullable="false" notNullConstraintName="LEAGUE_TYPE_VAL_NOT_NULL"/>
+            </column>
+            <column name="LABEL" type="varchar(30)" remarks="UI formatted label">
+                <constraints nullable="false" notNullConstraintName="LEAGUE_TYPE_LABEL_NOT_NULL"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Create WINNER table" author="david.hu">
+        <createTable tableName="WINNER">
+            <column name="ID" type="int" remarks="Primary key">
+                <constraints primaryKey="true" notNullConstraintName="PK_WINNER"/>
+            </column>
+            <column name="VALUE" type="varchar(30)" remarks="String value associated with the primary key">
+                <constraints nullable="false" notNullConstraintName="WINNER_VAL_NOT_NULL"/>
+            </column>
+            <column name="LABEL" type="varchar(30)" remarks="UI formatted label">
+                <constraints nullable="false" notNullConstraintName="WINNER_LABEL_NOT_NULL"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="Create PLAYER_POSITION table" author="david.hu">
+        <createTable tableName="PLAYER_POSITION">
+            <column name="ID" type="int" remarks="Primary key">
+                <constraints primaryKey="true" notNullConstraintName="PK_PLAYER_POSITION"/>
+            </column>
+            <column name="VALUE" type="varchar(30)" remarks="String value associated with the primary key">
+                <constraints nullable="false" notNullConstraintName="PLAYER_POSITION_VAL_NOT_NULL"/>
+            </column>
+            <column name="LABEL" type="varchar(30)" remarks="UI formatted label">
+                <constraints nullable="false" notNullConstraintName="PLAYER_POSITION_LABEL_NOT_NULL"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create Injury Status table" author="david.hu">
+        <createTable tableName="INJURY_STATUS">
+            <column name="ID" type="int" remarks="Primary key">
+                <constraints primaryKey="true" notNullConstraintName="PK_INJURY_STATUS"/>
+            </column>
+            <column name="VALUE" type="varchar(30)" remarks="String value associated with the primary key">
+                <constraints nullable="false" notNullConstraintName="INJURY_STATUS_VAL_NOT_NULL"/>
+            </column>
+            <column name="LABEL" type="varchar(30)" remarks="UI formatted label">
+                <constraints nullable="false" notNullConstraintName="INJURY_STATUS_LABEL_NOT_NULL"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create RANK_TYPE table" author="david.hu">
+        <createTable tableName="RANK_TYPE">
+            <column name="ID" type="int" remarks="Primary key">
+                <constraints primaryKey="true" notNullConstraintName="PK_RANK_TYPE"/>
+            </column>
+            <column name="VALUE" type="varchar(30)" remarks="String value associated with the primary key">
+                <constraints nullable="false" notNullConstraintName="RANK_TYPE_VAL_NOT_NULL"/>
+            </column>
+            <column name="LABEL" type="varchar(30)" remarks="UI formatted label">
+                <constraints nullable="false" notNullConstraintName="RANK_TYPE_LABEL_NOT_NULL"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create ACQUISITION_TYPE table" author="david.hu">
+        <createTable tableName="ACQUISITION_TYPE">
+            <column name="ID" type="int" remarks="Primary key">
+                <constraints primaryKey="true" notNullConstraintName="PK_ACQUISITION_TYPE"/>
+            </column>
+            <column name="VALUE" type="varchar(30)" remarks="String value associated with the primary key">
+                <constraints nullable="false" notNullConstraintName="ACQUISITION_TYPE_VAL_NOT_NULL"/>
+            </column>
+            <column name="LABEL" type="varchar(30)" remarks="UI formatted label">
+                <constraints nullable="false" notNullConstraintName="ACQUISITION_TYPE_LABEL_NOT_NULL"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create STREAK_TYPE table" author="david.hu">
+        <createTable tableName="STREAK_TYPE">
+            <column name="ID" type="int" remarks="Primary key">
+                <constraints primaryKey="true" notNullConstraintName="PK_STREAK_TYPE"/>
+            </column>
+            <column name="VALUE" type="varchar(30)" remarks="String value associated with the primary key">
+                <constraints nullable="false" notNullConstraintName="STREAK_TYPE_VAL_NOT_NULL"/>
+            </column>
+            <column name="LABEL" type="varchar(30)" remarks="UI formatted label">
+                <constraints nullable="false" notNullConstraintName="STREAK_TYPE_LABEL_NOT_NULL"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create ROSTER_STATUS table" author="david.hu">
+        <createTable tableName="ROSTER_STATUS">
+            <column name="ID" type="int" remarks="Primary key">
+                <constraints primaryKey="true" notNullConstraintName="PK_ROSTER_STATUS"/>
+            </column>
+            <column name="VALUE" type="varchar(30)" remarks="String value associated with the primary key">
+                <constraints nullable="false" notNullConstraintName="ROSTER_STATUS_VAL_NOT_NULL"/>
+            </column>
+            <column name="LABEL" type="varchar(30)" remarks="UI formatted label">
+                <constraints nullable="false" notNullConstraintName="ROSTER_STATUS_LABEL_NOT_NULL"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create PLAYER_STATUS table" author="david.hu">
+        <createTable tableName="PLAYER_STATUS">
+            <column name="ID" type="int" remarks="Primary key">
+                <constraints primaryKey="true" notNullConstraintName="PK_PLAYER_STATUS"/>
+            </column>
+            <column name="VALUE" type="varchar(30)" remarks="String value associated with the primary key">
+                <constraints nullable="false" notNullConstraintName="PLAYER_STATUS_VAL_NOT_NULL"/>
+            </column>
+            <column name="LABEL" type="varchar(30)" remarks="UI formatted label">
+                <constraints nullable="false" notNullConstraintName="PLAYER_STATUS_LABEL_NOT_NULL"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

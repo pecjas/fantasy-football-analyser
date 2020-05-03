@@ -1,0 +1,7 @@
+id,value,label
+0,TEAM_TRADE_OFFER,Team Trade Offer
+1,TEAM_PLAYER_AVAILABILITY,Team Player Availability
+2,TEAM_PLAYER_INJURY,Team Player Injury
+3,TEAM_PLAYER_STARTBENCH,Team Player Start Bench
+4,TEAM_PLAYER_NEWS,Team Player News
+5,DRAFT,Draft

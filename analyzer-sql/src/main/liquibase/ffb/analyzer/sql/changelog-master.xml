@@ -6,4 +6,8 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <include file="1.0/changelog.xml" relativeToChangelogFile="true"/>
+
+    <!-- Change logs for future versions should be above this line -->
+
+    <include file="changelog-data-load.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

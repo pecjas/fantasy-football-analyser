@@ -1,0 +1,5 @@
+id,value,label
+0,WIN,Win
+1,LOSS,Loss
+2,TIE,Tie
+3,NONE,None
