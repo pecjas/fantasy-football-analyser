@@ -1,64 +1,54 @@
 package ffb.test.utilities;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.Assert;
 
-public abstract class GenericTestUtils {
+public final class GenericTestUtils {
     private static final List<String> GETTER_METHOD_PATTERNS = List.of("^get[A-Z].*", "^is[A-Z].*");
 
-    public static void validateGetMethodsReturnNonNullValue(List<?> testObjects) throws InvocationTargetException, IllegalAccessException {
-        List<Method> getterMethods = new ArrayList<Method>();
+    private GenericTestUtils() {
 
-        getterMethods = Stream.of(testObjects.get(0).getClass().getMethods())
-                .filter(GenericTestUtils::isGetterMethod)
-                .collect(Collectors.toList());
-
-        for (var testObj : testObjects) {
-            for (Method method : getterMethods) {
-                Assert.assertNotNull(method.invoke(testObj));
-            }
-        }
     }
 
-    public static void validateGetMethodsReturnNonNullValue(Object testObject) throws InvocationTargetException, IllegalAccessException {
-        Stream.of(testObject.getClass().getMethods())
-                .filter(GenericTestUtils::isGetterMethod)
-                .forEach(method -> {
-                            try {
-                                method.invoke(testObject);
-                            } catch(Exception e) {
-                                Assert.fail("Exception: " + e);
-                            };
-                });
+    public static void validateGetMethodsReturnNonNullValue(List<Object> testObjects) {
 
-        for (Method method : testObject.getClass().getMethods()) {
-            if (isGetterMethod(method)) {
-                Assert.assertNotNull(method.invoke(testObject));
+        List<Method> getterMethods = Stream.of(testObjects.get(0).getClass().getMethods())
+            .filter(GenericTestUtils::isGetterMethod)
+            .collect(Collectors.toList());
+
+        testObjects.forEach(obj -> validateGetMethodsReturnNonNullValue(getterMethods, obj));
+    }
+
+    public static void validateGetMethodsReturnNonNullValue(Object testObject) {
+        List<Method> getterMethods = Stream.of(testObject.getClass().getMethods())
+            .filter(GenericTestUtils::isGetterMethod)
+            .collect(Collectors.toList());
+
+        validateGetMethodsReturnNonNullValue(getterMethods, testObject);
+    }
+
+    private static void validateGetMethodsReturnNonNullValue(List<Method> methods, Object obj) {
+        methods.forEach(method -> {
+            try {
+                Assert.assertNotNull(method.invoke(obj));
             }
-        }
+            catch (Exception e) {
+                Assert.fail();
+            }
+        });
     }
 
     private static boolean isGetterMethod(Method method) {
-        if (!isPublicAndReturnsType(method)) {
-            return false;
-        }
-
-        if (hasGetterName(method)) {
-            return true;
-        }
-
-        return false;
+        return isPublicAndReturnsType(method) && hasGetterName(method);
     }
 
     private static boolean isPublicAndReturnsType(Method method) {
-        var returnType = method.getReturnType();
+        Class<?> returnType = method.getReturnType();
 
         return returnType.equals(Void.TYPE) ||
                 Modifier.isPublic(method.getModifiers());
