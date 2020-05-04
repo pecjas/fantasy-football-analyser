@@ -8,7 +8,7 @@ import org.junit.Assert;
 /**
  * Unit tests for {@link MatchupDetails}.
  */
-public class MatchupDetailsTest extends DeserializingResourceLoader {
+public class MatchupDetailsTest extends BaseSerializationTests {
 
     @Override
     public void testDeserialization() throws IOException {
@@ -20,5 +20,10 @@ public class MatchupDetailsTest extends DeserializingResourceLoader {
     @Override
     protected String getResourceFileName() {
         return "schedule.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTest() {
+        return MatchupDetails.class;
     }
 }

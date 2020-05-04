@@ -8,7 +8,7 @@ import org.junit.Assert;
 /**
  * Unit tests for {@link ScoreByStat}.
  */
-public class ScoreByStatTests extends DeserializingResourceLoader {
+public class ScoreByStatTests extends BaseSerializationTests {
     private static final double DELTA = .1;
     private static final int EXPECTED_INT_VALUE = 1;
     private static final double EXPECTED_DOUBLE_VALUE = 1.0;
@@ -30,5 +30,10 @@ public class ScoreByStatTests extends DeserializingResourceLoader {
     @Override
     protected String getResourceFileName() {
         return "score-by-stat.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTest() {
+        return ScoreByStat.class;
     }
 }

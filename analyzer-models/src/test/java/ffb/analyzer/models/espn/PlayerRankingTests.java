@@ -13,7 +13,7 @@ import ffb.analyzer.models.espn.deserializers.PlayerRankingsDeserializer;
 /**
  * Unit tests for a {@link PlayerRanking}.
  */
-public class PlayerRankingTests extends DeserializingResourceLoader {
+public class PlayerRankingTests extends BaseSerializationTests {
     private static final int EXPECTED_VALUE = 0;
     private static final int EXPECTED_RANKING_COUNT = 2;
 
@@ -41,11 +41,16 @@ public class PlayerRankingTests extends DeserializingResourceLoader {
         Assert.assertEquals(EXPECTED_VALUE, ranking.getRankSourceId());
         Assert.assertEquals(EXPECTED_VALUE, ranking.getSlotId());
 
-        Assert.assertTrue(ranking.getRankType().equals(expectedRankType));
+        Assert.assertEquals(ranking.getRankType(), expectedRankType);
     }
 
     @Override
     protected String getResourceFileName() {
         return "player-rankings.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTest() {
+        return PlayerRanking.class;
     }
 }

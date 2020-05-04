@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.junit.Assert;
 
-public class CumulativeScoreTests extends DeserializingResourceLoader {
+public class CumulativeScoreTests extends BaseSerializationTests {
     private static final int EXPECTED_VALUE = 999;
     private static final int EXPECTED_SCORES_BY_STAT_COUNT = 7;
     private static final int EXPECTED_CUMULATIVE_SCORE_COUNT = 1;
@@ -24,5 +24,10 @@ public class CumulativeScoreTests extends DeserializingResourceLoader {
     @Override
     protected String getResourceFileName() {
         return "cumulative-score.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTest() {
+        return CumulativeScore.class;
     }
 }
