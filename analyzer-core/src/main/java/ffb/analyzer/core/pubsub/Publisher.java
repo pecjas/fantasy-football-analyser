@@ -57,7 +57,7 @@ public class Publisher {
      * direct aditing of the subscribers object.
      * @return A clone of the subscribers HashSet
      */
-    public Map<Event, Set<Subscriber>> getSubscribersClone() {
+    public Map<Event, Set<Subscriber>> readSubscribers() {
         Map<Event, Set<Subscriber>> subscribersClone = new HashMap<>();
 
         Set<Subscriber> eventSubscribers;

@@ -27,9 +27,9 @@ public  class PubSubTests {
 
     @Test
     public void subscribeTest() {
-        Map<Publisher.Event, Set<Subscriber>> originalSubscribers = publisher.getSubscribersClone();
+        Map<Publisher.Event, Set<Subscriber>> originalSubscribers = publisher.readSubscribers();
         Utils.subscribeToExampleEvent(publisher, subscriber);
-        Map<Publisher.Event, Set<Subscriber>> newSubscribers = publisher.getSubscribersClone();
+        Map<Publisher.Event, Set<Subscriber>> newSubscribers = publisher.readSubscribers();
 
         Assert.assertNotEquals(originalSubscribers, newSubscribers);
         Assert.assertEquals(originalSubscribers.get(Publisher.Event.EXAMPLE_EVENT).size() + 1,
@@ -41,10 +41,10 @@ public  class PubSubTests {
     @Test
     public void unsubscribeTest() {
         Utils.subscribeToExampleEvent(publisher, subscriber);
-        Map<Publisher.Event, Set<Subscriber>> originalSubscribers = publisher.getSubscribersClone();
+        Map<Publisher.Event, Set<Subscriber>> originalSubscribers = publisher.readSubscribers();
 
         publisher.unsubscribe(Publisher.Event.EXAMPLE_EVENT,subscriber);
-        Map<Publisher.Event, Set<Subscriber>> newSubscribers = publisher.getSubscribersClone();
+        Map<Publisher.Event, Set<Subscriber>> newSubscribers = publisher.readSubscribers();
 
         Assert.assertNotEquals(originalSubscribers, newSubscribers);
         Assert.assertEquals(originalSubscribers.get(Publisher.Event.EXAMPLE_EVENT).size(),

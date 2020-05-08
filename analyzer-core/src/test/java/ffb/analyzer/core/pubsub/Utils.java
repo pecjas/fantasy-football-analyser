@@ -5,7 +5,7 @@ import java.util.Set;
 
 public abstract class Utils {
     protected static void unsubscribeAll(Publisher publisher) {
-        Map<Publisher.Event, Set<Subscriber>> currentSubscriptions = publisher.getSubscribersClone();
+        Map<Publisher.Event, Set<Subscriber>> currentSubscriptions = publisher.readSubscribers();
 
         for (Map.Entry<Publisher.Event, Set<Subscriber>> entry : currentSubscriptions.entrySet()) {
             for (Subscriber subscriber : entry.getValue()) {
