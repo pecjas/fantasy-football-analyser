@@ -8,28 +8,27 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public  class PubSubTests {
+    public class ExampleSubscriber implements Subscriber {
+        final static String EXPECTED_RESULT = "ExampleSubscriber";
+
+        @Override
+        public void update(String publishedResult) {
+            Assert.assertEquals(publishedResult, EXPECTED_RESULT);
+        }
+    }
+
     Publisher publisher = Publisher.getPublisher();
     ExampleSubscriber subscriber = new ExampleSubscriber();
 
-    public void subscribeToExampleEvent() {
-        publisher.subscribe(Publisher.Event.EXAMPLE_EVENT, subscriber);
-    }
-
     @After
-    public void unsubscribeAll() {
-        Map<Publisher.Event, Set<Subscriber>> currentSubscriptions = publisher.getSubscribersClone();
-
-        for (Map.Entry<Publisher.Event, Set<Subscriber>> entry : currentSubscriptions.entrySet()) {
-            for (Subscriber subscriber : entry.getValue()) {
-                publisher.unsubscribe(entry.getKey(), subscriber);
-            }
-        }
+    public void postTestCleanup() {
+        Utils.unsubscribeAll(publisher);
     }
 
     @Test
     public void subscribeTest() {
         Map<Publisher.Event, Set<Subscriber>> originalSubscribers = publisher.getSubscribersClone();
-        subscribeToExampleEvent();
+        Utils.subscribeToExampleEvent(publisher, subscriber);
         Map<Publisher.Event, Set<Subscriber>> newSubscribers = publisher.getSubscribersClone();
 
         Assert.assertNotEquals(originalSubscribers, newSubscribers);
@@ -41,7 +40,7 @@ public  class PubSubTests {
 
     @Test
     public void unsubscribeTest() {
-        subscribeToExampleEvent();
+        Utils.subscribeToExampleEvent(publisher, subscriber);
         Map<Publisher.Event, Set<Subscriber>> originalSubscribers = publisher.getSubscribersClone();
 
         publisher.unsubscribe(Publisher.Event.EXAMPLE_EVENT,subscriber);
@@ -56,7 +55,7 @@ public  class PubSubTests {
 
     @Test
     public void publishResultsTest() {
-        subscribeToExampleEvent();
+        Utils.subscribeToExampleEvent(publisher, subscriber);
         publisher.publishResults(Publisher.Event.EXAMPLE_EVENT, ExampleSubscriber.EXPECTED_RESULT);
     }
 

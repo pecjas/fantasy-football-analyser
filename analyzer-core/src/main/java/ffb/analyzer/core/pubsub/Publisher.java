@@ -1,9 +1,6 @@
 package ffb.analyzer.core.pubsub;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Publisher {
     private Object mutex = new Object();
@@ -14,6 +11,16 @@ public class Publisher {
 
     private static Publisher publisher;
     private Map<Event, Set<Subscriber>> subscribers = new HashMap<>();
+
+    private Publisher() {
+        Arrays.asList(Event.values()).
+                forEach(event -> {
+                    subscribers.put(
+                            event,
+                            new HashSet<Subscriber>()
+                    );
+                });
+    }
 
     public static Publisher getPublisher() {
         if (publisher == null) {
@@ -33,19 +40,9 @@ public class Publisher {
     }
 
     public boolean subscribe(Event event, Subscriber subscriber) {
-        boolean result;
         synchronized (mutex) {
-            if (subscribers.containsKey(event)) {
-                result = subscribers.get(event).add(subscriber);
-            } else {
-                Set<Subscriber> subscription = new HashSet<>();
-                result = subscription.add(subscriber);
-
-                subscribers.put(event, subscription);
-            }
+            return subscribers.get(event).add(subscriber);
         }
-
-        return result;
     }
 
     public void publishResults(Event event, String resultString) {
@@ -70,10 +67,7 @@ public class Publisher {
             subscribersClone.put(entry.getKey(),
                     new HashSet<>(entry.getValue()));
         }
-        
-        return subscribersClone;
-    }
 
-    private Publisher() {
+        return subscribersClone;
     }
 }

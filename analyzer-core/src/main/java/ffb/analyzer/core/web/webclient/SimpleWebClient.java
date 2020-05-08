@@ -19,7 +19,7 @@ import org.apache.http.impl.client.HttpClients;
 public class SimpleWebClient implements BaseWebClient {
 
     private static final List<DeserializationFeature> DEFAULT_DESERIALIZATION_OPTIONS = List.of(
-        DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY
+            DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY
     );
 
     private final ObjectMapper objectMapper;
@@ -33,8 +33,8 @@ public class SimpleWebClient implements BaseWebClient {
     public <T> List<T> sendGet(HttpGet request, Class<T> entity) throws IOException {
 
         return objectMapper.readValue(
-            sendAndGetResult(request),
-            transformToList(entity)
+                sendAndGetResult(request),
+                transformToList(entity)
         );
     }
 

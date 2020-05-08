@@ -1,18 +1,21 @@
 package ffb.analyzer.core.queue;
 
 import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.inject.Singleton;
 
-public class PriorityQueueHandler{
+@Singleton
+public class PriorityQueueManager {
     private enum QueueState {
         STOPPED,
         RUNNING
     }
 
     private static final int MAX_CAPACITY = 1000;
-    private static final int STARTING_TASK_ID = 1;
+    private static final AtomicInteger STARTING_TASK_ID = new AtomicInteger(1);
 
-    private PriorityBlockingQueue<PriorityTask> queue;
-    private int nextAvailableId;
+    private PriorityBlockingQueue<PrioritizedTask> queue;
+    private AtomicInteger nextAvailableId;
     private QueueState state;
 
     /**
@@ -20,23 +23,27 @@ public class PriorityQueueHandler{
      * @param entry Task object to be added to the queue.
      * @return True if the entry was successfully added, otherwise False.
      */
-    public boolean add(PriorityTask entry) {
-        incrementNextAvailableId();
+    public boolean add(PrioritizedTask entry) {
+        entry.setId(getAndIncrementNextAvailableId());
 
         return queue.add(entry);
     }
 
-    public void incrementNextAvailableId() {
-        if (nextAvailableId == Integer.MAX_VALUE) {
-            nextAvailableId = STARTING_TASK_ID;
-        }
-        else {
-            nextAvailableId += 1;
-        }
+    public int getAndIncrementNextAvailableId() {
+        return nextAvailableId.getAndIncrement();
     }
 
+    /***
+     * Executes the next task on the queue, lowest priority first.
+     */
+    public void executeNextTask() {
+        PrioritizedTask<?> taskToExecute;
 
-    public PriorityQueueHandler() {
+        taskToExecute = (PrioritizedTask<?>) getQueue().poll();
+        taskToExecute.performTask();
+    }
+
+    public PriorityQueueManager() {
         setQueue();
         nextAvailableId = STARTING_TASK_ID;
         state = QueueState.STOPPED;
@@ -51,13 +58,13 @@ public class PriorityQueueHandler{
         return queue;
     }
 
-    public void setQueue() {
+    private void setQueue() {
         if (queue == null) {
-            queue = new PriorityBlockingQueue<PriorityTask>(MAX_CAPACITY);
+            queue = new PriorityBlockingQueue<PrioritizedTask>(MAX_CAPACITY);
         }
     }
 
-    public int getNextAvailableId() {
+    public AtomicInteger getNextAvailableId() {
         return nextAvailableId;
     }
 
