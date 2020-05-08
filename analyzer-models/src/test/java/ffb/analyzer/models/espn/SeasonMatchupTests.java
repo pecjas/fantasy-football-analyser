@@ -20,7 +20,7 @@ public class SeasonMatchupTests extends BaseSerializationTests {
     }
 
     @Override
-    protected Class<?> getClassUnderTest() {
+    protected Class<?> getClassUnderTesting() {
         return SeasonMatchups.class;
     }
 }

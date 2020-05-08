@@ -33,7 +33,7 @@ public class ScoreByStatTests extends BaseSerializationTests {
     }
 
     @Override
-    protected Class<?> getClassUnderTest() {
+    protected Class<?> getClassUnderTesting() {
         return ScoreByStat.class;
     }
 }

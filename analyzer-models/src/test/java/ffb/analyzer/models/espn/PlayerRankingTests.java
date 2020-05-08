@@ -50,7 +50,7 @@ public class PlayerRankingTests extends BaseSerializationTests {
     }
 
     @Override
-    protected Class<?> getClassUnderTest() {
+    protected Class<?> getClassUnderTesting() {
         return PlayerRanking.class;
     }
 }

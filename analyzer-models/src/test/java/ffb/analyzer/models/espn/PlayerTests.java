@@ -50,7 +50,7 @@ public class PlayerTests extends BaseSerializationTests {
     }
 
     @Override
-    protected Class<?> getClassUnderTest() {
+    protected Class<?> getClassUnderTesting() {
         return Player.class;
     }
 }

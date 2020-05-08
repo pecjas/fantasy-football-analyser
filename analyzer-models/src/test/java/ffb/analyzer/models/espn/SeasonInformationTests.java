@@ -57,7 +57,7 @@ public class SeasonInformationTests extends BaseSerializationTests {
     }
 
     @Override
-    protected Class<?> getClassUnderTest() {
+    protected Class<?> getClassUnderTesting() {
         return SeasonInformation.class;
     }
 }

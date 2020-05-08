@@ -23,7 +23,7 @@ public class MatchupDetailsTest extends BaseSerializationTests {
     }
 
     @Override
-    protected Class<?> getClassUnderTest() {
+    protected Class<?> getClassUnderTesting() {
         return MatchupDetails.class;
     }
 }

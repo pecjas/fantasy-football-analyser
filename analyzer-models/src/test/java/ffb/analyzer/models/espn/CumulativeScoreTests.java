@@ -27,7 +27,7 @@ public class CumulativeScoreTests extends BaseSerializationTests {
     }
 
     @Override
-    protected Class<?> getClassUnderTest() {
+    protected Class<?> getClassUnderTesting() {
         return CumulativeScore.class;
     }
 }

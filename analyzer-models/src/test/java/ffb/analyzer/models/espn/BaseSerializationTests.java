@@ -67,14 +67,14 @@ abstract class BaseSerializationTests {
 
     protected abstract String getResourceFileName();
 
-    protected abstract Class<?> getClassUnderTest();
+    protected abstract Class<?> getClassUnderTesting();
 
     @Test
     public abstract void testDeserialization() throws IOException;
 
     @Test
     public void testSerialization() throws IOException {
-        Object o = deserializeObjects(getClassUnderTest()).get(0);
+        Object o = deserializeObjects(getClassUnderTesting()).get(0);
         Assert.assertFalse(serializeSingleObject(o).isEmpty());
     }
 }

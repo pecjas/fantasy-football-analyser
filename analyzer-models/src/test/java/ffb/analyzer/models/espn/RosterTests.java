@@ -24,7 +24,7 @@ public class RosterTests extends BaseSerializationTests {
     }
 
     @Override
-    protected Class<?> getClassUnderTest() {
+    protected Class<?> getClassUnderTesting() {
         return Roster.class;
     }
 }

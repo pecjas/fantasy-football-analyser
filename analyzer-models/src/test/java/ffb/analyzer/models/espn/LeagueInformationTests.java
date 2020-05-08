@@ -106,7 +106,7 @@ public class LeagueInformationTests extends BaseSerializationTests {
     }
 
     @Override
-    protected Class<?> getClassUnderTest() {
+    protected Class<?> getClassUnderTesting() {
         return LeagueInformation.class;
     }
 }

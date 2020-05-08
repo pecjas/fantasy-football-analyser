@@ -34,7 +34,7 @@ public class PlayerPoolEntryTests extends BaseSerializationTests {
     }
 
     @Override
-    protected Class<?> getClassUnderTest() {
+    protected Class<?> getClassUnderTesting() {
         return PlayerPoolEntry.class;
     }
 }
