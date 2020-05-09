@@ -9,12 +9,13 @@ public class Task<T> {
     private Consumer<T> actionToPerform;
 
 
+    public Task(T object, Consumer<T> action) {
+        objectToPerformTaskOn = object;
+        actionToPerform = action;
+    }
+
     public void performTask() {
-        try {
-            actionToPerform.accept(objectToPerformTaskOn);
-        } catch (Exception e) {
-            throw new RuntimeException(); //TODO: Add error logging instead of throwing exception
-        }
+        actionToPerform.accept(objectToPerformTaskOn);
     }
 
     public int getId() {
@@ -29,15 +30,7 @@ public class Task<T> {
         return objectToPerformTaskOn;
     }
 
-    public void setObjectToPerformTaskOn(T objectToPerformTaskOn) {
-        this.objectToPerformTaskOn = objectToPerformTaskOn;
-    }
-
     public Consumer<T> getActionToPerform() {
         return actionToPerform;
-    }
-
-    public void setActionToPerform(Consumer<T> actionToPerform) {
-        this.actionToPerform = actionToPerform;
     }
 }

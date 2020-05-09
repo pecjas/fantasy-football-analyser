@@ -14,8 +14,8 @@ public class PriorityQueueManager {
     private static final int MAX_CAPACITY = 1000;
     private static final AtomicInteger STARTING_TASK_ID = new AtomicInteger(1);
 
-    private PriorityBlockingQueue<PrioritizedTask> queue;
-    private AtomicInteger nextAvailableId;
+    private PriorityBlockingQueue<PrioritizedTask<?>> queue;
+    private final AtomicInteger nextAvailableId;
     private QueueState state;
 
     /**
@@ -23,13 +23,13 @@ public class PriorityQueueManager {
      * @param entry Task object to be added to the queue.
      * @return True if the entry was successfully added, otherwise False.
      */
-    public boolean add(PrioritizedTask entry) {
+    public boolean add(PrioritizedTask<?> entry) {
         entry.setId(getAndIncrementNextAvailableId());
 
         return queue.add(entry);
     }
 
-    public int getAndIncrementNextAvailableId() {
+    private int getAndIncrementNextAvailableId() {
         return nextAvailableId.getAndIncrement();
     }
 
@@ -39,8 +39,12 @@ public class PriorityQueueManager {
     public void executeNextTask() {
         PrioritizedTask<?> taskToExecute;
 
-        taskToExecute = (PrioritizedTask<?>) getQueue().poll();
-        taskToExecute.performTask();
+        try {
+            taskToExecute = (PrioritizedTask<?>) getQueue().poll();
+            taskToExecute.performTask();
+        } catch (Exception e) {
+            //TODO: Log error
+        }
     }
 
     public PriorityQueueManager() {
@@ -50,7 +54,7 @@ public class PriorityQueueManager {
     }
 
 
-    public PriorityBlockingQueue getQueue() {
+    public PriorityBlockingQueue<?> getQueue() {
         if (queue == null) {
             setQueue();
         }
@@ -60,7 +64,7 @@ public class PriorityQueueManager {
 
     private void setQueue() {
         if (queue == null) {
-            queue = new PriorityBlockingQueue<PrioritizedTask>(MAX_CAPACITY);
+            queue = new PriorityBlockingQueue<>(MAX_CAPACITY);
         }
     }
 

@@ -1,17 +1,20 @@
 package ffb.analyzer.core.queue;
 
+import java.lang.NullPointerException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.lang.NullPointerException;
+import ffb.analyzer.core.queue.Utils.ExampleObject;
 
 public class PrioritizedTaskTests {
     private static final int COMPARISON_MATCH_RETURN = 0;
+    private static final ExampleObject exampleObject = Utils.getExampleObject(9999);
 
     @Test
     public void testCompareToSamePriority() {
-        PrioritizedTask taskOne = new PrioritizedTask(1, 2);
-        PrioritizedTask taskTwo = new PrioritizedTask(2, 2);
+        PrioritizedTask<ExampleObject> taskOne = new PrioritizedTask<>(1, 2, exampleObject, ExampleObject::addOne);
+        PrioritizedTask<ExampleObject> taskTwo = new PrioritizedTask<>(2, 2, exampleObject, ExampleObject::addOne);
 
         Assert.assertEquals(COMPARISON_MATCH_RETURN, taskOne.compareTo(taskTwo));
         Assert.assertEquals(COMPARISON_MATCH_RETURN, taskTwo.compareTo(taskOne));
@@ -19,8 +22,8 @@ public class PrioritizedTaskTests {
 
     @Test
     public void testCompareToDifferentPriority() {
-        PrioritizedTask taskOne = new PrioritizedTask(3, 1);
-        PrioritizedTask taskTwo = new PrioritizedTask(1, 2);
+        PrioritizedTask<ExampleObject> taskOne = new PrioritizedTask<>(3, 1, exampleObject, ExampleObject::addOne);
+        PrioritizedTask<ExampleObject> taskTwo = new PrioritizedTask<>(1, 2, exampleObject, ExampleObject::addOne);
 
         Assert.assertNotEquals(COMPARISON_MATCH_RETURN, taskOne.compareTo(taskTwo));
         Assert.assertNotEquals(COMPARISON_MATCH_RETURN, taskTwo.compareTo(taskOne));
@@ -28,23 +31,27 @@ public class PrioritizedTaskTests {
 
     @Test
     public void testCompareToSelf() {
-        PrioritizedTask task = new PrioritizedTask(0, 8);
+        PrioritizedTask<ExampleObject> task = new PrioritizedTask<>(0, 2, exampleObject, ExampleObject::addOne);
 
         Assert.assertEquals(COMPARISON_MATCH_RETURN, task.compareTo(task));
     }
 
     @Test
     public void testCompareToNull() {
-        PrioritizedTask taskOne = new PrioritizedTask(3, 2);
+        PrioritizedTask<ExampleObject> task = new PrioritizedTask<>(9999, 435687, exampleObject, ExampleObject::addOne);
 
         Assert.assertThrows(NullPointerException.class, () -> {
-            taskOne.compareTo(null);
+            task.compareTo(null);
         });
     }
 
     @Test
     public void testNegativeId() {
-        PrioritizedTask task = new PrioritizedTask(1234567890, 999999999);
+        PrioritizedTask<ExampleObject> task = new PrioritizedTask<>(1234567890,
+                999999999,
+                exampleObject,
+                ExampleObject::addOne);
+
         task.setId(Integer.MIN_VALUE);
     }
 }

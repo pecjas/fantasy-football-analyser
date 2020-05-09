@@ -1,5 +1,7 @@
 package ffb.analyzer.core.pubsub;
 
-public interface Subscriber {
-    public void update(String publishedResult);
+import javax.ws.rs.core.Response;
+
+public interface Subscriber extends Cloneable {
+    public Response update(Object modifiedObject);
 }

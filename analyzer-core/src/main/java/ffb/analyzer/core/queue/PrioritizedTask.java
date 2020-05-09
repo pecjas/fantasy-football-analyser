@@ -1,5 +1,7 @@
 package ffb.analyzer.core.queue;
 
+import java.util.function.Consumer;
+
 public class PrioritizedTask<T> extends Task<T> implements Comparable<PrioritizedTask<T>> {
     private Integer priority;
 
@@ -8,14 +10,15 @@ public class PrioritizedTask<T> extends Task<T> implements Comparable<Prioritize
         return (this.getPriority() - otherTask.getPriority());
     }
 
-    public PrioritizedTask(int id, int priority) {
+    public PrioritizedTask(int id, int priority, T object, Consumer<T> action) {
+        super(object, action);
         this.id = id;
         this.priority = priority;
     }
 
-    public PrioritizedTask(int id, Integer priority) {
-        this.id = id;
-        this.priority = priority.intValue();
+    public PrioritizedTask(int priority, T object, Consumer<T> action) {
+        super(object, action);
+        this.priority = priority;
     }
 
     public Integer getPriority() {
