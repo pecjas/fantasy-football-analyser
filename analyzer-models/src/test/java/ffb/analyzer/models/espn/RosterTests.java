@@ -7,7 +7,7 @@ import org.junit.Assert;
 /**
  * Unit tests for a {@link Roster}.
  */
-public class RosterTests extends DeserializingResourceLoader {
+public class RosterTests extends BaseSerializationTests {
     private static final double EXPECTED_APPLIED_STAT_TOTAL = 28.1;
 
     @Override
@@ -21,5 +21,10 @@ public class RosterTests extends DeserializingResourceLoader {
     @Override
     protected String getResourceFileName() {
         return "roster.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTesting() {
+        return Roster.class;
     }
 }

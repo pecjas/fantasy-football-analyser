@@ -7,16 +7,17 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * Base functionality to deserialize JSON from a resource file for unit tests.
  */
-abstract class DeserializingResourceLoader {
+abstract class BaseSerializationTests {
 
     protected ObjectMapper mapper;
 
-    DeserializingResourceLoader() {
+    BaseSerializationTests() {
         mapper = configureObjectMapper();
     }
 
@@ -53,6 +54,10 @@ abstract class DeserializingResourceLoader {
         );
     }
 
+    protected final <T> String serializeSingleObject(Object o) throws IOException {
+        return mapper.writeValueAsString(o);
+    }
+
     protected final <T> List<T> deserializeObjects(Class<T> clazz) throws IOException {
         return mapper.readValue(
             getResourceFile(),
@@ -62,6 +67,14 @@ abstract class DeserializingResourceLoader {
 
     protected abstract String getResourceFileName();
 
+    protected abstract Class<?> getClassUnderTesting();
+
     @Test
     public abstract void testDeserialization() throws IOException;
+
+    @Test
+    public void testSerialization() throws IOException {
+        Object o = deserializeObjects(getClassUnderTesting()).get(0);
+        Assert.assertFalse(serializeSingleObject(o).isEmpty());
+    }
 }

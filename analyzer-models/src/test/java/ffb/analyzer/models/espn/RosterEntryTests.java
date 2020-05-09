@@ -10,17 +10,12 @@ import org.junit.Assert;
 /**
  * Unit tests for {@link RosterEntry}.
  */
-public class RosterEntryTests extends DeserializingResourceLoader {
+public class RosterEntryTests extends BaseSerializationTests {
     private static final Long EPOCH_MILLISECONDS = 1566059532616L;
     private static final LocalDate EXPECTED_ACQUISITION_DATE =
         LocalDate.ofInstant(Instant.ofEpochMilli(EPOCH_MILLISECONDS), ZoneId.systemDefault());
     private static final int EXPECTED_ROSTER_SIZE = 20;
     private static final int EXPECTED_PLAYER_ID = 15825;
-
-    @Override
-    protected String getResourceFileName() {
-        return "roster-entry.json";
-    }
 
     @Override
     public void testDeserialization() throws IOException {
@@ -34,5 +29,15 @@ public class RosterEntryTests extends DeserializingResourceLoader {
 
         Assert.assertEquals(RosterEntry.RosterStatus.NORMAL, rosterEntry.getStatus());
         Assert.assertEquals(Player.InjuryStatus.NORMAL, rosterEntry.getInjuryStatus());
+    }
+
+    @Override
+    protected String getResourceFileName() {
+        return "roster-entry.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTesting() {
+        return RosterEntry.class;
     }
 }

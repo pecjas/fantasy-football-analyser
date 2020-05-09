@@ -14,7 +14,7 @@ import ffb.analyzer.core.utilities.DateUtils;
 /**
  * Unit Tests for {@link LeagueInformation}.
  */
-public class LeagueInformationTests extends DeserializingResourceLoader {
+public class LeagueInformationTests extends BaseSerializationTests {
 
     private static final int EXPECTED_WEEK = 16;
     private static final int EXPECTED_NUMBER_OF_TEAMS = 12;
@@ -103,5 +103,10 @@ public class LeagueInformationTests extends DeserializingResourceLoader {
     @Override
     protected String getResourceFileName() {
         return "league-information.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTesting() {
+        return LeagueInformation.class;
     }
 }

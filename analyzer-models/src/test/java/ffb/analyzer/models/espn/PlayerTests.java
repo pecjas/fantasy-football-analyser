@@ -8,7 +8,7 @@ import org.junit.Assert;
 /**
  * Unit tests for {@link Player}.
  */
-public class PlayerTests extends DeserializingResourceLoader {
+public class PlayerTests extends BaseSerializationTests {
     private static final int EXPECTED_PRO_TEAM_ID = 20;
     private static final int EXPECTED_PLAYER_ID = 15825;
     private static final String EXPECTED_FIRST_NAME = "FIRST";
@@ -47,5 +47,10 @@ public class PlayerTests extends DeserializingResourceLoader {
     @Override
     protected String getResourceFileName() {
         return "player.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTesting() {
+        return Player.class;
     }
 }
