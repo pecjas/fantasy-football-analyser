@@ -2,7 +2,7 @@ package ffb.analyzer.core.queue;
 
 public abstract class Utils {
     public static class ExampleObject {
-        int value = 5;
+        int value;
 
         public ExampleObject(int value) {
             this.value = value;

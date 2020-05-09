@@ -23,7 +23,7 @@ public class PriorityQueueManager {
      * @param entry Task object to be added to the queue.
      * @return True if the entry was successfully added, otherwise False.
      */
-    public boolean add(PrioritizedTask<?> entry) {
+    public boolean addEntry(PrioritizedTask<?> entry) {
         entry.setId(getAndIncrementNextAvailableId());
 
         return queue.add(entry);

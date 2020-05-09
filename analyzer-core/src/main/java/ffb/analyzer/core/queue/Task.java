@@ -5,17 +5,17 @@ import java.util.function.Consumer;
 public class Task<T> {
     public int id;
 
-    private T objectToPerformTaskOn;
-    private Consumer<T> actionToPerform;
+    private final T targetObject;
+    private final Consumer<T> actionToPerform;
 
 
-    public Task(T object, Consumer<T> action) {
-        objectToPerformTaskOn = object;
-        actionToPerform = action;
+    public Task(T targetObject, Consumer<T> actionToPerform) {
+        this.targetObject = targetObject;
+        this.actionToPerform = actionToPerform;
     }
 
     public void performTask() {
-        actionToPerform.accept(objectToPerformTaskOn);
+        actionToPerform.accept(targetObject);
     }
 
     public int getId() {
@@ -26,8 +26,8 @@ public class Task<T> {
         this.id = id;
     }
 
-    public Object getObjectToPerformTaskOn() {
-        return objectToPerformTaskOn;
+    public Object getTargetObject() {
+        return targetObject;
     }
 
     public Consumer<T> getActionToPerform() {

@@ -3,7 +3,7 @@ package ffb.analyzer.core.queue;
 import java.util.function.Consumer;
 
 public class PrioritizedTask<T> extends Task<T> implements Comparable<PrioritizedTask<T>> {
-    private Integer priority;
+    private final Integer priority;
 
     @Override
     public int compareTo(PrioritizedTask<T> otherTask) {
