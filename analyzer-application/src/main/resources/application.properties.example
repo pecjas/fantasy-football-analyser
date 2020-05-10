@@ -1,0 +1,4 @@
+#Compile time configuration for the application server
+
+#Uncomment if you want to configure the port the application runs on. The default is 8080
+#server.port=[####]

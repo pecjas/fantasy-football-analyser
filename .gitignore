@@ -1,4 +1,5 @@
-**/*/connection.properties
+logs/
+*.properties
 target
 *.class
 .jar
