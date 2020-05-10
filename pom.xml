@@ -10,7 +10,8 @@
     <module>analyzer-core</module>
     <module>analyzer-tests</module>
     <module>analyzer-models</module>
-      <module>analyzer-sql</module>
+    <module>analyzer-sql</module>
+    <module>analyzer-application</module>
   </modules>
   <name>fantasy-football-analyzer</name>
   <url>https://github.com/pecjas/fantasy-football-analyzer</url>
@@ -36,6 +37,13 @@
     </dependency>
   </dependencies>
   <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <skip.checkstyle>true</skip.checkstyle>
+        <maven.test.skip>true</maven.test.skip>
+      </properties>
+    </profile>
     <profile>
       <id>skip-checkstyle</id>
       <properties>

@@ -14,7 +14,7 @@ import ffb.analyzer.models.espn.SeasonInformation;
 /**
  * Integrated tests to test operations against the ESPN APIs.
  */
-public class WebRequestTests {
+public class EspnWebRequestTests {
 
     private static final int FIRST_YEAR = 2004;
     private static final String BASE_URL = "https://fantasy.espn.com/apis/v3/games/ffl/seasons/";
