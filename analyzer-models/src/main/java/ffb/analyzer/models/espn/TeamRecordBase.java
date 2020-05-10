@@ -16,11 +16,16 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
 
     private int gamesBack;
 
-    @JsonProperty("percentage")
-    private float winPercentage;
-
     private int streakLength;
     private StreakType streakType;
+
+    public float getWinPercentage() {
+        return (float) wins / (float) getCountGamesPlayed();
+    }
+
+    public int getCountGamesPlayed() {
+        return (wins + losses + ties);
+    }
 
 
     public int getWins() {
@@ -49,13 +54,6 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     }
     public void setGamesBack(int gamesBack) {
         this.gamesBack = gamesBack;
-    }
-
-    public float getWinPercentage() {
-        return winPercentage;
-    }
-    public void setWinPercentage(float winPercentage) {
-        this.winPercentage = winPercentage;
     }
 
     public int getStreakLength() {
