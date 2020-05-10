@@ -39,7 +39,7 @@ public class MatchupDetails extends EspnEntity<MatchupDetails> {
     public void setWeekId(int weekId) {
         this.weekId = weekId;
     }
-    
+
     public Winner getWinner() {
         return winner;
     }
