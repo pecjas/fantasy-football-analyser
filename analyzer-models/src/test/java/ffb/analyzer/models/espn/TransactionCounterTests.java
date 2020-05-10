@@ -1,10 +1,7 @@
 package ffb.analyzer.models.espn;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.Objects;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -15,8 +12,7 @@ import org.junit.Test;
 
 import ffb.test.utilities.GenericTestUtils;
 
-public class TransactionCounterTests {
-    private static final String TRANSACTION_COUNTER = "transaction-counter.json";
+public class TransactionCounterTests extends BaseSerializationTests {
     private static final int EXPECTED_ACQUISITION_COUNT = 18;
     private static final int EXPECTED_DROP_COUNT = 17;
 
@@ -44,21 +40,24 @@ public class TransactionCounterTests {
         Assert.assertFalse(json.isEmpty());
     }
 
-    @Test
-    public void testTransactionCounterDeserialization() throws IOException, InvocationTargetException, IllegalAccessException {
-
-        File file = new File(Objects.requireNonNull(getClass()
-                .getClassLoader()
-                .getResource(TRANSACTION_COUNTER)
-        ).getFile());
-
-        List<TransactionCounter> transactionCounters = MAPPER.readValue(file,
-                MAPPER.getTypeFactory().constructCollectionType(List.class, TransactionCounter.class));
+    @Override
+    public void testDeserialization() throws IOException {
+        List<TransactionCounter> transactionCounters = deserializeObjects(TransactionCounter.class);
 
         Assert.assertEquals(EXPECTED_ACQUISITION_COUNT, transactionCounters.get(0).getCountOfWaiverAcquisitions());
         Assert.assertEquals(EXPECTED_DROP_COUNT, transactionCounters.get(0).getCountOfDroppedPlayers());
         Assert.assertFalse(transactionCounters.get(0).getAcquisitionsByScoringPeriod().isEmpty());
 
         GenericTestUtils.validateGetMethodsReturnNonNullValue(transactionCounters);
+    }
+
+    @Override
+    protected String getResourceFileName() {
+        return "transaction-counter.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTesting() {
+        return TransactionCounter.class;
     }
 }

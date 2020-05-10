@@ -1,12 +1,8 @@
 package ffb.analyzer.models.espn;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.net.URL;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -18,9 +14,8 @@ import org.junit.Test;
 
 import ffb.test.utilities.GenericTestUtils;
 
-public class TeamTests {
-    private static final String TEAMS = "teams.json";
-    private static final int EXPECTED_TEAM_COUNT = 10;
+public class TeamTests extends BaseSerializationTests {
+    private static final int EXPECTED_TEAM_COUNT = 2;
 
     private static ObjectMapper MAPPER;
 
@@ -69,18 +64,21 @@ public class TeamTests {
         Assert.assertFalse(json.isEmpty());
     }
 
-    @Test
-    public void testTeamDeserialization() throws IOException, InvocationTargetException, IllegalAccessException {
+    @Override
+    public void testDeserialization() throws IOException {
+        List<Team> teams = deserializeObjects(Team.class);
 
-        File file = new File(Objects.requireNonNull(getClass()
-                .getClassLoader()
-                .getResource(TEAMS)
-        ).getFile());
-
-        List<Team> teams = MAPPER.readValue(file,
-                MAPPER.getTypeFactory().constructCollectionType(List.class, Team.class));
-
-        //Assert.assertEquals(EXPECTED_TEAM_COUNT, teams.size());
+        Assert.assertEquals(EXPECTED_TEAM_COUNT, teams.size());
         GenericTestUtils.validateGetMethodsReturnNonNullValue(teams);
+    }
+
+    @Override
+    protected String getResourceFileName() {
+        return "teams.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTesting() {
+        return Team.class;
     }
 }
