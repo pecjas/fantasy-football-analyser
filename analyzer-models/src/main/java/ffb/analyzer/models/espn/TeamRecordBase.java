@@ -13,6 +13,7 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     private int wins;
     private int losses;
     private int ties;
+    private float winPercentage;
 
     private int gamesBack;
 
@@ -20,7 +21,15 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     private StreakType streakType;
 
     public float getWinPercentage() {
-        return (float) wins / (float) getCountGamesPlayed();
+        if (winPercentage == 0.0f) {
+            calculateWinPercentage();
+        }
+
+        return winPercentage;
+    }
+
+    private void calculateWinPercentage() {
+        winPercentage = (float) wins / (float) getCountGamesPlayed();
     }
 
     public int getCountGamesPlayed() {
@@ -33,6 +42,7 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     }
     public void setWins(int wins) {
         this.wins = wins;
+        calculateWinPercentage();
     }
 
     public int getLosses() {
@@ -40,6 +50,7 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     }
     public void setLosses(int losses) {
         this.losses = losses;
+        calculateWinPercentage();
     }
 
     public int getTies() {
@@ -47,6 +58,7 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     }
     public void setTies(int ties) {
         this.ties = ties;
+        calculateWinPercentage();
     }
 
     public int getGamesBack() {

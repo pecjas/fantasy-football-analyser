@@ -14,11 +14,19 @@ public class TeamScore extends EspnEntity<TeamScore> {
 
     @JsonProperty("pointsByScoringPeriod")
     private Map<Integer, Float> scores;
+    private float totalPointsScored;
 
     public float getTotalPointsScored() {
-        return scores.values().stream().reduce(0f, Float::sum);
+        if (totalPointsScored == 0.0f) {
+            calculateTotalPointsScored();
+        }
+
+        return totalPointsScored;
     }
 
+    private void calculateTotalPointsScored() {
+        totalPointsScored = scores.values().stream().reduce(0f, Float::sum);
+    }
 
     public CumulativeScore getCumulativeScore() {
         return cumulativeScore;
@@ -50,5 +58,6 @@ public class TeamScore extends EspnEntity<TeamScore> {
 
     public void setScores(Map<Integer, Float> scores) {
         this.scores = scores;
+        calculateTotalPointsScored();
     }
 }
