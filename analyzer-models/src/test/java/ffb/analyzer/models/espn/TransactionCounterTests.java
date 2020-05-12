@@ -24,8 +24,8 @@ public class TransactionCounterTests extends BaseSerializationTests {
         MAPPER.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     }
 
-    @Test
-    public void testTransactionCounterSerialization() throws JsonProcessingException {
+    @Override
+    public void testSerialization() throws JsonProcessingException {
         TransactionCounter transactionCounter = new TransactionCounter();
 
         transactionCounter.setAcquisitionBudgetSpent(13);

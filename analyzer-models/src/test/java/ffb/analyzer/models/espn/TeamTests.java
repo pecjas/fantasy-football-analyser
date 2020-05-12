@@ -25,8 +25,8 @@ public class TeamTests extends BaseSerializationTests {
         MAPPER.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     }
 
-    @Test
-    public void testTeamSerialization() throws JsonProcessingException, MalformedURLException {
+    @Override
+    public void testSerialization() throws JsonProcessingException, MalformedURLException {
         DraftStrategy strategy = new DraftStrategy();
 
         List<String> owners = List.of(

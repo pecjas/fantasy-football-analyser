@@ -24,8 +24,8 @@ public class TeamRecordTests extends BaseSerializationTests {
         MAPPER.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     }
 
-    @Test
-    public void testTeamSerialization() throws JsonProcessingException, MalformedURLException {
+    @Override
+    public void testSerialization() throws JsonProcessingException, MalformedURLException {
         TeamRecord record = new TeamRecord();
 
         record.setOverallRecord(new TeamRecordOverall());
