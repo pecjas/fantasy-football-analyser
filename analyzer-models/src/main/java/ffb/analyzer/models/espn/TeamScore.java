@@ -2,6 +2,7 @@ package ffb.analyzer.models.espn;
 
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -14,6 +15,8 @@ public class TeamScore extends EspnEntity<TeamScore> {
 
     @JsonProperty("pointsByScoringPeriod")
     private Map<Integer, Float> scores;
+
+    @JsonIgnore
     private float totalPointsScored;
 
     public float getTotalPointsScored() {

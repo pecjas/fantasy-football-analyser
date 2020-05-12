@@ -1,7 +1,5 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T> {
     public enum StreakType {
         WIN,

@@ -37,9 +37,7 @@ public class TeamRecordOverallTests {
         record.setLosses(2);
         record.setStreakLength(2);
         record.setStreakType(TeamRecordBase.StreakType.LOSS);
-        record.setWinPercentage(6);
         record.setTies(2);
-        record.setWinPercentage(0.2f);
 
         String json = MAPPER.writeValueAsString(record);
 
