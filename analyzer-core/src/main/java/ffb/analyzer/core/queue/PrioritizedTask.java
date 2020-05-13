@@ -2,7 +2,23 @@ package ffb.analyzer.core.queue;
 
 import java.util.function.Consumer;
 
+/***
+ * A prioritized task to be added to a queue via PriorityQueueManager and performed asynchronously.
+ * The order of task execution is determined by the priority assigned to the PrioritizedTask
+ * @param <T> The type of object that the task's action will be performed on.
+ */
 public class PrioritizedTask<T> extends Task<T> implements Comparable<PrioritizedTask<T>> {
+    public PrioritizedTask(int id, Priority priority, T object, Consumer<T> action) {
+        super(object, action);
+        this.id = id;
+        this.priority = priority;
+    }
+
+    public PrioritizedTask(Priority priority, T object, Consumer<T> action) {
+        super(object, action);
+        this.priority = priority;
+    }
+
     public enum Priority {
         LOWER(10),
         LOW(20),
@@ -25,18 +41,7 @@ public class PrioritizedTask<T> extends Task<T> implements Comparable<Prioritize
 
     @Override
     public int compareTo(PrioritizedTask<T> otherTask) {
-        return (otherTask.getPriority().getValue() - this.getPriority().getValue());
-    }
-
-    public PrioritizedTask(int id, Priority priority, T object, Consumer<T> action) {
-        super(object, action);
-        this.id = id;
-        this.priority = priority;
-    }
-
-    public PrioritizedTask(Priority priority, T object, Consumer<T> action) {
-        super(object, action);
-        this.priority = priority;
+        return (otherTask.getPriority().getValue() - getPriority().getValue());
     }
 
     public Priority getPriority() {
