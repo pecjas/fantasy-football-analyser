@@ -1,11 +1,7 @@
 package ffb.analyzer.models.espn;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
 import java.util.List;
-import java.util.Objects;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -16,8 +12,7 @@ import org.junit.Test;
 
 import ffb.test.utilities.GenericTestUtils;
 
-public class TeamRecordOverallTests {
-    private static final String TEAM_RECORDS = "team-record.json";
+public class TeamRecordOverallTests extends BaseSerializationTests {
 
     private static ObjectMapper MAPPER;
 
@@ -27,8 +22,8 @@ public class TeamRecordOverallTests {
         MAPPER.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     }
 
-    @Test
-    public void testTeamSerialization() throws JsonProcessingException, MalformedURLException {
+    @Override
+    public void testSerialization() throws JsonProcessingException {
         TeamRecordOverall record = new TeamRecordOverall();
 
         record.setPointsFor(3);
@@ -44,17 +39,20 @@ public class TeamRecordOverallTests {
         Assert.assertFalse(json.isEmpty());
     }
 
-    @Test
-    public void testTeamDeserialization() throws IOException, InvocationTargetException, IllegalAccessException {
+    @Override
+    public void testDeserialization() throws IOException {
+        List<Team> teamRecord = deserializeObjects(Team.class);
 
-        File file = new File(Objects.requireNonNull(getClass()
-                .getClassLoader()
-                .getResource(TEAM_RECORDS)
-        ).getFile());
+        GenericTestUtils.validateGetMethodsReturnNonNullValue(teamRecord);
+    }
 
-        List<TeamRecordOverall> teamRecords = MAPPER.readValue(file,
-                MAPPER.getTypeFactory().constructCollectionType(List.class, TeamRecordOverall.class));
+    @Override
+    protected String getResourceFileName() {
+        return "team-record.json";
+    }
 
-        GenericTestUtils.validateGetMethodsReturnNonNullValue(teamRecords);
+    @Override
+    protected Class<?> getClassUnderTesting() {
+        return TeamRecordOverall.class;
     }
 }

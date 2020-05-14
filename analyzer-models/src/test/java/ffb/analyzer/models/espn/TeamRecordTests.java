@@ -1,11 +1,8 @@
 package ffb.analyzer.models.espn;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.util.List;
-import java.util.Objects;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -16,8 +13,7 @@ import org.junit.Test;
 
 import ffb.test.utilities.GenericTestUtils;
 
-public class TeamRecordTests {
-    private static final String TEAM_RECORDS = "team-records.json";
+public class TeamRecordTests extends BaseSerializationTests {
     private static final int EXPECTED_TEAM_COUNT = 10;
 
     private static ObjectMapper MAPPER;
@@ -28,8 +24,8 @@ public class TeamRecordTests {
         MAPPER.disable(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES);
     }
 
-    @Test
-    public void testTeamSerialization() throws JsonProcessingException, MalformedURLException {
+    @Override
+    public void testSerialization() throws JsonProcessingException, MalformedURLException {
         TeamRecord record = new TeamRecord();
 
         record.setOverallRecord(new TeamRecordOverall());
@@ -42,19 +38,21 @@ public class TeamRecordTests {
         Assert.assertFalse(json.isEmpty());
     }
 
-    @Test
-    public void testTeamDeserialization() throws IOException, InvocationTargetException, IllegalAccessException {
-
-        File file = new File(Objects.requireNonNull(getClass()
-                .getClassLoader()
-                .getResource(TEAM_RECORDS)
-        ).getFile());
-
-        List<TeamRecord> teamRecords = MAPPER.readValue(file,
-                MAPPER.getTypeFactory().constructCollectionType(List.class, TeamRecord.class));
+    @Override
+    public void testDeserialization() throws IOException {
+        List<Team> teamRecords = deserializeObjects(Team.class);
 
         Assert.assertEquals(EXPECTED_TEAM_COUNT, teamRecords.size());
-
         GenericTestUtils.validateGetMethodsReturnNonNullValue(teamRecords);
+    }
+
+    @Override
+    protected String getResourceFileName() {
+        return "team-records.json";
+    }
+
+    @Override
+    protected Class<?> getClassUnderTesting() {
+        return TeamRecord.class;
     }
 }
