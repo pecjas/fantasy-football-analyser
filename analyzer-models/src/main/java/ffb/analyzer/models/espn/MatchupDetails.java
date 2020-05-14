@@ -40,4 +40,12 @@ public class MatchupDetails extends EspnEntity<MatchupDetails> {
         this.weekId = weekId;
     }
 
+    public Winner getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Winner winner) {
+        this.winner = winner;
+    }
+
 }

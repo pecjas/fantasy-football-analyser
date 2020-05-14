@@ -2,6 +2,7 @@ package ffb.analyzer.models.espn;
 
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -12,11 +13,23 @@ public class TeamScore extends EspnEntity<TeamScore> {
     private int gamesPlayed;
     private int teamId;
 
-    @JsonProperty("totalPoints")
-    private float points;
-
     @JsonProperty("pointsByScoringPeriod")
     private Map<Integer, Float> scores;
+
+    @JsonIgnore
+    private float totalPointsScored;
+
+    public float getTotalPointsScored() {
+        if (totalPointsScored == 0.0f) {
+            calculateTotalPointsScored();
+        }
+
+        return totalPointsScored;
+    }
+
+    private void calculateTotalPointsScored() {
+        totalPointsScored = scores.values().stream().reduce(0f, Float::sum);
+    }
 
     public CumulativeScore getCumulativeScore() {
         return cumulativeScore;
@@ -42,19 +55,12 @@ public class TeamScore extends EspnEntity<TeamScore> {
         this.teamId = teamId;
     }
 
-    public float getPoints() {
-        return points;
-    }
-
-    public void setPoints(float points) {
-        this.points = points;
-    }
-
     public Map<Integer, Float> getScores() {
         return scores;
     }
 
     public void setScores(Map<Integer, Float> scores) {
         this.scores = scores;
+        calculateTotalPointsScored();
     }
 }

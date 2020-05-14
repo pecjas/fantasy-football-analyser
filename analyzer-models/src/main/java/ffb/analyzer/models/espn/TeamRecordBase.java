@@ -1,7 +1,5 @@
 package ffb.analyzer.models.espn;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T> {
     public enum StreakType {
         WIN,
@@ -13,14 +11,28 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     private int wins;
     private int losses;
     private int ties;
+    private float winPercentage;
 
     private int gamesBack;
 
-    @JsonProperty("percentage")
-    private float winPercentage;
-
     private int streakLength;
     private StreakType streakType;
+
+    public float getWinPercentage() {
+        if (winPercentage == 0.0f) {
+            calculateWinPercentage();
+        }
+
+        return winPercentage;
+    }
+
+    private void calculateWinPercentage() {
+        winPercentage = (float) wins / (float) getCountGamesPlayed();
+    }
+
+    public int getCountGamesPlayed() {
+        return (wins + losses + ties);
+    }
 
 
     public int getWins() {
@@ -28,6 +40,7 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     }
     public void setWins(int wins) {
         this.wins = wins;
+        calculateWinPercentage();
     }
 
     public int getLosses() {
@@ -35,6 +48,7 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     }
     public void setLosses(int losses) {
         this.losses = losses;
+        calculateWinPercentage();
     }
 
     public int getTies() {
@@ -42,6 +56,7 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     }
     public void setTies(int ties) {
         this.ties = ties;
+        calculateWinPercentage();
     }
 
     public int getGamesBack() {
@@ -49,13 +64,6 @@ abstract class TeamRecordBase<T extends TeamRecordBase<T>> extends EspnEntity<T>
     }
     public void setGamesBack(int gamesBack) {
         this.gamesBack = gamesBack;
-    }
-
-    public float getWinPercentage() {
-        return winPercentage;
-    }
-    public void setWinPercentage(float winPercentage) {
-        this.winPercentage = winPercentage;
     }
 
     public int getStreakLength() {
