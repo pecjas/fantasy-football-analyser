@@ -1,5 +1,7 @@
 package ffb.analyzer.core.queue;
 
+import ffb.analyzer.core.queue.PrioritizedTask.Priority;
+
 public abstract class Utils {
     public static class ExampleObject {
         int value;
@@ -17,7 +19,7 @@ public abstract class Utils {
         return new ExampleObject(value);
     }
 
-    public static PrioritizedTask<ExampleObject> getExampleTask(int priority,
+    public static PrioritizedTask<ExampleObject> getExampleTask(Priority priority,
                                                                 ExampleObject object) {
 
         return new PrioritizedTask<>(
