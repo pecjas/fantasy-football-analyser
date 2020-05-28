@@ -6,7 +6,9 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="Populate NOTIFICATION_SETTING" author="david.hu" runOnChange="true">
-        <delete tableName="NOTIFICATION_SETTINGS"/>
+        <sql>
+            TRUNCATE TABLE NOTIFICATION_SETTING
+        </sql>
         <loadData tableName="NOTIFICATION_SETTING" relativeToChangelogFile="true"
                   file="data/notification-settings.csv" >
             <column header="id" type="numeric"/>
