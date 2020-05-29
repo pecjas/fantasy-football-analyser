@@ -2,9 +2,10 @@ package ffb.analyzer.core.queue;
 
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.inject.Singleton;
 
-@Singleton
+import org.springframework.context.annotation.Scope;
+
+@Scope("singleton")
 public class PriorityQueueManager {
     private enum QueueState {
         STOPPED,

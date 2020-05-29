@@ -11,14 +11,12 @@ Idea inspired by V1 of the project available here: https://github.com/pecjas/FFB
 ##Getting Started
 Be sure to install the dependencies on your computer
 * Java: Java 11
-* MySql: 8.0.20
-* MySQL Workbench: Any Version
+* Postgres: 12.3
 * TODO: Add JS Dependencies
 
 ##Create your database
-1. Follow the instructions [here](https://dev.mysql.com/doc/refman/8.0/en/installing.html) 
-   to install and configure MySql
-2. Create a new database in MySql
+1. Follow the instructions [here](#https://www.postgresqltutorial.com/) to install Postgres and install a GUI.
+2. Create a new user/role in Postgres.
 3. In the analyzer-core module, copy `connection.properties.example` to `connection.properties`
    ```
    $ cp connection.properties.example connection.properties #unix-like OS
@@ -61,17 +59,15 @@ Be sure to install the dependencies on your computer
 * Liquibase - fill in the required parameters
     ```
     $ mvn clean install liquibase:update -pl analyzer-sql -Ddb.host=[HOST NAME] -Ddb.port=[PORT] \
-      -Ddb.name=[DATABASE NAME] -Ddb.useSSL=[TRUE|FALSE] -Ddb.username=[DB USER] -Ddb.password=[PASSWORD] \
-      -Ddb.tz=[TIMEZONE]
+      -Ddb.name=[DATABASE NAME] -Ddb.schema=[SCHEMA] -Ddb.username=[DB USER] -Ddb.password=[PASSWORD]
     ```
     **Note:** The defaults for liquibase parameters are:
     * db.host: 127.0.0.1
-    * db.port: 3306
+    * db.port: 5432
     * db.name: new
-    * db.useSSL: FALSE
-    * db.username: root
+    * db.schema: public
+    * db.username: `NULL`
     * db.password: `NULL`
-    * db.tz: America/Chicago
 * Running Integrated Tests
     ```
     $ mvn clean test -pl analyzer-tests

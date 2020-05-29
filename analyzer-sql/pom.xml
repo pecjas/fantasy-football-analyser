@@ -14,17 +14,16 @@
   <properties>
     <db.useSSL>FALSE</db.useSSL>
     <db.host>127.0.0.1</db.host>
-    <db.port>3306</db.port>
+    <db.port>5432</db.port>
     <db.name>new</db.name>
-    <db.tz>America/Chicago</db.tz>
-    <db.url>jdbc:mysql://${db.host}:${db.port}/${db.name}?autoReconnect=true&amp;useSSL=${db.useSSL}&amp;serverTimezone=${db.tz}</db.url>
-    <db.username>root</db.username>
+    <db.schema>public</db.schema>
+    <db.url>jdbc:postgresql://${db.host}:${db.port}/${db.name}?currentSchema=${db.schema}</db.url>
   </properties>
   <dependencies>
     <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.18</version>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.12</version>
     </dependency>
     <dependency>
       <groupId>ffb.analyzer.core</groupId>
@@ -60,7 +59,7 @@
           <version>3.8.9</version>
           <configuration>
             <changeLogFile>ffb/analyzer/sql/changelog-master.xml</changeLogFile>
-            <driver>com.mysql.cj.jdbc.Driver</driver>
+            <driver>org.postgresql.Driver</driver>
             <url>${db.url}</url>
             <username>${db.username}</username>
             <password>${db.password}</password>
@@ -68,9 +67,9 @@
           </configuration>
           <dependencies>
             <dependency>
-              <groupId>mysql</groupId>
-              <artifactId>mysql-connector-java</artifactId>
-              <version>8.0.18</version>
+              <groupId>org.postgresql</groupId>
+              <artifactId>postgresql</artifactId>
+              <version>42.2.12</version>
             </dependency>
             <dependency>
               <groupId>ffb.analyzer.sql</groupId>
