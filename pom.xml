@@ -12,6 +12,7 @@
     <module>analyzer-models</module>
     <module>analyzer-sql</module>
     <module>analyzer-application</module>
+    <module>analyzer-beans</module>
   </modules>
   <name>fantasy-football-analyzer</name>
   <url>https://github.com/pecjas/fantasy-football-analyzer</url>
@@ -23,6 +24,7 @@
     <skip.checkstyle>false</skip.checkstyle>
   </properties>
   <dependencies>
+    <!-- Test Dependencies -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -72,8 +74,7 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
           <configuration>
-            <source>11</source>
-            <target>11</target>
+            <release>${java.version}</release>
           </configuration>
         </plugin>
         <plugin>

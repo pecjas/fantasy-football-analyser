@@ -27,6 +27,11 @@
 			<artifactId>analyzer-models</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>ffb.analyzer.beans</groupId>
+			<artifactId>analyzer-beans</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
 
 		<!-- Springboot -->
 		<dependency>
@@ -38,18 +43,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>2.2.6.RELEASE</version>
-		</dependency>
-
-		<!--Third Party -->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>2.13.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.13.2</version>
 		</dependency>
 	</dependencies>
 	<profiles>
