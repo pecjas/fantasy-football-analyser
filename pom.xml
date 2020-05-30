@@ -23,6 +23,19 @@
     <skip.checkstyle>false</skip.checkstyle>
   </properties>
   <dependencies>
+    <!-- Springboot/Spring -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>5.2.6.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.4.15.Final</version>
+    </dependency>
+    <!-- Test Dependencies -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

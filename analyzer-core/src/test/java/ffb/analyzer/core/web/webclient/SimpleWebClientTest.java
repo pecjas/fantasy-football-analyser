@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ffb.analyzer.core.web.request.EntityEnclosingRequestBuilder;
+import ffb.analyzer.core.web.request.SimpleEntityEnclosingRequestBuilder;
 import ffb.analyzer.core.web.webclient.servlet.TestPerson;
 import ffb.analyzer.core.web.webclient.servlet.TestServletInitializer;
 
@@ -77,7 +77,7 @@ public class SimpleWebClientTest {
      */
     @Test
     public void testPostRequest() throws IOException {
-        HttpPost request = EntityEnclosingRequestBuilder.newInstance(HttpPost::new)
+        HttpPost request = SimpleEntityEnclosingRequestBuilder.newInstance(HttpPost::new)
             .addUrl(POST_URL)
             .addRequestBodyParameter("firstName", "First")
             .addRequestBodyParameter("lastName", "Last")

@@ -2,3 +2,15 @@
 
 #Uncomment if you want to configure the port the application runs on. The default is 8080
 #server.port=[####]
+
+#Logging
+##Logging Levels
+logging.level.ffb.analyzer.core=DEBUG
+logging.level.ffb.analyzer.application=DEBUG
+
+##Logging Settings - If you want to change where the logs are written
+#logging.file.name=[FILE_NAME]
+#logging.file.path=[RELATIVE FILE_PATH]
+
+
+
