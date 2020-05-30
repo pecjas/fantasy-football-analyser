@@ -27,6 +27,11 @@
 			<artifactId>analyzer-models</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>ffb.analyzer.beans</groupId>
+			<artifactId>analyzer-beans</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
 
 		<!-- Springboot -->
 		<dependency>

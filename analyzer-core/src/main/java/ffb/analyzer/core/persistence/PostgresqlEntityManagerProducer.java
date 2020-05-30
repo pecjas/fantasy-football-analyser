@@ -1,4 +1,4 @@
-package ffb.analyzer.core.database;
+package ffb.analyzer.core.persistence;
 
 import java.io.IOException;
 import javax.sql.DataSource;
@@ -6,6 +6,9 @@ import javax.sql.DataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
+/**
+ * Implementation of {@link LocalEntityManagerProducer} to configure an Postgres-centric entity manager.
+ */
 public class PostgresqlEntityManagerProducer extends BaseEntityManagerProducer {
 
     private static final String POSTGRESQL_DIALECT_PACKAGE = "org.hibernate.dialect.PostgreSQLDialect";

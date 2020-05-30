@@ -1,4 +1,4 @@
-package ffb.analyzer.core.database;
+package ffb.analyzer.core.persistence;
 
 import java.io.IOException;
 import javax.persistence.EntityManager;
@@ -6,6 +6,9 @@ import javax.persistence.EntityManagerFactory;
 
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
+/**
+ * Base implementation of {@link LocalEntityManagerProducer}.
+ */
 public abstract class BaseEntityManagerProducer implements LocalEntityManagerProducer {
 
     private JpaVendorAdapterSettings jpaVendorAdapterSettings;

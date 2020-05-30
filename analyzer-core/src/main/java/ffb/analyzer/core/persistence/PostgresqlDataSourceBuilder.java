@@ -1,4 +1,4 @@
-package ffb.analyzer.core.database;
+package ffb.analyzer.core.persistence;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -6,6 +6,9 @@ import javax.sql.DataSource;
 
 import org.postgresql.ds.PGSimpleDataSource;
 
+/**
+ * Configures a {@link DataSource} to use with Postgresql.
+ */
 public class PostgresqlDataSourceBuilder {
 
     private static PostgresqlDataSourceBuilder connector = null;

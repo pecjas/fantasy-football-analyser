@@ -1,5 +1,8 @@
-package ffb.analyzer.core.database;
+package ffb.analyzer.core.persistence;
 
+/**
+ * Simple representation of {@link org.springframework.orm.jpa.JpaVendorAdapter} settings.
+ */
 public class JpaVendorAdapterSettings {
     private final boolean showSql;
     private final boolean shouldGenerateDdl;
