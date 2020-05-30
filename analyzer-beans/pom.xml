@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ffb.analyzer.beans</groupId>
     <artifactId>analyzer-beans</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <properties>
         <!-- Dependency Versions -->
         <springboot.context.version>5.2.6.RELEASE</springboot.context.version>
